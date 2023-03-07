@@ -38,11 +38,11 @@ const About = () => {
 				variants={fadeIn("", "", 0.1, 1)}
 				className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
 			>
-				I am a computer engineering masters student at Wentworth Institute of
-				Technology with experience in JavaScript, C, C++, Python, and SQL as
-				well as frameworks like Node.js, Three.js, React.js, and TailwindCSS. I
-				am a quick learner and eager to solve real-world problems with the
-				internet of things.
+				I'm a computer engineering masters student at Wentworth Institute of
+				Technology with experience in JavaScript, C++, Python, SQL, and Matlab
+				as well as frameworks like Node.js, Three.js, React.js, and TailwindCSS.
+				I am a quick learner and eager to solve real-world problems using
+				cyber-physical systems.
 			</motion.p>
 			<div className="mt-20 flex flex-wrap gap-10">
 				{services.map((service, index) => (

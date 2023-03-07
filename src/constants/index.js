@@ -51,12 +51,10 @@ const services = [
 	},
 	{
 		title: "IoT Developer",
-		//TODO change icon
 		icon: mobile,
 	},
 	{
 		title: "Computer Hardware Engineer",
-		//TODO change icon
 		icon: creator,
 	},
 ];
