@@ -39,10 +39,10 @@ const About = () => {
 				className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
 			>
 				I'm a computer engineering masters student at Wentworth Institute of
-				Technology with experience in JavaScript, C++, Python, SQL, and Matlab
-				as well as frameworks like Node.js, Three.js, React.js, and TailwindCSS.
-				I am a quick learner and eager to solve real-world problems using
-				cyber-physical systems.
+				Technology with experience in JavaScript, C/C++, Python, SQL, Matlab,
+				and Verilog as well as frameworks like Node.js, Three.js, React.js, and
+				TailwindCSS. I am a quick learner and eager to solve real-world problems
+				using cyber-physical systems.
 			</motion.p>
 			<div className="mt-20 flex flex-wrap gap-10">
 				{services.map((service, index) => (
