@@ -114,7 +114,6 @@ const technologies = [
 
 const experiences = [
 	{
-		//TODO- update experience icons
 		title: "Bachelors of Science",
 		company_name: "Wentworth Institute of Technology",
 		icon: wit_seal,
