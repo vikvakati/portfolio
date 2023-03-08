@@ -15,10 +15,8 @@ import {
 	git,
 	figma,
 	docker,
-	meta,
-	starbucks,
-	tesla,
-	shopify,
+	wit_seal,
+	delta_magnetics,
 	carrent,
 	jobit,
 	tripguide,
@@ -119,8 +117,8 @@ const experiences = [
 		//TODO- update experience icons
 		title: "Bachelors of Science",
 		company_name: "Wentworth Institute of Technology",
-		icon: starbucks,
-		iconBg: "#383E56",
+		icon: wit_seal,
+		iconBg: "#081741",
 		date: "September 2018 - August 2022",
 		points: [
 			"B.S. Computer Engineering.",
@@ -130,8 +128,8 @@ const experiences = [
 	{
 		title: "Learning Labs Leader",
 		company_name: "Wentworth Institute of Technology",
-		icon: tesla,
-		iconBg: "#E6DEDD",
+		icon: wit_seal,
+		iconBg: "#383E56",
 		date: "Jan 2020 - Dec 2022",
 		points: [
 			"Academic tutoring for mathematics and physics related courses.",
@@ -143,8 +141,8 @@ const experiences = [
 	{
 		title: "Electronics Technician Intern",
 		company_name: "Delta Magnetics and Controls",
-		icon: shopify,
-		iconBg: "#383E56",
+		icon: delta_magnetics,
+		iconBg: "#081741",
 		date: "Jan 2021 - Jan 2023",
 		points: [
 			"Designing and building test panels for functional testing.",
@@ -156,8 +154,8 @@ const experiences = [
 	{
 		title: "Masters of Science",
 		company_name: "Wentworth Institute of Technology",
-		icon: meta,
-		iconBg: "#E6DEDD",
+		icon: wit_seal,
+		iconBg: "#383E56",
 		date: "Jan 2023 - Present",
 		points: [
 			"M.S Computer Engineering.",
