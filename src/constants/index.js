@@ -59,6 +59,22 @@ const services = [
 
 const technologies = [
 	{
+		name: "JavaScript",
+		icon: javascript,
+	},
+	{
+		name: "Node JS",
+		icon: nodejs,
+	},
+	{
+		name: "Three JS",
+		icon: threejs,
+	},
+	{
+		name: "React JS",
+		icon: reactjs,
+	},
+	{
 		name: "HTML 5",
 		icon: html,
 	},
@@ -67,49 +83,32 @@ const technologies = [
 		icon: css,
 	},
 	{
-		name: "JavaScript",
-		icon: javascript,
-	},
-	{
-		//TODO- update logo
-		name: "C/C++",
-		icon: cpp,
-	},
-	{
-		name: "React JS",
-		icon: reactjs,
+		name: "Tailwind CSS",
+		icon: tailwind,
 	},
 	{
 		name: "Python",
 		icon: python,
 	},
 	{
-		name: "Tailwind CSS",
-		icon: tailwind,
+		name: "C/C++",
+		icon: cpp,
 	},
 	{
-		name: "Node JS",
-		icon: nodejs,
+		name: "Matlab",
+		icon: matlab,
 	},
 	{
 		name: "SQL",
 		icon: sql,
 	},
 	{
-		name: "Three JS",
-		icon: threejs,
-	},
-	{
-		name: "git",
-		icon: git,
-	},
-	{
 		name: "Verilog",
 		icon: verilog,
 	},
 	{
-		name: "Matlab",
-		icon: matlab,
+		name: "git",
+		icon: git,
 	},
 ];
 
@@ -139,7 +138,7 @@ const experiences = [
 		],
 	},
 	{
-		title: "Electronics Technician Intern",
+		title: "Electronics Technician",
 		company_name: "Delta Magnetics and Controls",
 		icon: delta_magnetics,
 		iconBg: "#081741",
