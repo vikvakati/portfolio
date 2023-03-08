@@ -8,17 +8,17 @@ import menu from "./menu.svg";
 import close from "./close.svg";
 
 import css from "./tech/css.png";
-import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
+import matlab from "./tech/matlab.png";
+import verilog from "./tech/verilog.png";
 import git from "./tech/git.png";
 import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
-import mongodb from "./tech/mongodb.png";
+import sql from "./tech/sql.png";
 import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
-import redux from "./tech/redux.png";
+import python from "./tech/python.png";
 import tailwind from "./tech/tailwind.png";
-import typescript from "./tech/typescript.png";
+import cpp from "./tech/cpp.png";
 import threejs from "./tech/threejs.svg";
 
 import wit_seal from "./company/wit_seal.png";
@@ -38,17 +38,17 @@ export {
 	menu,
 	close,
 	css,
-	docker,
-	figma,
+	matlab,
+	verilog,
 	git,
 	html,
 	javascript,
-	mongodb,
+	sql,
 	nodejs,
 	reactjs,
-	redux,
+	python,
 	tailwind,
-	typescript,
+	cpp,
 	threejs,
 	wit_seal,
 	delta_magnetics,

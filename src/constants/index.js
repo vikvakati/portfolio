@@ -4,17 +4,17 @@ import {
 	creator,
 	web,
 	javascript,
-	typescript,
+	cpp,
 	html,
 	css,
 	reactjs,
-	redux,
+	python,
 	tailwind,
 	nodejs,
-	mongodb,
+	sql,
 	git,
-	figma,
-	docker,
+	verilog,
+	matlab,
 	wit_seal,
 	delta_magnetics,
 	carrent,
@@ -71,16 +71,17 @@ const technologies = [
 		icon: javascript,
 	},
 	{
-		name: "TypeScript",
-		icon: typescript,
+		//TODO- update logo
+		name: "C/C++",
+		icon: cpp,
 	},
 	{
 		name: "React JS",
 		icon: reactjs,
 	},
 	{
-		name: "Redux Toolkit",
-		icon: redux,
+		name: "Python",
+		icon: python,
 	},
 	{
 		name: "Tailwind CSS",
@@ -91,8 +92,8 @@ const technologies = [
 		icon: nodejs,
 	},
 	{
-		name: "MongoDB",
-		icon: mongodb,
+		name: "SQL",
+		icon: sql,
 	},
 	{
 		name: "Three JS",
@@ -103,18 +104,18 @@ const technologies = [
 		icon: git,
 	},
 	{
-		name: "figma",
-		icon: figma,
+		name: "Verilog",
+		icon: verilog,
 	},
 	{
-		name: "docker",
-		icon: docker,
+		name: "Matlab",
+		icon: matlab,
 	},
 ];
 
 const experiences = [
 	{
-		title: "Bachelors of Science",
+		title: "Bachelor of Science",
 		company_name: "Wentworth Institute of Technology",
 		icon: wit_seal,
 		iconBg: "#081741",
@@ -151,13 +152,13 @@ const experiences = [
 		],
 	},
 	{
-		title: "Masters of Science",
+		title: "Master of Science",
 		company_name: "Wentworth Institute of Technology",
 		icon: wit_seal,
 		iconBg: "#383E56",
 		date: "Jan 2023 - Present",
 		points: [
-			"M.S Computer Engineering.",
+			"M.S. Computer Engineering.",
 			"Concentration in Internet of Things and SCADA systems.",
 		],
 	},
