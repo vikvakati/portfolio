@@ -1,9 +1,19 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
+	// state variable to toggle cursor on click event
+	const [isGrabbing, setIsGrabbing] = useState(false);
+	function handleMouseDown() {
+		setIsGrabbing(true);
+	}
+
+	function handleMouseUp() {
+		setIsGrabbing(false);
+	}
 	return (
 		<section className="relative w-full h-screen mx-auto">
 			<div
@@ -23,7 +33,15 @@ const Hero = () => {
 				</div>
 			</div>
 
-			<ComputersCanvas />
+			<div
+				className={`w-full h-full relative group ${
+					isGrabbing ? "cursor-grabbing" : "cursor-grab"
+				}`}
+				onMouseDown={handleMouseDown}
+				onMouseUp={handleMouseUp}
+			>
+				<ComputersCanvas />
+			</div>
 
 			<div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
 				<a href="#about">

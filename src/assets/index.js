@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import logo from "./logo.png";
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
@@ -24,9 +24,9 @@ import threejs from "./tech/threejs.svg";
 import wit_seal from "./company/wit_seal.png";
 import delta_magnetics from "./company/delta_magnetics.png";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+import farm from "./farm.png";
+import antikythera from "./antikythera.png";
+import deblur from "./deblur.png";
 
 export {
 	logo,
@@ -52,7 +52,7 @@ export {
 	threejs,
 	wit_seal,
 	delta_magnetics,
-	carrent,
-	jobit,
-	tripguide,
+	farm,
+	antikythera,
+	deblur,
 };

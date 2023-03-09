@@ -17,9 +17,9 @@ import {
 	matlab,
 	wit_seal,
 	delta_magnetics,
-	carrent,
-	jobit,
-	tripguide,
+	farm,
+	antikythera,
+	deblur,
 	threejs,
 } from "../assets";
 
@@ -192,66 +192,50 @@ const testimonials = [
 
 const projects = [
 	{
-		name: "Car Rent",
+		name: "Farm Monitoring",
 		description:
-			"Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+			"Offline mesh network to monitor vital information on farms. Data is sent to a server node which displays all vital information in a web interface. The network is designed to be low power and low cost, while still providing high reliability and security.",
 		tags: [
 			{
-				name: "react",
+				name: "C++",
 				color: "blue-text-gradient",
 			},
 			{
-				name: "mongodb",
-				color: "green-text-gradient",
-			},
-			{
-				name: "tailwind",
+				name: "ESP32",
 				color: "pink-text-gradient",
 			},
 		],
-		image: carrent,
-		source_code_link: "https://github.com/",
+		image: farm,
+		source_code_link: "https://github.com/vikvakati/monitor-soil",
 	},
 	{
-		name: "Job IT",
+		name: "Antikythera Simulator",
 		description:
-			"Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+			"Python application that displays the solar system along with planetary event dates from an SQL database. Enables users to search/sort planetary events and view the solar system simulation from any date.",
 		tags: [
 			{
-				name: "react",
-				color: "blue-text-gradient",
-			},
-			{
-				name: "restapi",
+				name: "Python",
 				color: "green-text-gradient",
 			},
 			{
-				name: "scss",
-				color: "pink-text-gradient",
+				name: "SQL",
+				color: "blue-text-gradient",
 			},
 		],
-		image: jobit,
-		source_code_link: "https://github.com/",
+		image: antikythera,
+		source_code_link: "https://github.com/vikvakati/ELEC3225AntikytheraProject",
 	},
 	{
-		name: "Trip Guide",
+		name: "Image Restoration",
 		description:
-			"A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+			"Application to remove motion blur from videos and images by estimating blur angle and length and then applying weiner deconvolution. The interface allows the user to select a video or image, and then the application automatically estimates the blur angle and length and displays the deblurred image.",
 		tags: [
 			{
-				name: "nextjs",
-				color: "blue-text-gradient",
-			},
-			{
-				name: "supabase",
-				color: "green-text-gradient",
-			},
-			{
-				name: "css",
-				color: "pink-text-gradient",
+				name: "Matlab",
+				color: "orange-text-gradient",
 			},
 		],
-		image: tripguide,
+		image: deblur,
 		source_code_link: "https://github.com/",
 	},
 ];
