@@ -19,7 +19,7 @@ const Tech = () => {
 		<>
 			<motion.div variants={textVariant()} className="flex justify-center">
 				<p className="text-white text-[24px] font-semibold">
-					Take It For A Spin!
+					Take It For A Spin
 				</p>
 			</motion.div>
 			<div className="flex flex-row flex-wrap justify-center gap-10">

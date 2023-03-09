@@ -1,7 +1,7 @@
 import {
-	mobile,
+	iot,
 	backend,
-	creator,
+	engineer,
 	web,
 	javascript,
 	cpp,
@@ -44,16 +44,16 @@ const services = [
 		icon: web,
 	},
 	{
+		title: "IoT Developer",
+		icon: iot,
+	},
+	{
 		title: "Backend Developer",
 		icon: backend,
 	},
 	{
-		title: "IoT Developer",
-		icon: mobile,
-	},
-	{
 		title: "Computer Hardware Engineer",
-		icon: creator,
+		icon: engineer,
 	},
 ];
 
@@ -163,6 +163,7 @@ const experiences = [
 	},
 ];
 
+//TODO- update testimonials
 const testimonials = [
 	{
 		testimonial:
