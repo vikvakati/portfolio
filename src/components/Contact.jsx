@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser"; // using emailjs.com service to send emails
 
 import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { github, linkedin } from "../assets";
+
+//TODO- form is not taking input
 
 const Contact = () => {
 	const formRef = useRef();
