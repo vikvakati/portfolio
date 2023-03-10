@@ -131,7 +131,7 @@ const experiences = [
 		iconBg: "#383E56",
 		date: "Jan 2020 - Dec 2022",
 		points: [
-			"Academic tutoring for mathematics and physics related courses.",
+			"Provided tutoring services for mathematics and physics related courses.",
 			"Collaborating with team of faculty to develop innovative instructional methodologies.",
 			"Managing review sessions and providing constructive feedback to students.",
 			"Designing adequately challenging questions for review sessions.",

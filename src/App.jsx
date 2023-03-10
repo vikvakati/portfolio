@@ -10,6 +10,8 @@ import {
 	StarsCanvas,
 } from "./components";
 
+//TODO- update active link on scroll
+
 const App = () => {
 	return (
 		<BrowserRouter>

@@ -10,8 +10,6 @@ import {
 
 import CanvasLoader from "../Loader";
 
-//TODO- use as moons stars around earth if possible
-
 const Ball = (props) => {
 	const [decal] = useTexture([props.imgUrl]);
 

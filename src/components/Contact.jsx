@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import Tilt from "react-tilt";
 import emailjs from "@emailjs/browser"; // using emailjs.com service to send emails
 
 import { styles } from "../styles";
@@ -7,7 +8,7 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { github, linkedin } from "../assets";
 
-//TODO- form is not taking input
+//TODO- is sent is not being used
 
 const Contact = () => {
 	const formRef = useRef();
@@ -74,9 +75,11 @@ const Contact = () => {
 								"_blank"
 							)
 						}
-						className="mx-2 green-pink-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
+						className="z-0 mx-2 green-pink-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
 					>
-						<img src={github} alt="github" className="w-7 h-7" />
+						<Tilt>
+							<img src={github} alt="github" className="w-7 h-7" />
+						</Tilt>
 					</div>
 					<div
 						onClick={() =>
@@ -87,7 +90,9 @@ const Contact = () => {
 						}
 						className="mx-2 green-pink-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
 					>
-						<img src={linkedin} alt="linkedin" className="w-7 h-7" />
+						<Tilt>
+							<img src={linkedin} alt="linkedin" className="w-7 h-7" />
+						</Tilt>
 					</div>
 				</div>
 

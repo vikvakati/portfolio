@@ -39,9 +39,10 @@ const About = () => {
 				className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
 			>
 				I'm a computer engineering masters student at Wentworth Institute of
-				Technology with experience in a variety of languages and frameworks. I
-				am a quick learner and eager to solve real-world problems using
-				cyber-physical systems.
+				Technology with software development experience in a variety of
+				languages and frameworks as well as experience in electrical
+				engineering. I am a quick learner and eager to solve real-world problems
+				using cyber-physical systems.
 			</motion.p>
 			<div className="mt-20 flex flex-wrap gap-10">
 				{services.map((service, index) => (
