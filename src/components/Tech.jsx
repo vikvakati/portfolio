@@ -1,3 +1,5 @@
+import { styles } from "../styles";
+
 import { useState } from "react";
 import { BallCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
@@ -15,14 +17,14 @@ const Tech = () => {
 	function handleMouseUp() {
 		setIsGrabbing(false);
 	}
+
 	return (
 		<>
-			<motion.div variants={textVariant()} className="flex justify-center">
-				<p className="text-white text-[24px] font-semibold">
-					Take It For A Spin
-				</p>
+			<motion.div variants={textVariant()}>
+				<h2 className={`${styles.sectionHeadText}`}>Skills.</h2>
+				<p className={`${styles.sectionSubText}`}>Lets go for a spin</p>
 			</motion.div>
-			<div className="flex flex-row flex-wrap justify-center gap-10">
+			<div className="py-10 flex flex-row flex-wrap justify-center gap-10">
 				{technologies.map((technology) => (
 					<div
 						className={`w-28 h-28 relative group ${
