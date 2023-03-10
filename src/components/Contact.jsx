@@ -6,10 +6,7 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
-
-//template_7u4pna3
-//service_dsu8slh
-//56--GvPfpGoliTG9I
+import { github, linkedin } from "../assets";
 
 const Contact = () => {
 	const formRef = useRef();
@@ -78,6 +75,33 @@ const Contact = () => {
 				<p className={styles.sectionSubText}>Get in touch</p>
 				<h3 className={styles.sectionHeadText}>Contact.</h3>
 
+				{/* links to external pages */}
+				{/* TODO- socails to index.js linkedin */}
+				<div className="absolute inset-0 flex flex-row justify-end m-3 opacity-75">
+					<div
+						onClick={() =>
+							window.open(
+								"https://github.com/vikvakati?tab=repositories",
+								"_blank"
+							)
+						}
+						className="mx-2 black-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
+					>
+						<img src={github} alt="github" className="w-7 h-7" />
+					</div>
+					<div
+						onClick={() =>
+							window.open(
+								"https://www.linkedin.com/in/vikranth-vakati-94912a195",
+								"_blank"
+							)
+						}
+						className="mx-2 black-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
+					>
+						<img src={linkedin} alt="linkedin" className="w-7 h-7" />
+					</div>
+				</div>
+
 				<form
 					ref={formRef}
 					onSubmit={handleSubmit}
@@ -125,7 +149,7 @@ const Contact = () => {
 				</form>
 			</motion.div>
 
-			<motion.div
+			{/* <motion.div
 				variants={slideIn("right", "tween", 0.2, 1)}
 				className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
 			>
@@ -138,7 +162,7 @@ const Contact = () => {
 				>
 					<EarthCanvas />
 				</div>
-			</motion.div>
+			</motion.div> */}
 		</div>
 	);
 };
