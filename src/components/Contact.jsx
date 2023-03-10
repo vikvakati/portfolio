@@ -16,17 +16,6 @@ const Contact = () => {
 
 	const [loading, setLoading] = useState(false);
 
-	// state variable and event handlers to toggle cursor on click event
-	const [isGrabbing, setIsGrabbing] = useState(false);
-
-	function handleMouseDown() {
-		setIsGrabbing(true);
-	}
-
-	function handleMouseUp() {
-		setIsGrabbing(false);
-	}
-
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setForm({ ...form, [name]: value });
@@ -68,7 +57,7 @@ const Contact = () => {
 	};
 
 	return (
-		<div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
+		<div className="xl:mt-12 xl:flex-row flex-col-reverse flex justify-center gap-10 overflow-hidden">
 			<motion.div
 				variants={slideIn("left", "tween", 0.2, 1)}
 				className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
@@ -149,21 +138,6 @@ const Contact = () => {
 					</button>
 				</form>
 			</motion.div>
-
-			{/* <motion.div
-				variants={slideIn("right", "tween", 0.2, 1)}
-				className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-			>
-				<div
-					className={`w-full h-full relative group ${
-						isGrabbing ? "cursor-grabbing" : "cursor-grab"
-					}`}
-					onMouseDown={handleMouseDown}
-					onMouseUp={handleMouseUp}
-				>
-					<EarthCanvas />
-				</div>
-			</motion.div> */}
 		</div>
 	);
 };
