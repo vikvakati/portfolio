@@ -66,8 +66,7 @@ const Contact = () => {
 				<h3 className={styles.sectionHeadText}>Contact.</h3>
 
 				{/* links to external pages */}
-				{/* TODO- socails to index.js linkedin */}
-				<div className="absolute inset-0 flex flex-row justify-end m-3 opacity-75">
+				<div className="absolute inset-0 flex flex-row justify-end m-3 opacity-50">
 					<div
 						onClick={() =>
 							window.open(
@@ -75,7 +74,7 @@ const Contact = () => {
 								"_blank"
 							)
 						}
-						className="mx-2 black-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
+						className="mx-2 green-pink-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
 					>
 						<img src={github} alt="github" className="w-7 h-7" />
 					</div>
@@ -86,7 +85,7 @@ const Contact = () => {
 								"_blank"
 							)
 						}
-						className="mx-2 black-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
+						className="mx-2 green-pink-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
 					>
 						<img src={linkedin} alt="linkedin" className="w-7 h-7" />
 					</div>
@@ -95,7 +94,7 @@ const Contact = () => {
 				<form
 					ref={formRef}
 					onSubmit={handleSubmit}
-					className="mt-12 flex flex-col gap-8"
+					className="mt-12 flex flex-col gap-8 relative"
 				>
 					<label className="flex flex-col">
 						<span className="text-white font-medium mb-4">Name</span>
