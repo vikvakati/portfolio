@@ -20,6 +20,7 @@ const Tech = () => {
 
 	return (
 		<>
+			{/* TODO- update transition for skills section */}
 			<motion.div variants={textVariant()}>
 				<h2 className={`${styles.sectionHeadText}`}>Skills.</h2>
 				<p className={`${styles.sectionSubText}`}>Lets go for a spin</p>
