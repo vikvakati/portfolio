@@ -4,9 +4,10 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
-//TODO- find new earth model
+//TODO- compress earth model
+
 const Earth = () => {
-	const earth = useGLTF("./planet/scene.gltf");
+	const earth = useGLTF("./earth1.glb");
 	return (
 		<mesh>
 			<hemisphereLight intensity={0.15} groundColor="white" />
@@ -21,8 +22,8 @@ const Earth = () => {
 			/>
 			<primitive
 				object={earth.scene}
-				scale={1.75}
-				position-y={-0.3}
+				scale={1.55}
+				position-y={-0.4}
 				rotation-y={0}
 			/>
 		</mesh>
