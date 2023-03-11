@@ -123,7 +123,7 @@ const experiences = [
 		date: "September 2018 - August 2022",
 		points: [
 			"B.S. Computer Engineering.",
-			"Minors in Internet of Things and Electrical Engineering.",
+			"Minors in Internet of Things, Electrical Engineering, and Math.",
 		],
 	},
 	{

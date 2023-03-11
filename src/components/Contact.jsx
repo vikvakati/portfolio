@@ -14,9 +14,11 @@ const Contact = () => {
 
 	const [loading, setLoading] = useState(false);
 
+	//TODO- email functionality is disabled for now
 	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setForm({ ...form, [name]: value });
+		// const { name, value } = e.target;
+		// setForm({ ...form, [name]: value });
+		// setForm({ ...form, [name]: value });
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
