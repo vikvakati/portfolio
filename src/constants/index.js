@@ -21,6 +21,8 @@ import {
 	antikythera,
 	deblur,
 	threejs,
+	github,
+	linkedin,
 } from "../assets";
 
 export const navLinks = [
@@ -213,4 +215,18 @@ const projects = [
 	},
 ];
 
-export { services, technologies, experiences, projects };
+const socials = [
+	{
+		name: "GitHub",
+		alt: "github",
+		icon: github,
+		link: "https://github.com/vikvakati?tab=repositories",
+	},
+	{
+		name: "LinkedIn",
+		alt: "linkedin",
+		icon: linkedin,
+		link: "https://www.linkedin.com/in/vikranth-vakati-94912a195",
+	},
+];
+export { services, technologies, experiences, projects, socials };

@@ -6,13 +6,10 @@ import emailjs from "@emailjs/browser"; // using emailjs.com service to send ema
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
-import { github, linkedin } from "../assets";
-
-//TODO- is sent is not being used
+import { socials } from "../constants";
 
 const Contact = () => {
 	const formRef = useRef();
-	const [isSent, setIsSent] = useState(false);
 	const [form, setForm] = useState({ name: "", email: "", message: "" });
 
 	const [loading, setLoading] = useState(false);
@@ -57,6 +54,20 @@ const Contact = () => {
 			);
 	};
 
+	const SocialLink = () => {
+		return socials.map((social) => (
+			<div
+				key={social.name}
+				onClick={() => window.open(social.link, "_blank")}
+				className="z-0 mx-2 green-pink-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
+			>
+				<Tilt>
+					<img src={social.icon} alt={social.alt} className="w-7 h-7" />
+				</Tilt>
+			</div>
+		));
+	};
+
 	return (
 		<div className="xl:mt-12 xl:flex-row flex-col-reverse flex justify-center gap-10 overflow-hidden">
 			<motion.div
@@ -68,32 +79,7 @@ const Contact = () => {
 
 				{/* links to external pages */}
 				<div className="absolute inset-0 flex flex-row justify-end m-3 opacity-50">
-					<div
-						onClick={() =>
-							window.open(
-								"https://github.com/vikvakati?tab=repositories",
-								"_blank"
-							)
-						}
-						className="z-0 mx-2 green-pink-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
-					>
-						<Tilt>
-							<img src={github} alt="github" className="w-7 h-7" />
-						</Tilt>
-					</div>
-					<div
-						onClick={() =>
-							window.open(
-								"https://www.linkedin.com/in/vikranth-vakati-94912a195",
-								"_blank"
-							)
-						}
-						className="mx-2 green-pink-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
-					>
-						<Tilt>
-							<img src={linkedin} alt="linkedin" className="w-7 h-7" />
-						</Tilt>
-					</div>
+					<SocialLink />
 				</div>
 
 				<form
