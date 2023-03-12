@@ -4,26 +4,15 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
+//TODO- make object rotate on scroll
+
 const Earth = () => {
 	const earth = useGLTF("./earth.gltf");
 	return (
 		<mesh>
-			<hemisphereLight intensity={0.15} groundColor="white" />
-			<pointLight intensity={1} />
-			<spotLight
-				position={[-20, 50, 10]}
-				angle={0.12}
-				penumbra={1}
-				intensity={1}
-				castShadow
-				shadow-mapSize={1024}
-			/>
-			<primitive
-				object={earth.scene}
-				scale={1.55}
-				position-y={-0.4}
-				rotation-y={0}
-			/>
+			<hemisphereLight intensity={0.3} groundColor="white" />
+			<spotLight position={[-20, 50, 10]} intensity={0.6} />
+			<primitive object={earth.scene} scale={1.55} position-y={-0.4} />
 		</mesh>
 	);
 };
@@ -39,6 +28,7 @@ const EarthCanvas = () => {
 			<Suspense fallback={<CanvasLoader />}>
 				<OrbitControls
 					autoRotate
+					autoRotateSpeed={1.25}
 					enableZoom={false}
 					maxPolarAngle={Math.PI / 2}
 					minPolarAngle={Math.PI / 2}

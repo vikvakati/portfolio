@@ -54,7 +54,7 @@ const services = [
 		icon: backend,
 	},
 	{
-		title: "Computer Hardware Engineer",
+		title: "Electronics Engineer",
 		icon: engineer,
 	},
 ];

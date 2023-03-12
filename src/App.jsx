@@ -10,6 +10,8 @@ import {
 	StarsCanvas,
 } from "./components";
 
+//TODO- load images separately to optimize performance
+
 const App = () => {
 	return (
 		<BrowserRouter>

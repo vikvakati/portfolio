@@ -32,7 +32,9 @@ const Contact = () => {
 					from_name: form.name,
 					to_name: "Vik",
 					from_email: form.email,
-					to_email: "vikvakati@gmail.com",
+
+					//TODO- email functionality is disabled for now
+					// to_email: "vikvakati@gmail.com",
 					message: form.message,
 				},
 				"56--GvPfpGoliTG9I" //public key
