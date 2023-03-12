@@ -4,10 +4,8 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
-//TODO- compress earth model
-
 const Earth = () => {
-	const earth = useGLTF("./earth1.glb");
+	const earth = useGLTF("./earth.gltf");
 	return (
 		<mesh>
 			<hemisphereLight intensity={0.15} groundColor="white" />

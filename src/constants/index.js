@@ -186,7 +186,7 @@ const projects = [
 	{
 		name: "Antikythera Simulator",
 		description:
-			"Python application that displays the solar system along with planetary event dates from an SQL database. Enables users to search/sort planetary events and view the solar system simulation from any date.",
+			"Application that displays the solar system along with planetary event dates from a database. Enables users to search/sort planetary events and view the solar system simulation from any date.",
 		tags: [
 			{
 				name: "Python",
