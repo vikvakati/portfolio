@@ -61,10 +61,10 @@ const Contact = () => {
 			<div
 				key={social.name}
 				onClick={() => window.open(social.link, "_blank")}
-				className="z-0 mx-2 green-pink-gradient w-11 h-11 rounded-full flex justify-center items-center cursor-pointer"
+				className="z-0 mx-2 w-12 h-12 rounded-full flex justify-center items-center cursor-pointer"
 			>
 				<Tilt>
-					<img src={social.icon} alt={social.alt} className="w-7 h-7" />
+					<img src={social.icon} alt={social.alt} className="w-10 h-10" />
 				</Tilt>
 			</div>
 		));
@@ -124,9 +124,9 @@ const Contact = () => {
 					</label>
 					<button
 						type="submit"
-						className="bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl mx-auto"
+						className="bg-[#3781e5] py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl mx-auto"
 					>
-						{loading ? "Sending..." : "Send"}{" "}
+						<Tilt>{loading ? "Sending..." : "Send"} </Tilt>
 					</button>
 				</form>
 			</motion.div>
