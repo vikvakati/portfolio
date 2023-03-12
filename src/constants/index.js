@@ -133,10 +133,8 @@ const experiences = [
 		iconBg: "#383E56",
 		date: "Jan 2020 - Dec 2022",
 		points: [
-			"Provided tutoring services for mathematics and physics related courses.",
 			"Collaborating with team of faculty to develop innovative instructional methodologies.",
 			"Managing review sessions and providing constructive feedback to students.",
-			"Designing adequately challenging questions for review sessions.",
 		],
 	},
 	{
@@ -146,9 +144,8 @@ const experiences = [
 		iconBg: "#081741",
 		date: "Jan 2021 - Jan 2023",
 		points: [
-			"Designing and building test panels for functional testing.",
 			"Testing control panel systems visually, point to point, and operationally.",
-			"Implementing responsive design and ensuring cross-browser compatibility.",
+			"Designing and building test panels for functional testing.",
 			"Collaborating with a team of designers and technicians to ensure customer satisfaction.",
 		],
 	},

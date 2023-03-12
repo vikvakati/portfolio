@@ -10,9 +10,6 @@ import {
 	StarsCanvas,
 } from "./components";
 
-//TODO-create readme file
-//TODO- update active link on scroll
-
 const App = () => {
 	return (
 		<BrowserRouter>
