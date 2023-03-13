@@ -26,8 +26,9 @@ const Tech = () => {
 			</motion.div>
 			<motion.div variants={slideIn("up", "tween", 0.2, 1)}>
 				<div className="py-10 flex flex-row flex-wrap justify-center gap-10">
-					{technologies.map((technology) => (
+					{technologies.map((technology, index) => (
 						<div
+							key={index}
 							className={`w-28 h-28 relative group ${
 								isGrabbing ? "cursor-grabbing" : "cursor-grab"
 							}`}
