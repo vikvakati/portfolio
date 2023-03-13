@@ -21,7 +21,9 @@
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.8.2",
 		"react-tilt": "^0.1.4",
+		"react-update-url-on-scroll": "^3.5.0",
 		"react-vertical-timeline-component": "^3.6.0",
+		"save": "^2.9.0",
 		"save-dev": "^0.0.1-security"
 	},
 	"devDependencies": {
