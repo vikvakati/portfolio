@@ -8,8 +8,8 @@ import {
 	Tech,
 	Works,
 	StarsCanvas,
+	Footer,
 } from "./components";
-import Footer from "./components/canvas/Footer";
 
 //TODO- load images separately to optimize performance
 
