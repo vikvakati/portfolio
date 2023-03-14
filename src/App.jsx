@@ -9,9 +9,9 @@ import {
 	Works,
 	StarsCanvas,
 } from "./components";
+import Footer from "./components/canvas/Footer";
 
 //TODO- load images separately to optimize performance
-//TODO- add footer with credits and signature
 
 const App = () => {
 	return (
@@ -30,6 +30,7 @@ const App = () => {
 					<Contact />
 					<StarsCanvas />
 				</div>
+				<Footer />
 			</div>
 		</BrowserRouter>
 	);
