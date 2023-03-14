@@ -63,6 +63,7 @@ const Contact = () => {
 				key={social.name}
 				onClick={() => window.open(social.link, "_blank")}
 				className="z-0 mx-2 w-12 h-12 rounded-full flex justify-center items-center cursor-pointer"
+				title={social.name}
 			>
 				<Tilt>
 					<img src={social.icon} alt={social.alt} className="w-10 h-10" />

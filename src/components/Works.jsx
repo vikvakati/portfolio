@@ -30,6 +30,7 @@ const ProjectCard = ({
 					<div className="absolute inset-0 flex justify-end m-3 card-img_hover opacity-75">
 						<div
 							onClick={() => window.open(source_code_link, "_blank")}
+							title="Source Code"
 							className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
 						>
 							<img src={github} alt="github" className="w-5 h-5" />

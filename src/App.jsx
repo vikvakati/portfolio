@@ -11,11 +11,12 @@ import {
 } from "./components";
 
 //TODO- load images separately to optimize performance
+//TODO- add footer with credits and signature
 
 const App = () => {
 	return (
 		<BrowserRouter>
-			<div className="relative z-0 bg-primary">
+			<div className="bg-primary">
 				<Navbar />
 				<div className="relative z-0">
 					<Hero />
