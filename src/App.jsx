@@ -11,7 +11,6 @@ import {
 } from "./components";
 
 //TODO- load images separately to optimize performance
-//TODO- must resolve 'Computed radius is NaN' console error
 
 const App = () => {
 	return (
