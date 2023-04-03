@@ -13,8 +13,9 @@ import {
 	nodejs,
 	sql,
 	git,
-	verilog,
 	matlab,
+	linux,
+	opencv,
 	wit_seal,
 	delta_magnetics,
 	farm,
@@ -93,6 +94,10 @@ const technologies = [
 		icon: python,
 	},
 	{
+		name: "OpenCV",
+		icon: opencv,
+	},
+	{
 		name: "C/C++",
 		icon: cpp,
 	},
@@ -105,13 +110,14 @@ const technologies = [
 		icon: sql,
 	},
 	{
-		name: "Verilog",
-		icon: verilog,
-	},
-	{
 		name: "git",
 		icon: git,
 	},
+	//TODO- manage WebGL contexts to allow more tech icons
+	// {
+	// 	name: "Linux",
+	// 	icon: linux,
+	// },
 ];
 
 const experiences = [

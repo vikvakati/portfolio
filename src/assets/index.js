@@ -10,7 +10,6 @@ import close from "./close.svg";
 
 import css from "./tech/css.png";
 import matlab from "./tech/matlab.png";
-import verilog from "./tech/verilog.png";
 import git from "./tech/git.png";
 import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
@@ -21,6 +20,8 @@ import python from "./tech/python.png";
 import tailwind from "./tech/tailwind.png";
 import cpp from "./tech/cpp.png";
 import threejs from "./tech/threejs.svg";
+import linux from "./tech/linux.png";
+import opencv from "./tech/opencv.png";
 
 import wit_seal from "./company/wit_seal.png";
 import delta_magnetics from "./company/delta_magnetics.png";
@@ -41,7 +42,6 @@ export {
 	close,
 	css,
 	matlab,
-	verilog,
 	git,
 	html,
 	javascript,
@@ -52,6 +52,8 @@ export {
 	tailwind,
 	cpp,
 	threejs,
+	linux,
+	opencv,
 	wit_seal,
 	delta_magnetics,
 	farm,
