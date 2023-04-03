@@ -223,7 +223,7 @@ const socials = [
 		name: "GitHub",
 		alt: "github",
 		icon: github,
-		link: "https://github.com/vikvakati?tab=repositories",
+		link: "https://github.com/vikvakati",
 	},
 	{
 		name: "LinkedIn",
