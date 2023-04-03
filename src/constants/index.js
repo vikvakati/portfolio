@@ -229,7 +229,7 @@ const socials = [
 		name: "LinkedIn",
 		alt: "linkedin",
 		icon: linkedin,
-		link: "https://www.linkedin.com/in/vikranth-vakati-94912a195",
+		link: "https://www.linkedin.com/in/vikranth-vakati/",
 	},
 ];
 export { services, technologies, experiences, projects, socials };
