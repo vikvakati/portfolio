@@ -12,6 +12,7 @@ import {
 } from "./components";
 
 //TODO- load images separately to optimize performance
+//TODO- manage WebGL contexts to allow more images to be loaded
 
 const App = () => {
 	return (

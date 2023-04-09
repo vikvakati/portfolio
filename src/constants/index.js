@@ -21,9 +21,9 @@ import {
 	farm,
 	antikythera,
 	deblur,
-	threejs,
 	github,
 	linkedin,
+	gmail,
 } from "../assets";
 
 export const navLinks = [
@@ -70,10 +70,6 @@ const technologies = [
 		icon: nodejs,
 	},
 	{
-		name: "Three JS",
-		icon: threejs,
-	},
-	{
 		name: "React JS",
 		icon: reactjs,
 	},
@@ -113,11 +109,10 @@ const technologies = [
 		name: "git",
 		icon: git,
 	},
-	//TODO- manage WebGL contexts to allow more tech icons
-	// {
-	// 	name: "Linux",
-	// 	icon: linux,
-	// },
+	{
+		name: "Linux",
+		icon: linux,
+	},
 ];
 
 const experiences = [
@@ -230,6 +225,12 @@ const socials = [
 		alt: "linkedin",
 		icon: linkedin,
 		link: "https://www.linkedin.com/in/vikranth-vakati/",
+	},
+	{
+		name: "Gmail",
+		alt: "gmail",
+		icon: gmail,
+		link: "mailto:vikvakati@gmail.com",
 	},
 ];
 export { services, technologies, experiences, projects, socials };
