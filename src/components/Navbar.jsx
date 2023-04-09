@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { logo, menu, close, resume } from "../assets";
 
 //TODO- update active link on scroll
 
@@ -41,6 +41,16 @@ const Navbar = () => {
 							<a href={`#${Link.id}`}>{Link.title}</a>
 						</li>
 					))}
+					<li
+						className={`${
+							active === "Resume" ? "text-white" : "text-secondary"
+						} hover:text-white text-[18px] font-medium cursor-pointer`}
+						onClick={() => setActive("Resume")}
+					>
+						<a href={resume} target="_blank" rel="noopener noreferrer">
+							Resume
+						</a>
+					</li>
 				</ul>
 
 				<div className="sm:hidden flex flex-1 justify-end items-center">
@@ -71,6 +81,23 @@ const Navbar = () => {
 									<a href={`#${Link.id}`}>{Link.title}</a>
 								</li>
 							))}
+							<li
+								className={`${
+									active === "Resume" ? "text-white" : "text-secondary"
+								} hover:text-white font-poppins font-medium cursor-pointer text-[16px]`}
+								onClick={() => {
+									setToggle(!toggle);
+									setActive("Resume");
+								}}
+							>
+								<a
+									href={resume}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Resume
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>

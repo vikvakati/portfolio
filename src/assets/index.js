@@ -30,6 +30,8 @@ import farm from "./farm.png";
 import antikythera from "./antikythera.png";
 import deblur from "./deblur.png";
 
+import resume from "./resume.pdf";
+
 export {
 	logo,
 	backend,
@@ -59,4 +61,5 @@ export {
 	farm,
 	antikythera,
 	deblur,
+	resume,
 };
