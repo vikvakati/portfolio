@@ -27,9 +27,9 @@ This project is my personal portfolio website, showcasing my skills, experiences
 - Framer Motion - The most popular library used to bring your React website to life with animations.
 
 ## Credits
-- Icons provided by [Devicon](https://devicon.dev/)
-- 3D Earth model provided by [blendy3d](https://www.cgtrader.com/free-3d-models/space/planet/low-poly-planet-earth)
-- Reacteroids game provided by [chriz001](https://github.com/chriz001/Reacteroids)
+- Icons provided by [Devicon](https://devicon.dev/){target="_blank"}
+- 3D Earth model provided by [blendy3d](https://www.cgtrader.com/free-3d-models/space/planet/low-poly-planet-earth){target="_blank"}
+- Reacteroids game provided by [chriz001](https://github.com/chriz001/Reacteroids){target="_blank"}
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md){target="_blank"} file for details.
