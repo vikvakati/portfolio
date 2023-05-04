@@ -30,7 +30,7 @@ import farm from "./farm.png";
 import antikythera from "./antikythera.png";
 import deblur from "./deblur.png";
 
-import resume from "./resume.pdf";
+import resume from "./Vikranth_Vakati_Resume.pdf";
 
 export {
 	logo,

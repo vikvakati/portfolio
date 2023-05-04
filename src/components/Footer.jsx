@@ -6,14 +6,7 @@ const Footer = () => {
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				View page source
-			</a>
-			<a
-				href="https://www.cgtrader.com/free-3d-models/space/planet/low-poly-planet-earth"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				3D Model Created By: blendy3d on cgtrader.com
+				View Page Source
 			</a>
 		</div>
 	);
