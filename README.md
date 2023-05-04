@@ -1,6 +1,6 @@
 # Portfolio Website
 
-This project is my personal portfolio website, showcasing my skills, experiences, and projects. It is built using React, ThreeJS, React Three Fiber, TailwindCSS, and Framer Motion.
+This project is my personal portfolio website, showcasing my skills, experiences, and projects.
 
 ## Getting Started
 
