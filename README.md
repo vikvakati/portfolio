@@ -2,6 +2,8 @@
 
 This project is my personal portfolio website, showcasing my skills, experiences, and projects.
 
+### [Live Link](https://vikvakati.github.io/portfolio/)
+
 ## Getting Started
 
 ### Prerequisites
