@@ -32,5 +32,5 @@ This project is my personal portfolio website, showcasing my skills, experiences
 - Reacteroids game provided by [chriz001](https://github.com/chriz001/Reacteroids)
 
 ## License
-This project is licensed under the [MIT License](./LICENSE.md).
+This project is licensed under the [MIT License](LICENSE.md).
 
