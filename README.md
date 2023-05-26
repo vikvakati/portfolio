@@ -15,6 +15,7 @@ This project is my personal portfolio website, showcasing my skills, experiences
 3. Run `npm install` to install all the dependencies.
 4. Run `npm run dev` to start the development server.
 5. Open `http://localhost:3000` in your browser to view the website.
+6. Run `npm run deploy` to publish the website to GitHub Pages.
 
 ## Features
 - Load, create, and customize 3D models and geometries with various lights.
