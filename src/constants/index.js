@@ -15,12 +15,19 @@ import {
 	git,
 	matlab,
 	linux,
-	opencv,
+	verilog,
+	arm,
+	ladder,
 	wit_seal,
 	delta_magnetics,
 	farm,
 	antikythera,
 	deblur,
+	hr_detection,
+	antenna_controller,
+	plc_hopper,
+	security_cam,
+	energy_monitor,
 	github,
 	linkedin,
 	gmail,
@@ -43,12 +50,12 @@ export const navLinks = [
 
 const services = [
 	{
-		title: "Web Developer",
-		icon: web,
+		title: "Embedded Software Developer",
+		icon: iot,
 	},
 	{
-		title: "IoT Developer",
-		icon: iot,
+		title: "Web Developer",
+		icon: web,
 	},
 	{
 		title: "Backend Developer",
@@ -62,6 +69,30 @@ const services = [
 
 const technologies = [
 	{
+		name: "Python",
+		icon: python,
+	},
+	{
+		name: "C/C++",
+		icon: cpp,
+	},
+	{
+		name: "ARM",
+		icon: arm,
+	},
+	{
+		name: "Verilog",
+		icon: verilog,
+	},
+	{
+		name: "SQL",
+		icon: sql,
+	},
+	{
+		name: "MATLAB",
+		icon: matlab,
+	},
+	{
 		name: "JavaScript",
 		icon: javascript,
 	},
@@ -74,6 +105,10 @@ const technologies = [
 		icon: reactjs,
 	},
 	{
+		name: "Ladder Logic",
+		icon: ladder,
+	},
+	{
 		name: "HTML 5",
 		icon: html,
 	},
@@ -84,26 +119,6 @@ const technologies = [
 	{
 		name: "Tailwind CSS",
 		icon: tailwind,
-	},
-	{
-		name: "Python",
-		icon: python,
-	},
-	{
-		name: "OpenCV",
-		icon: opencv,
-	},
-	{
-		name: "C/C++",
-		icon: cpp,
-	},
-	{
-		name: "Matlab",
-		icon: matlab,
-	},
-	{
-		name: "SQL",
-		icon: sql,
 	},
 	{
 		name: "git",
@@ -128,26 +143,16 @@ const experiences = [
 		],
 	},
 	{
-		title: "Learning Labs Leader",
-		company_name: "Wentworth Institute of Technology",
-		icon: wit_seal,
-		iconBg: "#383E56",
-		date: "Jan 2020 - Dec 2022",
-		points: [
-			"Collaborating with team of faculty to develop innovative instructional methodologies.",
-			"Managing review sessions and providing constructive feedback to students.",
-		],
-	},
-	{
-		title: "Electronics Technician",
+		title: "Electrical Systems Test Engineer",
 		company_name: "Delta Magnetics and Controls",
 		icon: delta_magnetics,
 		iconBg: "#081741",
-		date: "Jan 2021 - Jan 2023",
+		date: "January 2021 - January 2023",
 		points: [
-			"Testing control panel systems visually, point to point, and operationally.",
-			"Designing and building test panels for functional testing.",
-			"Collaborating with a team of designers and technicians to ensure customer satisfaction.",
+			"Conducted visual, point to point and operational testing on control panel systems to ensure functionality.",
+			"Designed and built test panels for functional testing.",
+			"Mentored new employees which led to improved onboarding and productivity.",
+			"Utilized wiring diagrams and schematics following industry standards.",
 		],
 	},
 	{
@@ -155,7 +160,7 @@ const experiences = [
 		company_name: "Wentworth Institute of Technology",
 		icon: wit_seal,
 		iconBg: "#383E56",
-		date: "Jan 2023 - Present",
+		date: "Jan 2023 - April 2024",
 		points: [
 			"M.S. Computer Engineering.",
 			"Concentration in Internet of Things and SCADA systems.",
@@ -164,6 +169,69 @@ const experiences = [
 ];
 
 const projects = [
+	{
+		name: "Real Time Energy Monitoring System",
+		description: "Real time energy monitoring system to optimize university campus power generation. Diverse data from legacy and modern systems was aggregated to monitor historical and real time power metrics on a user-friendly web interface. The system was implemented using a Raspberry Pi to be low power and low cost, while maintaining reliability.",
+		tags: [
+			{
+				name: "Python",
+				color: "green-text-gradient",
+			},
+			{
+				name: "JavaScript",
+				color: "yellow-text-gradient",
+			},
+		],
+		image: energy_monitor,
+	},
+	{
+		name: "Security Camera",
+		description:
+		"Security camera using the ESP32-CAM microcontroller. The camera is capable of capturing images and video, and is equipped with motion detection and live streaming capabilities over Wi-Fi. The system is designed to be low power and low cost, while still providing high reliability and security.",
+		tags: [
+			{
+				name: "ESP32",
+				color: "pink-text-gradient",
+			},
+		],
+		image: security_cam,
+	},
+	{
+		name: "Automated Hopper Dispensing System",
+		description:
+		"Ladder logic program to automate the dispensing of materials from a hopper into boxes on a conveyor belt. The system was implemented using CLICK programming software in conjunction with a 4-channel PLC interfacing with a conveyor motor, photo sensor, and level switch.",
+		tags: [
+			{
+				name: "Ladder Logic",
+				color: "grey-text-gradient",
+			},
+		],
+		image: plc_hopper,
+	},
+	{
+		name: "Antenna Controller Design",
+		description:
+		"Digital lead controller for an antenna control system using Simulink, employing root locus analysis for system design and optimization. The controller was analyzed and fine-tuned to meet design requirements within a margin of 0.8%.",
+		tags: [
+			{
+				name: "Simulink",
+				color: "orange-text-gradient",
+			},
+		],
+		image: antenna_controller,
+	},
+	{
+		name: "Optical Heart Rate Detection Algorithm",
+		description:
+			"Non-invasive heart rate detection algorithm utilizing optimal color channels and targeted regions for signal extraction. The algorithm employs signal processing techniques to analyze frequency domain changes related to the cardiac cycle, achieving a robust 95% accuracy through extensive testing and optimization.",
+		tags: [
+			{
+				name: "Matlab",
+				color: "orange-text-gradient",
+			},
+		],
+		image: hr_detection,
+	},
 	{
 		name: "Farm Monitoring",
 		description:

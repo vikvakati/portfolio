@@ -8,7 +8,6 @@ import {
 	Tech,
 	Works,
 	StarsCanvas,
-	Game,
 	Footer,
 } from "./components";
 
@@ -30,7 +29,6 @@ const App = () => {
 				<div className="relative z-0">
 					<Tech />
 					<Contact />
-					<Game />
 					<StarsCanvas />
 				</div>
 				<Footer />
