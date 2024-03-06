@@ -6,10 +6,8 @@ import {
 	javascript,
 	cpp,
 	html,
-	css,
 	reactjs,
 	python,
-	tailwind,
 	nodejs,
 	sql,
 	git,
@@ -113,14 +111,6 @@ const technologies = [
 		icon: html,
 	},
 	{
-		name: "CSS 3",
-		icon: css,
-	},
-	{
-		name: "Tailwind CSS",
-		icon: tailwind,
-	},
-	{
 		name: "git",
 		icon: git,
 	},
@@ -171,7 +161,8 @@ const experiences = [
 const projects = [
 	{
 		name: "Real Time Energy Monitoring System",
-		description: "Real time energy monitoring system to optimize university campus power generation. Diverse data from legacy and modern systems was aggregated to monitor historical and real time power metrics on a user-friendly web interface. The system was implemented using a Raspberry Pi to be low power and low cost, while maintaining reliability.",
+		description:
+			"Real time energy monitoring system to optimize university campus power generation. Diverse data from legacy and modern systems was aggregated to monitor historical and real time power metrics on a user-friendly web interface. The system was implemented using a Raspberry Pi to be low power and low cost, while maintaining reliability.",
 		tags: [
 			{
 				name: "Python",
@@ -187,10 +178,10 @@ const projects = [
 	{
 		name: "Security Camera",
 		description:
-		"Security camera using the ESP32-CAM microcontroller. The camera is capable of capturing images and video, and is equipped with motion detection and live streaming capabilities over Wi-Fi. The system is designed to be low power and low cost, while still providing high reliability and security.",
+			"Security camera using the ESP32-CAM microcontroller. The camera is capable of capturing images and video, and is equipped with motion detection and live streaming capabilities over Wi-Fi. The system is designed to be low power and low cost, while still providing high reliability and security.",
 		tags: [
 			{
-				name: "ESP32",
+				name: "ESP32-CAM",
 				color: "pink-text-gradient",
 			},
 		],
@@ -199,7 +190,7 @@ const projects = [
 	{
 		name: "Automated Hopper Dispensing System",
 		description:
-		"Ladder logic program to automate the dispensing of materials from a hopper into boxes on a conveyor belt. The system was implemented using CLICK programming software in conjunction with a 4-channel PLC interfacing with a conveyor motor, photo sensor, and level switch.",
+			"Ladder logic program to automate the dispensing of materials from a hopper into boxes on a conveyor belt. The system was implemented using CLICK programming software in conjunction with a 4-channel PLC interfacing with a conveyor motor, photo sensor, and level switch.",
 		tags: [
 			{
 				name: "Ladder Logic",
@@ -211,7 +202,7 @@ const projects = [
 	{
 		name: "Antenna Controller Design",
 		description:
-		"Digital lead controller for an antenna control system using Simulink, employing root locus analysis for system design and optimization. The controller was analyzed and fine-tuned to meet design requirements within a margin of 0.8%.",
+			"Digital lead controller for an antenna control system using Simulink, employing root locus analysis for system design and optimization. The controller was analyzed and fine-tuned to meet design requirements within a margin of 0.8%.",
 		tags: [
 			{
 				name: "Simulink",

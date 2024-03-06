@@ -9,7 +9,6 @@ import gmail from "./gmail.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
-import css from "./tech/css.png";
 import matlab from "./tech/matlab.png";
 import git from "./tech/git.png";
 import html from "./tech/html.png";
@@ -18,7 +17,6 @@ import sql from "./tech/sql.png";
 import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
 import python from "./tech/python.png";
-import tailwind from "./tech/tailwind.png";
 import cpp from "./tech/cpp.png";
 import linux from "./tech/linux.png";
 import verilog from "./tech/verilog.png";
@@ -50,7 +48,6 @@ export {
 	gmail,
 	menu,
 	close,
-	css,
 	matlab,
 	git,
 	html,
@@ -59,7 +56,6 @@ export {
 	nodejs,
 	reactjs,
 	python,
-	tailwind,
 	cpp,
 	linux,
 	verilog,

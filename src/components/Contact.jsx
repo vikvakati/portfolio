@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-tilt";
-import emailjs from "@emailjs/browser"; // using emailjs.com service to send emails
+import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";

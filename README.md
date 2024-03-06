@@ -26,13 +26,11 @@ This project is my personal portfolio website, showcasing my skills, experiences
 - ThreeJS - A powerful 3D graphics library for rendering and animating 3D models.
 - React Three Fiber - A popular library for creating 3D graphics with ThreeJS in React.
 - TailwindCSS - A popular utility-first CSS styling framework.
-- Framer Motion - The most popular library used to bring your React website to life with animations.
+- Framer Motion - The most popular library used to bring animations to React websites.
 
 ## Credits
 - Icons provided by [Devicon](https://devicon.dev/)
 - 3D Earth model provided by [blendy3d](https://www.cgtrader.com/free-3d-models/space/planet/low-poly-planet-earth)
-- Reacteroids game provided by [chriz001](https://github.com/chriz001/Reacteroids)
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
-

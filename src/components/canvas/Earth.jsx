@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
@@ -7,18 +7,19 @@ import CanvasLoader from "../Loader";
 //TODO- make object rotate on scroll
 
 const Earth = () => {
-	const earth = useGLTF("./earth.gltf");
-	return (
+  const earth = useGLTF("./earth.gltf");
+
+ return (
 		<mesh>
 			<hemisphereLight intensity={0.3} groundColor="white" />
 			<spotLight position={[-20, 50, 10]} intensity={0.6} />
 			<primitive object={earth.scene} scale={1.55} position-y={-0.4} />
 		</mesh>
-	);
+ );
 };
 
 const EarthCanvas = () => {
-	return (
+  return (
 		<Canvas
 			shadows
 			gl={{ preserveDrawingBuffer: true }}
@@ -26,7 +27,7 @@ const EarthCanvas = () => {
 		>
 			<Suspense fallback={<CanvasLoader />}>
 				<OrbitControls
-					frameLoop="demand"
+					frameloop="demand"
 					autoRotate={true}
 					autoRotateSpeed={1.25}
 					enableZoom={false}
@@ -34,8 +35,9 @@ const EarthCanvas = () => {
 					minPolarAngle={Math.PI / 2}
 				/>
 				<Earth />
+
+				<Preload all />
 			</Suspense>
-			<Preload all />
 		</Canvas>
 	);
 };

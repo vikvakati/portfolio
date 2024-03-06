@@ -1,21 +1,12 @@
 import { BrowserRouter } from "react-router-dom";
-import {
-	About,
-	Contact,
-	Experience,
-	Hero,
-	Navbar,
-	Tech,
-	Works,
-	StarsCanvas,
-	Footer,
-} from "./components";
+
+import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas, Footer } from "./components";
 
 //TODO- load images separately to optimize performance
 //TODO- manage WebGL contexts to allow more images to be loaded
 
 const App = () => {
-	return (
+  return (
 		<BrowserRouter>
 			<div className="bg-primary">
 				<Navbar />
@@ -35,6 +26,6 @@ const App = () => {
 			</div>
 		</BrowserRouter>
 	);
-};
+}
 
 export default App;
