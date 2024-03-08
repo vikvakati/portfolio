@@ -214,7 +214,7 @@ const projects = [
 			},
 		],
 		image: antenna_controller,
-	},
+	},*/
 	{
 		name: "Optical Heart Rate Detection Algorithm",
 		description:
@@ -244,7 +244,7 @@ const projects = [
 		image: farm,
 		source_code_link: "https://github.com/vikvakati/monitor-soil",
 	},
-	{
+	/*{
 		name: "Antikythera Simulator",
 		description:
 			"Application that displays the solar system along with planetary event dates from a database. Enables users to search/sort planetary events and view the solar system simulation from any date.",
@@ -260,7 +260,7 @@ const projects = [
 		],
 		image: antikythera,
 		source_code_link: "https://github.com/vikvakati/ELEC3225AntikytheraProject",
-	},
+	},*/
 	{
 		name: "Image Restoration",
 		description:
@@ -273,7 +273,7 @@ const projects = [
 		],
 		image: deblur,
 		source_code_link: "https://github.com/",
-	},*/
+	},
 ];
 
 const socials = [
