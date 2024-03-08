@@ -181,6 +181,10 @@ const projects = [
 			"Security camera using the ESP32-CAM microcontroller. The camera is capable of capturing images and video, and is equipped with motion detection and live streaming capabilities over Wi-Fi. The system is designed to be low power and low cost, while still providing high reliability and security.",
 		tags: [
 			{
+				name: "C++",
+				color: "blue-text-gradient",
+			},
+			{
 				name: "ESP32-CAM",
 				color: "pink-text-gradient",
 			},
@@ -199,7 +203,7 @@ const projects = [
 		],
 		image: plc_hopper,
 	},
-	{
+	/*{
 		name: "Antenna Controller Design",
 		description:
 			"Digital lead controller for an antenna control system using Simulink, employing root locus analysis for system design and optimization. The controller was analyzed and fine-tuned to meet design requirements within a margin of 0.8%.",
@@ -269,7 +273,7 @@ const projects = [
 		],
 		image: deblur,
 		source_code_link: "https://github.com/",
-	},
+	},*/
 ];
 
 const socials = [
