@@ -214,7 +214,7 @@ const projects = [
 			},
 		],
 		image: antenna_controller,
-	},*/
+	},
 	{
 		name: "Optical Heart Rate Detection Algorithm",
 		description:
@@ -226,7 +226,7 @@ const projects = [
 			},
 		],
 		image: hr_detection,
-	},
+	},*/
 	{
 		name: "Farm Monitoring",
 		description:
