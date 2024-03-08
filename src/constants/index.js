@@ -191,7 +191,7 @@ const projects = [
 		],
 		image: security_cam,
 	},
-	{
+	/*{
 		name: "Automated Hopper Dispensing System",
 		description:
 			"Ladder logic program to automate the dispensing of materials from a hopper into boxes on a conveyor belt. The system was implemented using CLICK programming software in conjunction with a 4-channel PLC interfacing with a conveyor motor, photo sensor, and level switch.",
@@ -203,7 +203,7 @@ const projects = [
 		],
 		image: plc_hopper,
 	},
-	/*{
+	{
 		name: "Antenna Controller Design",
 		description:
 			"Digital lead controller for an antenna control system using Simulink, employing root locus analysis for system design and optimization. The controller was analyzed and fine-tuned to meet design requirements within a margin of 0.8%.",
@@ -214,7 +214,7 @@ const projects = [
 			},
 		],
 		image: antenna_controller,
-	},
+	},*/
 	{
 		name: "Optical Heart Rate Detection Algorithm",
 		description:
@@ -226,7 +226,7 @@ const projects = [
 			},
 		],
 		image: hr_detection,
-	},*/
+	},
 	{
 		name: "Farm Monitoring",
 		description:
@@ -260,7 +260,7 @@ const projects = [
 		],
 		image: antikythera,
 		source_code_link: "https://github.com/vikvakati/ELEC3225AntikytheraProject",
-	},*/
+	},
 	{
 		name: "Image Restoration",
 		description:
@@ -273,7 +273,7 @@ const projects = [
 		],
 		image: deblur,
 		source_code_link: "https://github.com/",
-	},
+	},*/
 ];
 
 const socials = [
