@@ -203,7 +203,7 @@ const projects = [
 		],
 		image: plc_hopper,
 	},
-	/*{
+	{
 		name: "Antenna Controller Design",
 		description:
 			"Digital lead controller for an antenna control system using Simulink, employing root locus analysis for system design and optimization. The controller was analyzed and fine-tuned to meet design requirements within a margin of 0.8%.",
@@ -226,7 +226,7 @@ const projects = [
 			},
 		],
 		image: hr_detection,
-	},*/
+	},
 	{
 		name: "Farm Monitoring",
 		description:
@@ -244,7 +244,7 @@ const projects = [
 		image: farm,
 		source_code_link: "https://github.com/vikvakati/monitor-soil",
 	},
-	/*{
+	{
 		name: "Antikythera Simulator",
 		description:
 			"Application that displays the solar system along with planetary event dates from a database. Enables users to search/sort planetary events and view the solar system simulation from any date.",
@@ -260,7 +260,7 @@ const projects = [
 		],
 		image: antikythera,
 		source_code_link: "https://github.com/vikvakati/ELEC3225AntikytheraProject",
-	},*/
+	},
 	{
 		name: "Image Restoration",
 		description:
