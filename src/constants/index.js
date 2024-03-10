@@ -206,7 +206,7 @@ const projects = [
 	{
 		name: "Antenna Controller Design",
 		description:
-			"Digital lead controller for an antenna control system using Simulink, employing root locus analysis for system design and optimization. The controller was analyzed and fine-tuned to meet design requirements within a margin of 0.8%.",
+			"Digital lead controller for an antenna control system in Simulink, utilizing MATLAB's root locus analysis for system analysis, design, and optimization. Achieved a settling time reduction within 0.8% of design requirements through detailed analyses and fine-tuning.",
 		tags: [
 			{
 				name: "Simulink",
