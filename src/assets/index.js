@@ -9,6 +9,17 @@ import gmail from "./gmail.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
+import antikythera from "./antikythera.png";
+import deblur from "./deblur.png";
+import farm from "./farm.png";
+import hr_detection from "./hr_detection.png";
+import antenna_controller from "./antenna_controller.png";
+import plc_hopper from "./plc_hopper.png";
+import security_cam from "./security_cam.png";
+import energy_monitor from "./energy_monitor.png";
+
+import resume from "./Vikranth_Vakati_Resume.pdf";
+
 import matlab from "./tech/matlab.png";
 import git from "./tech/git.png";
 import html from "./tech/html.png";
@@ -27,17 +38,6 @@ import wit_seal from "./company/wit_seal.png";
 import delta_magnetics from "./company/delta_magnetics.png";
 import bodkin_design from "./company/bodkin_design.png";
 
-import antikythera from "./antikythera.png";
-import deblur from "./deblur.png";
-import farm from "./farm.png";
-import hr_detection from "./hr_detection.png";
-import antenna_controller from "./antenna_controller.png";
-import plc_hopper from "./plc_hopper.png";
-import security_cam from "./security_cam.png";
-import energy_monitor from "./energy_monitor.png";
-
-import resume from "./Vikranth_Vakati_Resume.pdf";
-
 export {
 	logo,
 	backend,
@@ -49,6 +49,15 @@ export {
 	gmail,
 	menu,
 	close,
+	farm,
+	antikythera,
+	deblur,
+	hr_detection,
+	antenna_controller,
+	plc_hopper,
+	security_cam,
+	energy_monitor,
+	resume,
 	matlab,
 	git,
 	html,
@@ -65,13 +74,4 @@ export {
 	wit_seal,
 	delta_magnetics,
 	bodkin_design,
-	farm,
-	antikythera,
-	deblur,
-	hr_detection,
-	antenna_controller,
-	plc_hopper,
-	security_cam,
-	energy_monitor,
-	resume,
 };
