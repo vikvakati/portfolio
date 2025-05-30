@@ -29,6 +29,7 @@ import {
 	github,
 	linkedin,
 	gmail,
+	bodkin_design,
 } from "../assets";
 
 export const navLinks = [
@@ -48,20 +49,20 @@ export const navLinks = [
 
 const services = [
 	{
-		title: "Embedded Software Developer",
+		title: "Embedded Systems Engineer",
 		icon: iot,
 	},
 	{
-		title: "Web Developer",
+		title: "Electronics Engineer",
+		icon: engineer,
+	},
+	{
+		title: "Frontend Developer",
 		icon: web,
 	},
 	{
 		title: "Backend Developer",
 		icon: backend,
-	},
-	{
-		title: "Electronics Engineer",
-		icon: engineer,
 	},
 ];
 
@@ -122,27 +123,15 @@ const technologies = [
 
 const experiences = [
 	{
-		title: "Bachelor of Science",
-		company_name: "Wentworth Institute of Technology",
-		icon: wit_seal,
+		title: "Embedded Systems Engineer",
+		company_name: "Bodkin Design & Engineering",
+		icon: bodkin_design,
 		iconBg: "#081741",
-		date: "September 2018 - August 2022",
+		date: "May 2025 - Present",
 		points: [
-			"B.S. Computer Engineering.",
-			"Minors in Internet of Things, Electrical Engineering, and Math.",
-		],
-	},
-	{
-		title: "Electrical Systems Test Engineer",
-		company_name: "Delta Magnetics and Controls",
-		icon: delta_magnetics,
-		iconBg: "#081741",
-		date: "January 2021 - January 2023",
-		points: [
-			"Conducted visual, point to point and operational testing on control panel systems to ensure functionality.",
-			"Designed and built test panels for functional testing.",
-			"Mentored new employees which led to improved onboarding and productivity.",
-			"Utilized wiring diagrams and schematics following industry standards.",
+			"Design software for image acquisition, visualization, and control.",
+			"Integrate optical components with detectors and electronics.",
+			"Investigate areas of new research and development.",
 		],
 	},
 	{
@@ -154,6 +143,29 @@ const experiences = [
 		points: [
 			"M.S. Computer Engineering.",
 			"Concentration in Internet of Things and SCADA systems.",
+		],
+	},
+	{
+		title: "Electrical Systems Test Engineer",
+		company_name: "Delta Magnetics and Controls",
+		icon: delta_magnetics,
+		iconBg: "#081741",
+		date: "January 2021 - January 2023",
+		points: [
+			"Conducted visual, point to point and operational testing on control panel systems to ensure functionality.",
+			"Designed and built test panels for functional testing.",
+			"Utilized wiring diagrams and schematics following industry standards.",
+		],
+	},
+	{
+		title: "Bachelor of Science",
+		company_name: "Wentworth Institute of Technology",
+		icon: wit_seal,
+		iconBg: "#383E56",
+		date: "September 2018 - August 2022",
+		points: [
+			"B.S. Computer Engineering.",
+			"Minors in Internet of Things, Electrical Engineering, and Math.",
 		],
 	},
 ];

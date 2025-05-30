@@ -25,6 +25,7 @@ import ladder from "./tech/ladder.png";
 
 import wit_seal from "./company/wit_seal.png";
 import delta_magnetics from "./company/delta_magnetics.png";
+import bodkin_design from "./company/bodkin_design.png";
 
 import antikythera from "./antikythera.png";
 import deblur from "./deblur.png";
@@ -63,6 +64,7 @@ export {
 	ladder,
 	wit_seal,
 	delta_magnetics,
+	bodkin_design,
 	farm,
 	antikythera,
 	deblur,

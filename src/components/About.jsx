@@ -37,11 +37,15 @@ const About = () => {
 				variants={fadeIn("", "", 0.1, 1)}
 				className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
 			>
-				I'm a recent computer engineering masters graduate from Wentworth
-				Institute of Technology with software development experience in a
-				variety of languages and frameworks as well as experience in electrical
-				engineering. I am a quick learner and eager to solve real-world problems
-				using cyber-physical systems.
+				Computer engineering master's graduate with a passion for the Internet
+				of Things (IoT) and web development. I am committed to exploring and
+				implementing cutting-edge technologies that enable seamless
+				connectivity, data exchange, and dynamic web experiences to contribute
+				to the ever-evolving landscape of embedded systems.
+				<br />
+				<br />
+				I spend my free time on IoT based hobby projects using ESP, Arduino, and
+				Raspberry Pi microcontrollers.
 			</motion.p>
 			<div className="mt-20 flex flex-wrap gap-10 justify-center">
 				{services.map((service, index) => (
