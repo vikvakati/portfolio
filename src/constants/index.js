@@ -1,35 +1,36 @@
 import {
 	iot,
-	backend,
+	spectralProcessing,
 	engineer,
 	web,
 	javascript,
 	cpp,
-	html,
+	html_css,
 	reactjs,
 	python,
 	nodejs,
-	sql,
+	image_processing,
 	git,
 	matlab,
-	linux,
-	verilog,
-	arm,
+	windows_linux,
+	wiring,
 	ladder,
 	wit_seal,
 	delta_magnetics,
 	farm,
-	antikythera,
-	deblur,
+	// antikythera,
+	// deblur,
 	hr_detection,
-	antenna_controller,
-	plc_hopper,
+	// antenna_controller,
+	// plc_hopper,
 	security_cam,
 	energy_monitor,
 	github,
 	linkedin,
 	gmail,
 	bodkin_design,
+	BB_Calc_demo,
+	spectral,
 } from "../assets";
 
 export const navLinks = [
@@ -61,8 +62,8 @@ const services = [
 		icon: web,
 	},
 	{
-		title: "Backend Developer",
-		icon: backend,
+		title: "Spectral Image Processing",
+		icon: spectralProcessing,
 	},
 ];
 
@@ -76,16 +77,16 @@ const technologies = [
 		icon: cpp,
 	},
 	{
-		name: "ARM",
-		icon: arm,
+		name: "Spectral Imaging",
+		icon: spectral,
 	},
 	{
-		name: "Verilog",
-		icon: verilog,
+		name: "Electrical Wiring",
+		icon: wiring,
 	},
 	{
-		name: "SQL",
-		icon: sql,
+		name: "Image Processing",
+		icon: image_processing,
 	},
 	{
 		name: "MATLAB",
@@ -94,6 +95,10 @@ const technologies = [
 	{
 		name: "JavaScript",
 		icon: javascript,
+	},
+	{
+		name: "HTML5/CSS",
+		icon: html_css,
 	},
 	{
 		name: "Node JS",
@@ -108,16 +113,12 @@ const technologies = [
 		icon: ladder,
 	},
 	{
-		name: "HTML 5",
-		icon: html,
-	},
-	{
 		name: "git",
 		icon: git,
 	},
 	{
-		name: "Linux",
-		icon: linux,
+		name: "Windows/Linux",
+		icon: windows_linux,
 	},
 ];
 
@@ -171,6 +172,27 @@ const experiences = [
 ];
 
 const projects = [
+	{
+		name: "Blackbody Spectral Radiance Calculator",
+		description:
+			"Interactive web-based tool to compute and visualize spectral radiance using Planck’s law. Supports temperature in Celsius or Kelvin, custom waveband ranges, and both wavelength and wavenumber units. Features real-time plotting with Plotly, dynamic unit conversion, and band-integrated radiance calculation. Designed for scientific and engineering use, with responsive layout and intuitive controls.",
+		tags: [
+			{
+				name: "JavaScript",
+				color: "yellow-text-gradient",
+			},
+			{
+				name: "HTML/CSS",
+				color: "blue-text-gradient",
+			},
+			{
+				name: "Plotly.js",
+				color: "green-text-gradient",
+			},
+		],
+		image: BB_Calc_demo,
+		source_code_link: "https://www.bodkindesign.com/reference-library/blackbody-spectral-radiance-calculator/",
+	},
 	{
 		name: "Real Time Energy Monitoring System",
 		description:
