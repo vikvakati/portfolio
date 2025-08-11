@@ -1,7 +1,7 @@
 import {
 	iot,
-	spectralProcessing,
-	engineer,
+	imageProcessing,
+	electronics,
 	web,
 	javascript,
 	cpp,
@@ -14,7 +14,7 @@ import {
 	matlab,
 	windows_linux,
 	wiring,
-	ladder,
+	embedded,
 	wit_seal,
 	delta_magnetics,
 	farm,
@@ -29,7 +29,7 @@ import {
 	linkedin,
 	gmail,
 	bodkin_design,
-	BB_Calc_demo,
+	Rad_Calc_demo,
 	spectral,
 } from "../assets";
 
@@ -55,15 +55,15 @@ const services = [
 	},
 	{
 		title: "Electronics Engineer",
-		icon: engineer,
+		icon: electronics,
 	},
 	{
 		title: "Frontend Developer",
 		icon: web,
 	},
 	{
-		title: "Spectral Image Processing",
-		icon: spectralProcessing,
+		title: "Image Processing Engineer",
+		icon: imageProcessing,
 	},
 ];
 
@@ -89,8 +89,8 @@ const technologies = [
 		icon: image_processing,
 	},
 	{
-		name: "MATLAB",
-		icon: matlab,
+		name: "Embedded Systems",
+		icon: embedded,
 	},
 	{
 		name: "JavaScript",
@@ -101,16 +101,16 @@ const technologies = [
 		icon: html_css,
 	},
 	{
+		name: "MATLAB",
+		icon: matlab,
+	},
+	{
 		name: "Node JS",
 		icon: nodejs,
 	},
 	{
 		name: "React JS",
 		icon: reactjs,
-	},
-	{
-		name: "Ladder Logic",
-		icon: ladder,
 	},
 	{
 		name: "git",
@@ -173,7 +173,7 @@ const experiences = [
 
 const projects = [
 	{
-		name: "Blackbody Spectral Radiance Calculator",
+		name: "Spectral Radiance Calculator",
 		description:
 			"Interactive web-based tool to compute and visualize spectral radiance using Planck’s law. Supports temperature in Celsius or Kelvin, custom waveband ranges, and both wavelength and wavenumber units. Features real-time plotting with Plotly, dynamic unit conversion, and band-integrated radiance calculation. Designed for scientific and engineering use, with responsive layout and intuitive controls.",
 		tags: [
@@ -185,12 +185,8 @@ const projects = [
 				name: "HTML/CSS",
 				color: "blue-text-gradient",
 			},
-			{
-				name: "Plotly.js",
-				color: "green-text-gradient",
-			},
 		],
-		image: BB_Calc_demo,
+		image: Rad_Calc_demo,
 		source_code_link: "https://www.bodkindesign.com/reference-library/blackbody-spectral-radiance-calculator/",
 	},
 	{
@@ -262,7 +258,7 @@ const projects = [
 		image: hr_detection,
 	},
 	{
-		name: "Farm Monitoring",
+		name: "Rural Farm Monitoring",
 		description:
 			"Offline mesh network to monitor vital information on farms. Data is sent to a server node which displays all vital information in a web interface. The network is designed to be low power and low cost, while still providing high reliability and security.",
 		tags: [

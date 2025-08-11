@@ -1,6 +1,6 @@
 import logo from "./logo.png";
-import spectralProcessing from "./spectralProcessing.png";
-import engineer from "./engineer.png";
+import imageProcessing from "./imageProcessing.png";
+import electronics from "./electronics.png";
 import iot from "./iot.png";
 import web from "./web.png";
 import github from "./github.png";
@@ -17,6 +17,7 @@ import hr_detection from "./hr_detection.png";
 // import plc_hopper from "./plc_hopper.png";
 import security_cam from "./security_cam.png";
 import energy_monitor from "./energy_monitor.png";
+import Rad_Calc_demo from "./Rad_Calc_demo.png";
 
 import resume from "./Vikranth_Vakati_Resume.pdf";
 
@@ -30,19 +31,18 @@ import python from "./tech/python.png";
 import cpp from "./tech/cpp.png";
 import windows_linux from "./tech/windows_linux.png";
 import wiring from "./tech/wiring.png";
-import ladder from "./tech/ladder.png";
+import embedded from "./tech/embedded.png";
 import spectral from "./tech/spectral.png";
 import image_processing from "./tech/image_processing.png";
 
 import wit_seal from "./company/wit_seal.png";
 import delta_magnetics from "./company/delta_magnetics.png";
 import bodkin_design from "./company/bodkin_design.png";
-import BB_Calc_demo from "./BB_Calc_demo.png";
 
 export {
 	logo,
-	spectralProcessing,
-	engineer,
+	imageProcessing,
+	electronics,
 	iot,
 	web,
 	github,
@@ -58,6 +58,7 @@ export {
 	// plc_hopper,
 	security_cam,
 	energy_monitor,
+	Rad_Calc_demo,
 	resume,
 	matlab,
 	git,
@@ -69,11 +70,10 @@ export {
 	cpp,
 	windows_linux,
 	wiring,
-	ladder,
+	embedded,
 	spectral,
 	image_processing,
 	wit_seal,
 	delta_magnetics,
 	bodkin_design,
-	BB_Calc_demo,
 };
