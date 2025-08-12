@@ -37,7 +37,7 @@ const About = () => {
 				className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
 			>
 				Embedded systems engineer with a master's in computer engineering,
-				driven by a passion for innovation of the Internet of Things (IoT). I am committed to exploring and implementing
+				driven by a passion for innovation of the Internet of Things. I am committed to exploring and implementing
 				cutting-edge technologies that enable seamless connectivity, data
 				exchange, and dynamic web experiences to contribute to the ever-evolving
 				landscape of embedded systems.

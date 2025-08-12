@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
@@ -7,6 +7,7 @@ import { logo, menu, close, resume } from "../assets";
 const Navbar = () => {
 	const [active, setActive] = useState("");
 	const [toggle, setToggle] = useState(false);
+	const ignoreScroll = useRef(false);
 
 	useEffect(() => {
 		const ids = navLinks.map((n) => n.id);
@@ -16,10 +17,11 @@ const Navbar = () => {
 		if (sections.length === 0) return;
 
 		const handleScroll = () => {
+			if (ignoreScroll.current) return;
+
 			let currentSection = navLinks[0].title; // default to first
 			for (let i = 0; i < sections.length; i++) {
 				const rect = sections[i].getBoundingClientRect();
-				// Switch only when we've scrolled past the *top* of this section
 				if (rect.top <= 0) {
 					currentSection = navLinks[i].title;
 				} else {
@@ -36,6 +38,14 @@ const Navbar = () => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [active]);
 
+	const handleNavClick = (title) => {
+		setActive(title);
+		ignoreScroll.current = true;
+		setTimeout(() => {
+			ignoreScroll.current = false;
+		}, 500); // allow scroll updates again after smooth scroll
+	};
+
 	return (
 		<nav
 			className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}
@@ -45,7 +55,7 @@ const Navbar = () => {
 					to="/"
 					className="flex items-center gap-2"
 					onClick={() => {
-						setActive("");
+						handleNavClick("");
 						window.scrollTo(0, 0);
 					}}
 				>
@@ -62,7 +72,7 @@ const Navbar = () => {
 							className={`${
 								active === link.title ? "text-white" : "text-secondary"
 							} hover:text-white text-[18px] font-medium cursor-pointer`}
-							onClick={() => setActive(link.title)}
+							onClick={() => handleNavClick(link.title)}
 						>
 							<a href={`#${link.id}`}>{link.title}</a>
 						</li>
@@ -71,7 +81,7 @@ const Navbar = () => {
 						className={`${
 							active === "Resume" ? "text-white" : "text-secondary"
 						} hover:text-white text-[18px] font-medium cursor-pointer`}
-						onClick={() => setActive("Resume")}
+						onClick={() => handleNavClick("Resume")}
 					>
 						<a href={resume} target="_blank" rel="noopener noreferrer">
 							Resume
@@ -102,7 +112,7 @@ const Navbar = () => {
 									} hover:text-white font-poppins font-medium cursor-pointer text-[16px]`}
 									onClick={() => {
 										setToggle(!toggle);
-										setActive(link.title);
+										handleNavClick(link.title);
 									}}
 								>
 									<a href={`#${link.id}`}>{link.title}</a>
@@ -114,7 +124,7 @@ const Navbar = () => {
 								} hover:text-white font-poppins font-medium cursor-pointer text-[16px]`}
 								onClick={() => {
 									setToggle(!toggle);
-									setActive("Resume");
+									handleNavClick("Resume");
 								}}
 							>
 								<a href={resume} target="_blank" rel="noopener noreferrer">

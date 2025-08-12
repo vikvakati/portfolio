@@ -4,8 +4,6 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
 
-//TODO- make object rotate on scroll
-
 const Earth = () => {
 	const earth = useGLTF("./earth.gltf");
 	return (
