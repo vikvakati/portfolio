@@ -1,19 +1,32 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
+
+// Lazy import of the EarthCanvas component
+const EarthCanvas = lazy(() =>
+	import("./canvas").then((m) => ({ default: m.EarthCanvas }))
+);
 
 const Hero = () => {
-	// state variable to toggle cursor on click event
 	const [isGrabbing, setIsGrabbing] = useState(false);
-	function handleMouseDown() {
-		setIsGrabbing(true);
-	}
+	const [loadEarth, setLoadEarth] = useState(false);
+	const earthRef = useRef(null);
 
-	function handleMouseUp() {
-		setIsGrabbing(false);
-	}
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (entries[0].isIntersecting) {
+					setLoadEarth(true);
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.1 }
+		);
+
+		if (earthRef.current) observer.observe(earthRef.current);
+		return () => observer.disconnect();
+	}, []);
+
 	return (
 		<section className="relative w-full h-screen mx-auto">
 			<div
@@ -30,13 +43,26 @@ const Hero = () => {
 			</div>
 
 			<div
+				ref={earthRef}
 				className={`w-full h-full relative group ${
 					isGrabbing ? "cursor-grabbing" : "cursor-grab"
 				}`}
-				onMouseDown={handleMouseDown}
-				onMouseUp={handleMouseUp}
+				onMouseDown={() => setIsGrabbing(true)}
+				onMouseUp={() => setIsGrabbing(false)}
 			>
-				<EarthCanvas />
+				{loadEarth ? (
+					<Suspense
+						fallback={
+							<div className="text-center text-white mt-10">Loading 3D...</div>
+						}
+					>
+						<EarthCanvas />
+					</Suspense>
+				) : (
+					<div className="flex items-center justify-center h-full text-white">
+						Loading...
+					</div>
+				)}
 			</div>
 
 			<div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">

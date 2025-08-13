@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-tilt";
-import emailjs from "@emailjs/browser"; // using emailjs.com service to send emails
+import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
@@ -11,12 +11,10 @@ import { socials } from "../constants";
 const Contact = () => {
 	const formRef = useRef();
 	const [form, setForm] = useState({ name: "", email: "", message: "" });
-
 	const [loading, setLoading] = useState(false);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		setForm({ ...form, [name]: value });
 		setForm({ ...form, [name]: value });
 	};
 	const handleSubmit = (e) => {
@@ -25,26 +23,23 @@ const Contact = () => {
 
 		emailjs
 			.send(
-				"template_7u4pna3", //template id
-				"service_dsu8slh", //service id
+				"template_7u4pna3",
+				"service_dsu8slh",
 				{
-					//create object with options
 					from_name: form.name,
 					to_name: "Vik",
 					from_email: form.email,
 					to_email: "vikvakati@gmail.com",
 					message: form.message,
 				},
-				"56--GvPfpGoliTG9I" //public key
+				"56--GvPfpGoliTG9I"
 			)
 			.then(
 				() => {
 					setLoading(false);
 					alert(
-						"Message sent successfully, I well get back to you as soon as possible!"
+						"Message sent successfully, I will get back to you as soon as possible!"
 					);
-
-					//reset form
 					setForm({ name: "", email: "", message: "" });
 				},
 				(error) => {
@@ -55,19 +50,44 @@ const Contact = () => {
 			);
 	};
 
-	const SocialLink = () => {
-		return socials.map((social) => (
+	// Social icons lazy rendering
+	const LazySocialIcon = ({ social }) => {
+		const ref = useRef(null);
+		const [visible, setVisible] = useState(false);
+
+		useEffect(() => {
+			const observer = new IntersectionObserver(
+				([entry]) => {
+					if (entry.isIntersecting) {
+						setVisible(true);
+						observer.disconnect();
+					}
+				},
+				{ threshold: 0.1 }
+			);
+			if (ref.current) observer.observe(ref.current);
+			return () => observer.disconnect();
+		}, []);
+
+		return (
 			<div
-				key={social.name}
+				ref={ref}
 				onClick={() => window.open(social.link, "_blank")}
 				className="z-0 mx-2 w-12 h-12 rounded-full flex justify-center items-center cursor-pointer"
 				title={social.name}
 			>
-				<Tilt>
-					<img src={social.icon} alt={social.alt} className="w-10 h-10" />
-				</Tilt>
+				{visible && (
+					<Tilt>
+						<img
+							src={social.icon}
+							alt={social.alt}
+							className="w-10 h-10"
+							loading="lazy"
+						/>
+					</Tilt>
+				)}
 			</div>
-		));
+		);
 	};
 
 	return (
@@ -79,9 +99,11 @@ const Contact = () => {
 				<h3 className={styles.sectionHeadText}>Contact</h3>
 				<p className={styles.sectionSubText}>Get in touch.</p>
 
-				{/* links to external pages */}
+				{/* social links */}
 				<div className="absolute inset-0 flex flex-row justify-end m-3 opacity-50">
-					<SocialLink />
+					{socials.map((social) => (
+						<LazySocialIcon key={social.name} social={social} />
+					))}
 				</div>
 
 				<form
@@ -126,7 +148,7 @@ const Contact = () => {
 						type="submit"
 						className="bg-[#3781e5] py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl mx-auto"
 					>
-						<Tilt>{loading ? "Sending..." : "Send"} </Tilt>
+						<Tilt>{loading ? "Sending..." : "Send"}</Tilt>
 					</button>
 				</form>
 			</motion.div>

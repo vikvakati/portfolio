@@ -1,11 +1,39 @@
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+
+const LazyImage = ({ src, alt, className }) => {
+	const ref = useRef(null);
+	const [visible, setVisible] = useState(false);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setVisible(true);
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.1 }
+		);
+		if (ref.current) observer.observe(ref.current);
+		return () => observer.disconnect();
+	}, []);
+
+	return (
+		<div ref={ref} className="w-full h-full">
+			{visible && (
+				<img src={src} alt={alt} className={className} loading="lazy" />
+			)}
+		</div>
+	);
+};
 
 const ProjectCard = ({
 	index,
@@ -22,20 +50,21 @@ const ProjectCard = ({
 				className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
 			>
 				<div className="relative w-full h-[230px]">
-					<img
+					<LazyImage
 						src={image}
 						alt={name}
 						className="w-full h-full object-cover rounded-2xl"
 					/>
-					{/*<div className="absolute inset-0 flex justify-end m-3 card-img_hover opacity-75">
+					{/* Uncomment if you want source code link overlay */}
+					{/* <div className="absolute inset-0 flex justify-end m-3 card-img_hover opacity-75">
 						<div
 							onClick={() => window.open(source_code_link, "_blank")}
 							title="Source Code"
 							className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
 						>
-							<img src={github} alt="github" className="w-5 h-5" />
+							<img src={github} alt="github" className="w-5 h-5" loading="lazy" />
 						</div>
-	</div>*/}
+					</div> */}
 				</div>
 				<div className="mt-5">
 					<h3 className="text-white font-bold text-[24px]">{name}</h3>
