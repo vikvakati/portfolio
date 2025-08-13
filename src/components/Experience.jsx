@@ -54,8 +54,8 @@ const Experience = () => {
 		//wrap in empty react fragment (must have one parent element)
 		<>
 			<motion.div variants={textVariant()}>
-				<h2 className={styles.sectionHeadText}>Experience and Education.</h2>
-				<p className={styles.sectionSubText}>My journey</p>
+				<h2 className={styles.sectionHeadText}>Experience & Education</h2>
+				<p className={styles.sectionSubText}>My journey.</p>
 			</motion.div>
 
 			<div className="mt-20 flex flex-col">

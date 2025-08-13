@@ -57,8 +57,8 @@ const Works = () => {
 	return (
 		<>
 			<motion.div variants={textVariant()}>
-				<h2 className={styles.sectionHeadText}>Projects.</h2>
-				<p className={styles.sectionSubText}>Tilt it to your favor</p>
+				<h2 className={styles.sectionHeadText}>Projects</h2>
+				<p className={styles.sectionSubText}>Tilt it to your favor.</p>
 			</motion.div>
 
 			<div className="mt-20 flex flex-wrap gap-7 justify-center">

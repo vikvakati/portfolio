@@ -1,8 +1,4 @@
 import {
-	iot,
-	imageProcessing,
-	electronics,
-	web,
 	javascript,
 	cpp,
 	html_css,
@@ -45,25 +41,6 @@ export const navLinks = [
 	{
 		id: "contact",
 		title: "Contact",
-	},
-];
-
-const services = [
-	{
-		title: "Embedded Systems Engineer",
-		icon: iot,
-	},
-	{
-		title: "Electronics Engineer",
-		icon: electronics,
-	},
-	{
-		title: "Frontend Developer",
-		icon: web,
-	},
-	{
-		title: "Image Processing Engineer",
-		icon: imageProcessing,
 	},
 ];
 
@@ -143,7 +120,7 @@ const experiences = [
 		date: "Jan 2023 - April 2024",
 		points: [
 			"M.S. Computer Engineering.",
-			"Concentration in Internet of Things and SCADA systems.",
+			"Concentration in Internet of Things.",
 		],
 	},
 	{
@@ -153,9 +130,9 @@ const experiences = [
 		iconBg: "#081741",
 		date: "January 2021 - January 2023",
 		points: [
-			"Conducted visual, point to point and operational testing on control panel systems to ensure functionality.",
-			"Designed and built test panels for functional testing.",
-			"Utilized wiring diagrams and schematics following industry standards.",
+			"Wired and assembled control panels following IEC standard schematics.",
+			"Conducted visual, point-to-point, and operational testing on systems to ensure functionality.",
+			"Deployed over 1000 control panel systems, adhering to quality and functionality requirements.",
 		],
 	},
 	{
@@ -166,7 +143,7 @@ const experiences = [
 		date: "September 2018 - August 2022",
 		points: [
 			"B.S. Computer Engineering.",
-			"Minors in Internet of Things, Electrical Engineering, and Math.",
+			"Minors in Electrical Engineering and Math.",
 		],
 	},
 ];
@@ -317,7 +294,7 @@ const socials = [
 		name: "LinkedIn",
 		alt: "linkedin",
 		icon: linkedin,
-		link: "https://www.linkedin.com/in/vikranth-vakati/",
+		link: "http://linkedin.com/in/vikvakati",
 	},
 	{
 		name: "Gmail",
@@ -326,4 +303,4 @@ const socials = [
 		link: "mailto:vikvakati@gmail.com",
 	},
 ];
-export { services, technologies, experiences, projects, socials };
+export { technologies, experiences, projects, socials };

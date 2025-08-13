@@ -1,8 +1,4 @@
 import logo from "./logo.png";
-import imageProcessing from "./imageProcessing.png";
-import electronics from "./electronics.png";
-import iot from "./iot.png";
-import web from "./web.png";
 import github from "./github.png";
 import linkedin from "./linkedin.png";
 import gmail from "./gmail.png";
@@ -41,10 +37,6 @@ import bodkin_design from "./company/bodkin_design.png";
 
 export {
 	logo,
-	imageProcessing,
-	electronics,
-	iot,
-	web,
 	github,
 	linkedin,
 	gmail,

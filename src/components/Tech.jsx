@@ -21,8 +21,8 @@ const Tech = () => {
 	return (
 		<>
 			<motion.div variants={textVariant()}>
-				<h2 className={`${styles.sectionHeadText}`}>Skills.</h2>
-				<p className={`${styles.sectionSubText}`}>Lets go for a spin</p>
+				<h2 className={`${styles.sectionHeadText}`}>Skills & Services</h2>
+				<p className={`${styles.sectionSubText}`}>Take them for a spin.</p>
 			</motion.div>
 			<motion.div variants={slideIn("up", "tween", 0.2, 1)}>
 				<div className="py-10 flex flex-row flex-wrap justify-center gap-10">
