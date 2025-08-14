@@ -32,18 +32,38 @@ const LunarLander = () => {
 		const ctx = canvas.getContext("2d");
 		const gravity = 0.0002;
 		const thrustPower = 0.0005;
+		const rotationSpeed = 0.002;
 
-		const landingPad = () => ({
-			x: canvas.width / 2 - 40,
-			y: canvas.height - 20,
-			width: 80,
-			height: 10,
-		});
+		// Lunar surface with multipliers (x positions, y will be recalculated)
+		const lunarSurface = [
+			{ x: 50, y: 0, width: 60, multiplier: 2 },
+			{ x: 120, y: 0, width: 120, multiplier: 1 },
+			{ x: 260, y: 0, width: 80, multiplier: 1.5 },
+			{ x: 360, y: 0, width: 100, multiplier: 1 },
+		];
 
+		const landingPad = () => {
+			return lunarSurface.find(
+				(pad) =>
+					landerRef.current?.x > pad.x &&
+					landerRef.current?.x < pad.x + pad.width
+			);
+		};
+
+		// Responsive canvas
 		const resizeCanvas = () => {
-			const size = Math.min(window.innerWidth * 0.9, 500);
-			canvas.width = size;
-			canvas.height = size;
+			const width = Math.min(window.innerWidth * 0.95, 500);
+			const height = Math.min(window.innerHeight * 0.6, 500);
+			canvas.width = width;
+			canvas.height = height;
+
+			// Recalculate pad positions
+			const padYFractions = [0.9, 0.85, 0.88, 0.87]; // fractions of canvas height
+			lunarSurface.forEach((pad, i) => {
+				pad.y = canvas.height * padYFractions[i];
+				pad.x = Math.min(pad.x, canvas.width - pad.width - 10);
+			});
+
 			if (landerRef.current) {
 				landerRef.current.x = canvas.width / 2;
 				landerRef.current.y = 100;
@@ -54,6 +74,7 @@ const LunarLander = () => {
 
 		let lastTime = performance.now();
 		let animationId;
+		let lastTouchX = null;
 
 		const initLander = (keepFuel = true) => {
 			landerRef.current = {
@@ -61,6 +82,7 @@ const LunarLander = () => {
 				y: 100,
 				vx: 0,
 				vy: 0,
+				angle: 0,
 				fuel: keepFuel ? fuelRef.current : MAX_FUEL,
 				alive: true,
 				landed: false,
@@ -85,7 +107,7 @@ const LunarLander = () => {
 		};
 
 		const startGameIfWaiting = () => {
-			if (landedBufferRef.current) return; // block input during buffer
+			if (landedBufferRef.current) return;
 			if (
 				gameStateRef.current === "waiting" ||
 				gameStateRef.current === "landed"
@@ -99,19 +121,21 @@ const LunarLander = () => {
 			}
 		};
 
+		// Keyboard
 		const handleKeyDown = (e) => {
-			if (e.code === "ArrowUp") {
+			if (["ArrowUp", "ArrowLeft", "ArrowRight"].includes(e.code)) {
 				keys.current[e.code] = true;
 				e.preventDefault();
 			}
 		};
 		const handleKeyUp = (e) => {
-			if (e.code === "ArrowUp") {
+			if (["ArrowUp", "ArrowLeft", "ArrowRight"].includes(e.code)) {
 				keys.current[e.code] = false;
 				e.preventDefault();
 			}
 		};
 
+		// Mouse/touch
 		const handlePressStart = (e) => {
 			if (!landedBufferRef.current) startGameIfWaiting();
 			keys.current["ArrowUp"] = true;
@@ -120,6 +144,21 @@ const LunarLander = () => {
 		const handlePressEnd = () => (keys.current["ArrowUp"] = false);
 		const handleClick = () => {
 			if (!landedBufferRef.current) startGameIfWaiting();
+		};
+
+		// Mobile drag rotation
+		const handleTouchMove = (e) => {
+			if (!landerRef.current) return;
+			const touch = e.touches[0];
+			if (lastTouchX !== null) {
+				const deltaX = touch.clientX - lastTouchX;
+				landerRef.current.angle += deltaX * 0.01; // increased sensitivity
+			}
+			lastTouchX = touch.clientX;
+			e.preventDefault();
+		};
+		const handleTouchEndRotate = () => {
+			lastTouchX = null;
 		};
 
 		const update = (delta) => {
@@ -132,29 +171,30 @@ const LunarLander = () => {
 			)
 				return;
 
+			if (keys.current["ArrowLeft"]) lander.angle -= rotationSpeed * delta;
+			if (keys.current["ArrowRight"]) lander.angle += rotationSpeed * delta;
+
 			if (keys.current["ArrowUp"] && lander.fuel > 0) {
-				lander.vy -= thrustPower * delta;
+				lander.vx += Math.sin(lander.angle) * thrustPower * delta;
+				lander.vy -= Math.cos(lander.angle) * thrustPower * delta;
 				lander.fuel -= 0.05 * delta;
 				fuelRef.current = lander.fuel;
 			}
 
 			lander.vy += gravity * delta;
+			lander.x += lander.vx * delta;
 			lander.y += lander.vy * delta;
 
 			const pad = landingPad();
+			if (!pad) return;
 			const shipBottomY = lander.y + 10;
 
 			if (shipBottomY >= pad.y) {
-				if (
-					lander.x > pad.x &&
-					lander.x < pad.x + pad.width &&
-					Math.abs(lander.vy) < 0.1
-				) {
-					// Landed
+				if (Math.abs(lander.vy) < 0.1) {
 					lander.landed = true;
 					lander.y = pad.y - 10;
 					lander.vy = 0;
-					scoreRef.current += 1;
+					scoreRef.current += pad.multiplier;
 					if (scoreRef.current > highScoreRef.current) {
 						highScoreRef.current = scoreRef.current;
 						localStorage.setItem("landerHighScore", highScoreRef.current);
@@ -164,13 +204,12 @@ const LunarLander = () => {
 					setGameState("landed");
 					successFlashRef.current = true;
 
-					// Block input for 1 second after landing
 					landedBufferRef.current = true;
 					flagProgressRef.current = 0;
 					const startTime = performance.now();
 					const animateFlag = (time) => {
 						const elapsed = time - startTime;
-						flagProgressRef.current = Math.min(elapsed / 500, 0.5); // 0.5s
+						flagProgressRef.current = Math.min(elapsed / 500, 0.5);
 						if (elapsed < 500) {
 							flagAnimRef.current = requestAnimationFrame(animateFlag);
 						} else {
@@ -180,7 +219,6 @@ const LunarLander = () => {
 					};
 					flagAnimRef.current = requestAnimationFrame(animateFlag);
 				} else {
-					// Crashed
 					lander.alive = false;
 					gameStateRef.current = "crashed";
 					setGameState("crashed");
@@ -190,7 +228,6 @@ const LunarLander = () => {
 					);
 					landedBufferRef.current = true;
 
-					// Block input for 3 seconds after crash
 					setTimeout(() => {
 						clearInterval(crashTimerRef.current);
 						crashTimerRef.current = null;
@@ -204,27 +241,41 @@ const LunarLander = () => {
 			ctx.fillStyle = "black";
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-			const pad = landingPad();
+			// Draw lunar surface and multipliers
 			ctx.fillStyle = "white";
-			ctx.fillRect(pad.x, pad.y, pad.width, pad.height);
+			lunarSurface.forEach((pad) => {
+				ctx.fillRect(pad.x, pad.y, pad.width, 5);
+				ctx.fillStyle = "yellow";
+				ctx.font = "14px Arial";
+				ctx.fillText(
+					`x${pad.multiplier}`,
+					pad.x + pad.width / 2 - 10,
+					pad.y + 20
+				);
+				ctx.fillStyle = "white";
+			});
 
 			if (gameStateRef.current === "landed" && logoImgRef.current.complete) {
-				const logoWidth = 80;
-				const logoHeight = 80;
-				const yOffset = 50 * flagProgressRef.current;
-				ctx.drawImage(
-					logoImgRef.current,
-					pad.x + pad.width / 2 - logoWidth / 2,
-					pad.y - logoHeight - yOffset,
-					logoWidth,
-					logoHeight
-				);
+				const pad = landingPad();
+				if (pad) {
+					const logoWidth = 80;
+					const logoHeight = 80;
+					const yOffset = 50 * flagProgressRef.current;
+					ctx.drawImage(
+						logoImgRef.current,
+						pad.x + pad.width / 2 - logoWidth / 2,
+						pad.y - logoHeight - yOffset,
+						logoWidth,
+						logoHeight
+					);
+				}
 			}
 
 			const lander = landerRef.current;
 			if (lander) {
 				ctx.save();
 				ctx.translate(lander.x, lander.y);
+				ctx.rotate(lander.angle);
 				ctx.fillStyle =
 					gameStateRef.current === "crashed"
 						? flashStateRef.current
@@ -245,8 +296,7 @@ const LunarLander = () => {
 					keys.current["ArrowUp"] &&
 					lander.fuel > 0 &&
 					lander.alive &&
-					!lander.landed &&
-					!landedBufferRef.current
+					!lander.landed
 				) {
 					ctx.fillStyle = "orange";
 					ctx.beginPath();
@@ -258,7 +308,6 @@ const LunarLander = () => {
 				}
 				ctx.restore();
 
-				// Fuel bar
 				ctx.fillStyle = "yellow";
 				ctx.fillRect(10, 10, (Math.max(0, lander.fuel) / MAX_FUEL) * 200, 10);
 				ctx.strokeStyle = "white";
@@ -305,6 +354,8 @@ const LunarLander = () => {
 		canvas.addEventListener("mousedown", handlePressStart);
 		canvas.addEventListener("mouseup", handlePressEnd);
 		canvas.addEventListener("click", handleClick);
+		canvas.addEventListener("touchmove", handleTouchMove, { passive: false });
+		canvas.addEventListener("touchcancel", handleTouchEndRotate);
 
 		return () => {
 			document.removeEventListener("keydown", handleKeyDown);
@@ -314,6 +365,8 @@ const LunarLander = () => {
 			canvas.removeEventListener("mousedown", handlePressStart);
 			canvas.removeEventListener("mouseup", handlePressEnd);
 			canvas.removeEventListener("click", handleClick);
+			canvas.removeEventListener("touchmove", handleTouchMove);
+			canvas.removeEventListener("touchcancel", handleTouchEndRotate);
 			cancelAnimationFrame(animationId);
 			if (crashTimerRef.current) clearInterval(crashTimerRef.current);
 			if (flagAnimRef.current) cancelAnimationFrame(flagAnimRef.current);
@@ -336,7 +389,8 @@ const LunarLander = () => {
 					/>
 				</div>
 				<p className="text-center text-white mt-2">
-					Controls: Tap / Click / ↑ Thrust
+					Controls: ← → Rotate, ↑ Thrust, Drag to rotate on mobile, Tap / Click
+					to Start
 				</p>
 			</motion.div>
 		</div>
