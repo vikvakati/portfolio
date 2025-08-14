@@ -1,48 +1,13 @@
 import Tilt from "react-tilt";
 import { motion } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { styles } from "../styles";
-import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import { fadeIn, textVariant, staggerContainer } from "../utils/motion";
 
-const LazyImage = ({ src, alt, className }) => {
-	const ref = useRef(null);
-	const [visible, setVisible] = useState(false);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					setVisible(true);
-					observer.disconnect();
-				}
-			},
-			{ threshold: 0.1 }
-		);
-		if (ref.current) observer.observe(ref.current);
-		return () => observer.disconnect();
-	}, []);
-
-	return (
-		<div ref={ref} className="w-full h-full">
-			{visible && (
-				<img src={src} alt={alt} className={className} loading="lazy" />
-			)}
-		</div>
-	);
-};
-
-const ProjectCard = ({
-	index,
-	name,
-	description,
-	tags,
-	image,
-	source_code_link,
-}) => {
+const ProjectCard = ({ index, name, description, tags, image }) => {
 	const [isMobile, setIsMobile] = useState(false);
 
 	useEffect(() => {
@@ -52,13 +17,17 @@ const ProjectCard = ({
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
-	const CardContent = (
-		<div className="bg-tertiary p-5 rounded-2xl w-full sm:w-[360px]">
+	const cardContent = (
+		<Tilt
+			options={{ max: 45, scale: 1, speed: 450 }}
+			className="bg-tertiary p-5 rounded-2xl w-full sm:w-[360px]"
+		>
 			<div className="relative w-full h-[230px]">
-				<LazyImage
+				<img
 					src={image}
 					alt={name}
 					className="w-full h-full object-cover rounded-2xl"
+					loading="lazy"
 				/>
 			</div>
 			<div className="mt-5">
@@ -72,36 +41,57 @@ const ProjectCard = ({
 					</p>
 				))}
 			</div>
-		</div>
+		</Tilt>
 	);
 
-	return (
+	return isMobile ? (
+		<div className="w-full sm:w-auto">{cardContent}</div>
+	) : (
 		<motion.div
 			variants={fadeIn("up", "spring", index * 0.65, 0.75)}
-			className="w-full sm:flex-shrink-0"
+			className="w-full sm:w-auto"
 		>
-			{isMobile ? (
-				CardContent
-			) : (
-				<Tilt options={{ max: 45, scale: 1, speed: 450 }}>{CardContent}</Tilt>
-			)}
+			{cardContent}
 		</motion.div>
 	);
 };
 
 const Works = () => {
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		const handleResize = () => setIsMobile(window.innerWidth < 640);
+		handleResize();
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	const textContent = (
+		<>
+			<h2 className={styles.sectionHeadText}>Projects</h2>
+			<p className={styles.sectionSubText}>Tilt it to your favor.</p>
+		</>
+	);
+
 	return (
 		<>
-			<motion.div variants={textVariant()}>
-				<h2 className={styles.sectionHeadText}>Projects</h2>
-				<p className={styles.sectionSubText}>Tilt it to your favor.</p>
-			</motion.div>
+			{isMobile ? (
+				<div>{textContent}</div>
+			) : (
+				<motion.div variants={textVariant()}>{textContent}</motion.div>
+			)}
 
-			<div className="mt-20 flex flex-wrap gap-7 justify-center">
+			<motion.div
+				variants={staggerContainer()}
+				initial="hidden"
+				whileInView="show"
+				viewport={{ once: true, amount: 0.25 }}
+				className="mt-20 flex flex-wrap gap-7 justify-center h-auto"
+			>
 				{projects.map((project, index) => (
 					<ProjectCard key={index} index={index} {...project} />
 				))}
-			</div>
+			</motion.div>
 		</>
 	);
 };
