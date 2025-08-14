@@ -6,34 +6,7 @@ import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
-
-const LazyImage = ({ src, alt, className }) => {
-	const ref = useRef(null);
-	const [visible, setVisible] = useState(false);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					setVisible(true);
-					observer.disconnect();
-				}
-			},
-			{ threshold: 0.1 }
-		);
-		if (ref.current) observer.observe(ref.current);
-		return () => observer.disconnect();
-	}, []);
-
-	return (
-		<div ref={ref} className="w-full h-full">
-			{visible && (
-				<img src={src} alt={alt} className={className} loading="lazy" />
-			)}
-		</div>
-	);
-};
+import { fadeIn, textVariant, staggerContainer } from "../utils/motion";
 
 const ProjectCard = ({
 	index,
@@ -43,28 +16,25 @@ const ProjectCard = ({
 	image,
 	source_code_link,
 }) => {
+	// Detect mobile
+	const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+
 	return (
-		<motion.div variants={fadeIn("up", "spring", index * 0.65, 0.75)}>
+		<motion.div
+			variants={fadeIn("up", "spring", isMobile ? 0 : index * 0.65, 0.75)}
+			className="flex-shrink-0"
+		>
 			<Tilt
 				options={{ max: 45, scale: 1, speed: 450 }}
 				className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
 			>
 				<div className="relative w-full h-[230px]">
-					<LazyImage
+					<img
 						src={image}
 						alt={name}
 						className="w-full h-full object-cover rounded-2xl"
+						loading="lazy"
 					/>
-					{/* Uncomment if you want source code link overlay */}
-					{/* <div className="absolute inset-0 flex justify-end m-3 card-img_hover opacity-75">
-						<div
-							onClick={() => window.open(source_code_link, "_blank")}
-							title="Source Code"
-							className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-						>
-							<img src={github} alt="github" className="w-5 h-5" loading="lazy" />
-						</div>
-					</div> */}
 				</div>
 				<div className="mt-5">
 					<h3 className="text-white font-bold text-[24px]">{name}</h3>
@@ -83,6 +53,9 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+	// Detect mobile for container animation
+	const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+
 	return (
 		<>
 			<motion.div variants={textVariant()}>
@@ -90,11 +63,17 @@ const Works = () => {
 				<p className={styles.sectionSubText}>Tilt it to your favor.</p>
 			</motion.div>
 
-			<div className="mt-20 flex flex-wrap gap-7 justify-center">
+			<motion.div
+				variants={staggerContainer()}
+				initial="hidden"
+				whileInView="show"
+				viewport={{ once: true, amount: 0.25 }}
+				className="mt-20 flex flex-wrap gap-7 justify-center h-auto"
+			>
 				{projects.map((project, index) => (
-					<ProjectCard key={`${index}`} index={index} {...project} />
+					<ProjectCard key={index} index={index} {...project} />
 				))}
-			</div>
+			</motion.div>
 		</>
 	);
 };
