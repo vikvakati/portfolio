@@ -1,30 +1,323 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { slideIn } from "../utils/motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
+import { logo } from "../assets";
 
-function Game() {
-	const iframeRef = useRef(null);
+const LunarLander = () => {
+	const canvasRef = useRef(null);
+	const landerRef = useRef(null);
+	const gameStateRef = useRef("waiting");
+	const [gameState, setGameState] = useState("waiting");
+	const fuelRef = useRef(200);
+	const scoreRef = useRef(0);
+	const highScoreRef = useRef(
+		parseInt(localStorage.getItem("landerHighScore") || "0")
+	);
+	const crashTimerRef = useRef(null);
+	const flashStateRef = useRef(false);
+	const successFlashRef = useRef(false);
+	const landedBufferRef = useRef(false);
+	const flagProgressRef = useRef(0);
+	const keys = useRef({});
+	const flagAnimRef = useRef(null);
+	const logoImgRef = useRef(new Image());
+
+	const MAX_FUEL = 200;
+	logoImgRef.current.src = logo;
 
 	useEffect(() => {
-		const iframe = iframeRef.current;
-		if (!iframe) return;
+		const canvas = canvasRef.current;
+		const ctx = canvas.getContext("2d");
+		const gravity = 0.0002;
+		const thrustPower = 0.0005;
+
+		const landingPad = () => ({
+			x: canvas.width / 2 - 40,
+			y: canvas.height - 20,
+			width: 80,
+			height: 10,
+		});
+
+		const resizeCanvas = () => {
+			const size = Math.min(window.innerWidth * 0.9, 500);
+			canvas.width = size;
+			canvas.height = size;
+			if (landerRef.current) {
+				landerRef.current.x = canvas.width / 2;
+				landerRef.current.y = 100;
+			}
+		};
+		resizeCanvas();
+		window.addEventListener("resize", resizeCanvas);
+
+		let lastTime = performance.now();
+		let animationId;
+
+		const initLander = (keepFuel = true) => {
+			landerRef.current = {
+				x: canvas.width / 2,
+				y: 100,
+				vx: 0,
+				vy: 0,
+				fuel: keepFuel ? fuelRef.current : MAX_FUEL,
+				alive: true,
+				landed: false,
+			};
+			fuelRef.current = landerRef.current.fuel;
+		};
+		initLander();
+
+		const resetAfterCrash = () => {
+			if (crashTimerRef.current) clearInterval(crashTimerRef.current);
+			fuelRef.current = MAX_FUEL;
+			scoreRef.current = 0;
+			keys.current = {};
+			lastTime = performance.now();
+			gameStateRef.current = "waiting";
+			setGameState("waiting");
+			landedBufferRef.current = false;
+			flagProgressRef.current = 0;
+			flashStateRef.current = false;
+			successFlashRef.current = false;
+			initLander(false);
+		};
+
+		const startGameIfWaiting = () => {
+			if (landedBufferRef.current) return; // block input during buffer
+			if (
+				gameStateRef.current === "waiting" ||
+				gameStateRef.current === "landed"
+			) {
+				lastTime = performance.now();
+				gameStateRef.current = "playing";
+				setGameState("playing");
+				flagProgressRef.current = 0;
+				successFlashRef.current = false;
+				initLander(true);
+			}
+		};
 
 		const handleKeyDown = (e) => {
-			const isAtBottom =
-				window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
-			if (
-				isAtBottom &&
-				["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.code)
-			) {
+			if (e.code === "ArrowUp") {
+				keys.current[e.code] = true;
+				e.preventDefault();
+			}
+		};
+		const handleKeyUp = (e) => {
+			if (e.code === "ArrowUp") {
+				keys.current[e.code] = false;
 				e.preventDefault();
 			}
 		};
 
-		window.addEventListener("keydown", handleKeyDown);
+		const handlePressStart = (e) => {
+			if (!landedBufferRef.current) startGameIfWaiting();
+			keys.current["ArrowUp"] = true;
+			e.preventDefault();
+		};
+		const handlePressEnd = () => (keys.current["ArrowUp"] = false);
+		const handleClick = () => {
+			if (!landedBufferRef.current) startGameIfWaiting();
+		};
+
+		const update = (delta) => {
+			const lander = landerRef.current;
+			if (
+				!lander ||
+				!lander.alive ||
+				lander.landed ||
+				gameStateRef.current !== "playing"
+			)
+				return;
+
+			if (keys.current["ArrowUp"] && lander.fuel > 0) {
+				lander.vy -= thrustPower * delta;
+				lander.fuel -= 0.05 * delta;
+				fuelRef.current = lander.fuel;
+			}
+
+			lander.vy += gravity * delta;
+			lander.y += lander.vy * delta;
+
+			const pad = landingPad();
+			const shipBottomY = lander.y + 10;
+
+			if (shipBottomY >= pad.y) {
+				if (
+					lander.x > pad.x &&
+					lander.x < pad.x + pad.width &&
+					Math.abs(lander.vy) < 0.1
+				) {
+					// Landed
+					lander.landed = true;
+					lander.y = pad.y - 10;
+					lander.vy = 0;
+					scoreRef.current += 1;
+					if (scoreRef.current > highScoreRef.current) {
+						highScoreRef.current = scoreRef.current;
+						localStorage.setItem("landerHighScore", highScoreRef.current);
+					}
+
+					gameStateRef.current = "landed";
+					setGameState("landed");
+					successFlashRef.current = true;
+
+					// Block input for 1 second after landing
+					landedBufferRef.current = true;
+					flagProgressRef.current = 0;
+					const startTime = performance.now();
+					const animateFlag = (time) => {
+						const elapsed = time - startTime;
+						flagProgressRef.current = Math.min(elapsed / 500, 0.5); // 0.5s
+						if (elapsed < 500) {
+							flagAnimRef.current = requestAnimationFrame(animateFlag);
+						} else {
+							flagAnimRef.current = null;
+							landedBufferRef.current = false;
+						}
+					};
+					flagAnimRef.current = requestAnimationFrame(animateFlag);
+				} else {
+					// Crashed
+					lander.alive = false;
+					gameStateRef.current = "crashed";
+					setGameState("crashed");
+					crashTimerRef.current = setInterval(
+						() => (flashStateRef.current = !flashStateRef.current),
+						150
+					);
+					landedBufferRef.current = true;
+
+					// Block input for 3 seconds after crash
+					setTimeout(() => {
+						clearInterval(crashTimerRef.current);
+						crashTimerRef.current = null;
+						resetAfterCrash();
+					}, 3000);
+				}
+			}
+		};
+
+		const draw = () => {
+			ctx.fillStyle = "black";
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+			const pad = landingPad();
+			ctx.fillStyle = "white";
+			ctx.fillRect(pad.x, pad.y, pad.width, pad.height);
+
+			if (gameStateRef.current === "landed" && logoImgRef.current.complete) {
+				const logoWidth = 80;
+				const logoHeight = 80;
+				const yOffset = 50 * flagProgressRef.current;
+				ctx.drawImage(
+					logoImgRef.current,
+					pad.x + pad.width / 2 - logoWidth / 2,
+					pad.y - logoHeight - yOffset,
+					logoWidth,
+					logoHeight
+				);
+			}
+
+			const lander = landerRef.current;
+			if (lander) {
+				ctx.save();
+				ctx.translate(lander.x, lander.y);
+				ctx.fillStyle =
+					gameStateRef.current === "crashed"
+						? flashStateRef.current
+							? "white"
+							: "red"
+						: successFlashRef.current
+						? "green"
+						: "white";
+
+				ctx.beginPath();
+				ctx.moveTo(0, -10);
+				ctx.lineTo(6, 10);
+				ctx.lineTo(-6, 10);
+				ctx.closePath();
+				ctx.fill();
+
+				if (
+					keys.current["ArrowUp"] &&
+					lander.fuel > 0 &&
+					lander.alive &&
+					!lander.landed &&
+					!landedBufferRef.current
+				) {
+					ctx.fillStyle = "orange";
+					ctx.beginPath();
+					ctx.moveTo(-4, 10);
+					ctx.lineTo(0, 18 + Math.random() * 4);
+					ctx.lineTo(4, 10);
+					ctx.closePath();
+					ctx.fill();
+				}
+				ctx.restore();
+
+				// Fuel bar
+				ctx.fillStyle = "yellow";
+				ctx.fillRect(10, 10, (Math.max(0, lander.fuel) / MAX_FUEL) * 200, 10);
+				ctx.strokeStyle = "white";
+				ctx.strokeRect(10, 10, 200, 10);
+
+				ctx.fillStyle = "white";
+				ctx.font = "16px Arial";
+				ctx.fillText(`Score: ${scoreRef.current}`, 10, 40);
+				ctx.fillText(`High Score: ${highScoreRef.current}`, 10, 60);
+			}
+
+			ctx.fillStyle = "white";
+			ctx.font = "16px Arial";
+			if (gameStateRef.current === "waiting")
+				ctx.fillText(
+					"TAP / CLICK TO START",
+					canvas.width / 2 - 80,
+					canvas.height / 2
+				);
+			else if (gameStateRef.current === "landed")
+				ctx.fillText(
+					"LANDED! TAP / CLICK TO CONTINUE",
+					canvas.width / 2 - 110,
+					canvas.height / 2
+				);
+			else if (gameStateRef.current === "crashed")
+				ctx.fillText("CRASHED!", canvas.width / 2 - 40, canvas.height / 2);
+		};
+
+		const loop = (time) => {
+			const delta = time - lastTime;
+			lastTime = time;
+			update(delta);
+			draw();
+			animationId = requestAnimationFrame(loop);
+		};
+		loop(lastTime);
+
+		// Event listeners
+		document.addEventListener("keydown", handleKeyDown);
+		document.addEventListener("keyup", handleKeyUp);
+		canvas.addEventListener("touchstart", handlePressStart);
+		canvas.addEventListener("touchend", handlePressEnd);
+		canvas.addEventListener("mousedown", handlePressStart);
+		canvas.addEventListener("mouseup", handlePressEnd);
+		canvas.addEventListener("click", handleClick);
+
 		return () => {
-			window.removeEventListener("keydown", handleKeyDown);
+			document.removeEventListener("keydown", handleKeyDown);
+			document.removeEventListener("keyup", handleKeyUp);
+			canvas.removeEventListener("touchstart", handlePressStart);
+			canvas.removeEventListener("touchend", handlePressEnd);
+			canvas.removeEventListener("mousedown", handlePressStart);
+			canvas.removeEventListener("mouseup", handlePressEnd);
+			canvas.removeEventListener("click", handleClick);
+			cancelAnimationFrame(animationId);
+			if (crashTimerRef.current) clearInterval(crashTimerRef.current);
+			if (flagAnimRef.current) cancelAnimationFrame(flagAnimRef.current);
+			window.removeEventListener("resize", resizeCanvas);
 		};
 	}, []);
 
@@ -34,17 +327,20 @@ function Game() {
 				variants={slideIn("up", "tween", 0.2, 1)}
 				className="flex-[0.75] w-full bg-black-100 p-8 rounded-2xl"
 			>
-				<p className={styles.sectionSubText}>Stay A While</p>
-				<h3 className={styles.sectionHeadText}>Asteroids.</h3>
-				<iframe
-					src="https://chriz001.github.io/Reacteroids/"
-					title="Asteroids Game"
-					className="rounded-2xl h-[600px] w-full flex justify-center game-iframe"
-					ref={iframeRef}
-				></iframe>
+				<h3 className={styles.sectionHeadText}>Lunar Lander</h3>
+				<p className={styles.sectionSubText}>Stay a while.</p>
+				<div className="flex justify-center w-full">
+					<canvas
+						ref={canvasRef}
+						className="rounded-2xl border border-gray-500 cursor-pointer w-full max-w-[500px]"
+					/>
+				</div>
+				<p className="text-center text-white mt-2">
+					Controls: Tap / Click / ↑ Thrust
+				</p>
 			</motion.div>
 		</div>
 	);
-}
+};
 
-export default SectionWrapper(Game, "");
+export default SectionWrapper(LunarLander, "game");

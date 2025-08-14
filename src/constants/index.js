@@ -39,6 +39,10 @@ export const navLinks = [
 		title: "Work",
 	},
 	{
+		id: "lunar-lander",
+		title: "Lunar Lander",
+	},
+	{
 		id: "contact",
 		title: "Contact",
 	},
