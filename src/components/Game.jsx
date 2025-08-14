@@ -343,4 +343,4 @@ const LunarLander = () => {
 	);
 };
 
-export default SectionWrapper(LunarLander, "game");
+export default SectionWrapper(LunarLander, "lunar-lander");
