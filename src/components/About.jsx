@@ -26,7 +26,7 @@ const About = () => {
 							src={portrait}
 							alt="Portrait"
 							loading="lazy"
-							className="w-64 h-72 rounded-full object-cover shadow-lg"
+							className="w-64 h-64 rounded-full object-cover shadow-lg"
 						/>
 
 						{/* Text */}
