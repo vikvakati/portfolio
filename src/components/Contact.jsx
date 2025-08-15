@@ -74,7 +74,7 @@ const Contact = () => {
 			<div
 				ref={ref}
 				onClick={() => window.open(social.link, "_blank")}
-				className="z-0 mx-1 w-12 h-12 rounded-full flex justify-center items-center cursor-pointer"
+				className="z-0 mx-1 my-6 w-12 h-12 rounded-full flex justify-center items-center cursor-pointer"
 				title={social.name}
 			>
 				{visible && (
