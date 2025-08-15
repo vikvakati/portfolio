@@ -32,11 +32,17 @@ const About = () => {
 						{/* Text */}
 						<p className="flex-1">
 							Embedded systems engineer with a master's in computer engineering,
-							driven by a passion for innovation of the Internet of Things. I am
-							committed to exploring and implementing cutting-edge technologies
-							that enable seamless connectivity, data exchange, and dynamic web
-							experiences to contribute to the ever-evolving landscape of
-							embedded systems.
+							dedicated to advancing the Internet of Things. I am committed to
+							exploring and implementing cutting-edge technologies that enable
+							seamless connectivity, data exchange, and dynamic web experiences.
+							<br />
+							<br />
+							<strong>
+								Passionate about technology, curious by nature, and always
+								building
+							</strong>
+							<br />whether it's electronics in my workshop or memories
+							outdoors.
 						</p>
 					</div>
 				</div>
