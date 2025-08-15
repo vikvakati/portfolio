@@ -74,7 +74,7 @@ const Contact = () => {
 			<div
 				ref={ref}
 				onClick={() => window.open(social.link, "_blank")}
-				className="z-0 mx-2 w-12 h-12 rounded-full flex justify-center items-center cursor-pointer"
+				className="z-0 mx-1 w-12 h-12 rounded-full flex justify-center items-center cursor-pointer"
 				title={social.name}
 			>
 				{visible && (
@@ -101,7 +101,7 @@ const Contact = () => {
 				<p className={styles.sectionSubText}>Get in touch.</p>
 
 				{/* social links */}
-				<div className="absolute inset-0 flex flex-row justify-end m-3 opacity-50">
+				<div className="absolute inset-0 flex flex-row justify-end m-1 opacity-50">
 					{socials.map((social) => (
 						<LazySocialIcon key={social.name} social={social} />
 					))}
