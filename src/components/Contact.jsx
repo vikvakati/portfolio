@@ -17,6 +17,7 @@ const Contact = () => {
 		const { name, value } = e.target;
 		setForm({ ...form, [name]: value });
 	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setLoading(true);
@@ -151,6 +152,24 @@ const Contact = () => {
 						<Tilt>{loading ? "Sending..." : "Send"}</Tilt>
 					</button>
 				</form>
+
+				{/* Dropbox Upload Button */}
+				<motion.div
+					variants={slideIn("up", "tween", 0.3, 1)}
+					className="mt-6 text-center"
+				>
+					<button
+						onClick={() =>
+							window.open(
+								"https://www.dropbox.com/request/7N80WimUb1gfvzObQCHl",
+								"_blank"
+							)
+						}
+						className="bg-green-600 py-3 px-8 outline-none w-fit text-white font-bold shadow-md rounded-xl hover:bg-green-500 transition-colors mx-auto"
+					>
+						Upload a File
+					</button>
+				</motion.div>
 			</motion.div>
 		</div>
 	);
