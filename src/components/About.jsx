@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
-
+import { portrait } from "../assets"; // import portrait image
 
 const About = () => {
 	return (
@@ -14,14 +14,23 @@ const About = () => {
 
 			<motion.div
 				variants={fadeIn("", "", 0.1, 1)}
-				className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+				className="mt-4 text-secondary text-[17px] max-w-5xl leading-[30px]"
 			>
 				<div className="w-full blue-purple-gradient p-[1px] rounded-lg shadow-card">
 					<div
 						options={{ max: 45, scale: 1, speed: 450 }}
-						className="bg-tertiary rounded-lg py-5 px-12 min-h-[200px] flex justify-evenly items-center flex-col"
+						className="bg-tertiary rounded-lg py-10 px-12 min-h-[200px] flex flex-col md:flex-row items-center gap-10"
 					>
-						<p>
+						{/* Portrait image with lazy loading */}
+						<img
+							src={portrait}
+							alt="Portrait"
+							loading="lazy"
+							className="w-72 h-72 rounded-full object-cover shadow-lg"
+						/>
+
+						{/* Text */}
+						<p className="flex-1">
 							Embedded systems engineer with a master's in computer engineering,
 							driven by a passion for innovation of the Internet of Things. I am
 							committed to exploring and implementing cutting-edge technologies

@@ -147,9 +147,9 @@ const Contact = () => {
 					</label>
 					<button
 						type="submit"
-						className="bg-[#3781e5] py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl mx-auto"
+						className="bg-[#3781e5] py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl hover:bg-[#4c8de2] mx-auto"
 					>
-						<Tilt>{loading ? "Sending..." : "Send"}</Tilt>
+						{loading ? "Sending..." : "Send"}
 					</button>
 				</form>
 

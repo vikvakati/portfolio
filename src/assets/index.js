@@ -15,6 +15,7 @@ import security_cam from "./security_cam.png";
 import energy_monitor from "./energy_monitor.png";
 import Rad_Calc_demo from "./Rad_Calc_demo.png";
 
+import portrait from "./portrait.png";
 import resume from "./Vikranth_Vakati_Resume.pdf";
 
 import matlab from "./tech/matlab.png";
@@ -51,6 +52,7 @@ export {
 	security_cam,
 	energy_monitor,
 	Rad_Calc_demo,
+	portrait,
 	resume,
 	matlab,
 	git,
