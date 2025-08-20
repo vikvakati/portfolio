@@ -31,18 +31,18 @@ const About = () => {
 
 						{/* Text */}
 						<p className="flex-1">
-							Embedded systems engineer based in Boston, MA with a M.S. in Computer Engineering. I am
-							committed to advancing the Internet of Things by
-							exploring and implementing cutting-edge technologies that enable
-							seamless data exchange and dynamic user experiences.
+							Embedded systems engineer based in Boston, MA with a M.S. in
+							Computer Engineering. I am committed to advancing the Internet of
+							Things by exploring and implementing cutting-edge technologies
+							that enable seamless data exchange and dynamic user experiences.
 							<br />
 							<br />
 							<strong>
 								Passionate about technology, curious by nature, and always
 								building
 							</strong>
-							<br />whether it's electronics in my workshop or memories
-							outdoors.
+							<br />
+							whether it's electronics in my workshop or memories outdoors.
 						</p>
 					</div>
 				</div>
