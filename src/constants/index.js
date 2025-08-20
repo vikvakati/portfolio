@@ -38,10 +38,10 @@ export const navLinks = [
 		id: "work",
 		title: "Work",
 	},
-	{
-		id: "lunar-lander",
-		title: "Lunar Lander",
-	},
+	// {
+	// 	id: "tools",
+	// 	title: "Tools",
+	// },
 	{
 		id: "contact",
 		title: "Contact",
@@ -78,7 +78,7 @@ const technologies = [
 		icon: javascript,
 	},
 	{
-		name: "HTML5/CSS",
+		name: "Web Development",
 		icon: html_css,
 	},
 	{

@@ -6,7 +6,7 @@ const Footer = () => {
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				View Page Source
+				Vikranth Vakati © 2023
 			</a>
 		</div>
 	);

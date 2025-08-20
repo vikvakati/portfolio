@@ -110,9 +110,16 @@ const Navbar = () => {
 						} hover:text-white text-[18px] font-medium cursor-pointer`}
 						onClick={() => handleNavClick("Resume")}
 					>
-						<a href={resume} target="_blank" rel="noopener noreferrer">
-							Resume
-						</a>
+						<div className="blue-purple-gradient p-[2px] rounded-lg">
+							<a
+								href={resume}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="p-[2px] rounded-lg bg-primary"
+							>
+								Resume
+							</a>
+						</div>
 					</li>
 				</ul>
 
@@ -129,7 +136,7 @@ const Navbar = () => {
 					<div
 						className={`${
 							!toggle ? "hidden" : "flex"
-						} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+						} p-4 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
 					>
 						<ul className="list-none flex justify-end items-start flex-col gap-4">
 							{renderNavLinks(true)}
@@ -142,9 +149,16 @@ const Navbar = () => {
 									handleNavClick("Resume");
 								}}
 							>
-								<a href={resume} target="_blank" rel="noopener noreferrer">
-									Resume
-								</a>
+								<div className="blue-purple-gradient px-[2px] py-[3px] rounded-lg">
+									<a
+										href={resume}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="p-[2px] rounded-lg black-gradient"
+									>
+										Resume
+									</a>
+								</div>
 							</li>
 						</ul>
 					</div>

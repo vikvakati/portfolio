@@ -31,10 +31,10 @@ const About = () => {
 
 						{/* Text */}
 						<p className="flex-1">
-							Embedded systems engineer with a master's in computer engineering,
-							dedicated to advancing the Internet of Things. I am committed to
+							Embedded systems engineer based in Boston, MA with a M.S. in Computer Engineering. I am
+							committed to advancing the Internet of Things by
 							exploring and implementing cutting-edge technologies that enable
-							seamless connectivity, data exchange, and dynamic web experiences.
+							seamless data exchange and dynamic user experiences.
 							<br />
 							<br />
 							<strong>
