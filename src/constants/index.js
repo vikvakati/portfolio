@@ -2,9 +2,9 @@ import {
 	javascript,
 	cpp,
 	html_css,
-	reactjs,
+	math,
 	python,
-	nodejs,
+	it,
 	image_processing,
 	git,
 	matlab,
@@ -14,11 +14,7 @@ import {
 	wit_seal,
 	delta_magnetics,
 	farm,
-	// antikythera,
-	// deblur,
 	hr_detection,
-	// antenna_controller,
-	// plc_hopper,
 	security_cam,
 	energy_monitor,
 	github,
@@ -58,20 +54,20 @@ const technologies = [
 		icon: cpp,
 	},
 	{
+		name: "Embedded Systems",
+		icon: embedded,
+	},
+	{
+		name: "Mathematical Modeling",
+		icon: math,
+	},
+	{
 		name: "Spectral Imaging",
 		icon: spectral,
 	},
 	{
-		name: "Electrical Wiring",
-		icon: wiring,
-	},
-	{
 		name: "Image Processing",
 		icon: image_processing,
-	},
-	{
-		name: "Embedded Systems",
-		icon: embedded,
 	},
 	{
 		name: "JavaScript",
@@ -82,16 +78,16 @@ const technologies = [
 		icon: html_css,
 	},
 	{
+		name: "Electrical Wiring",
+		icon: wiring,
+	},
+	{
+		name: "Information Technology",
+		icon: it,
+	},
+	{
 		name: "MATLAB",
 		icon: matlab,
-	},
-	{
-		name: "Node JS",
-		icon: nodejs,
-	},
-	{
-		name: "React JS",
-		icon: reactjs,
 	},
 	{
 		name: "git",
@@ -173,7 +169,7 @@ const projects = [
 			"https://www.bodkindesign.com/reference-library/blackbody-spectral-radiance-calculator/",
 	},
 	{
-		name: "Real Time Energy Monitoring",
+		name: "Optimizing Power Generation",
 		date: "March 2024",
 		description:
 			"Real time energy monitoring system to optimize university campus power generation. Implemented using a Raspberry Pi to aggregate data from legacy and modern systems for monitoring historical and real time power metrics on a user-friendly web interface. Designed for administrative use, with insightful plots and low cost.",
@@ -220,7 +216,7 @@ const projects = [
 		image: hr_detection,
 	},
 	{
-		name: "Rural Farm Monitoring Network",
+		name: "Real Time Farm Monitoring Network",
 		date: "September 2023",
 		description:
 			"Offline mesh network to monitor vital information on farms. Data is sent to a server node which displays all vital information in a web interface. The network is designed to be low power and low cost, while still providing high reliability and security.",

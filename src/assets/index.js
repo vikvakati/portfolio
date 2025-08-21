@@ -5,12 +5,8 @@ import gmail from "./gmail.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
-// import antikythera from "./antikythera.png";
-// import deblur from "./deblur.png";
 import farm from "./farm.png";
 import hr_detection from "./hr_detection.png";
-// import antenna_controller from "./antenna_controller.png";
-// import plc_hopper from "./plc_hopper.png";
 import security_cam from "./security_cam.png";
 import energy_monitor from "./energy_monitor.png";
 import Rad_Calc_demo from "./Rad_Calc_demo.png";
@@ -22,8 +18,8 @@ import matlab from "./tech/matlab.png";
 import git from "./tech/git.png";
 import html_css from "./tech/html_css.png";
 import javascript from "./tech/javascript.png";
-import nodejs from "./tech/nodejs.png";
-import reactjs from "./tech/reactjs.png";
+import it from "./tech/it.png";
+import math from "./tech/math.png";
 import python from "./tech/python.png";
 import cpp from "./tech/cpp.png";
 import windows_linux from "./tech/windows_linux.png";
@@ -44,11 +40,7 @@ export {
 	menu,
 	close,
 	farm,
-	// antikythera,
-	// deblur,
 	hr_detection,
-	// antenna_controller,
-	// plc_hopper,
 	security_cam,
 	energy_monitor,
 	Rad_Calc_demo,
@@ -58,8 +50,8 @@ export {
 	git,
 	html_css,
 	javascript,
-	nodejs,
-	reactjs,
+	math,
+	it,
 	python,
 	cpp,
 	windows_linux,
