@@ -13,6 +13,15 @@ import {
 } from "./components";
 
 const App = () => {
+	console.log(
+		`%c
+		     ██    ██ ██    ██ 
+		      ██  ██   ██  ██  
+		       ████     ████   
+		        ██       ██    
+		👋 Hey there, explorer!`,
+		"color: #00ffcc; font-size: 16px; font-weight: bold;"
+	);
 	return (
 		<BrowserRouter>
 			<div className="bg-primary">

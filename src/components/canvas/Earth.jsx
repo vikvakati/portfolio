@@ -16,6 +16,11 @@ const Earth = () => {
 };
 
 const EarthCanvas = () => {
+	// Detect touch screens
+	const isTouchScreen =
+		typeof window !== "undefined" &&
+		window.matchMedia("(pointer: coarse)").matches;
+
 	return (
 		<Canvas
 			shadows
@@ -28,6 +33,7 @@ const EarthCanvas = () => {
 					autoRotate={true}
 					autoRotateSpeed={1.25}
 					enableZoom={false}
+					enableRotate={!isTouchScreen} // disable rotation only for touch screens
 					maxPolarAngle={Math.PI / 2}
 					minPolarAngle={Math.PI / 2}
 				/>

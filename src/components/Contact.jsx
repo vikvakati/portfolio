@@ -101,7 +101,7 @@ const Contact = () => {
 				<p className={styles.sectionSubText}>Get in touch.</p>
 
 				{/* social links */}
-				<div className="absolute inset-0 flex flex-row justify-end m-1 opacity-50">
+				<div className="absolute inset-0 flex flex-row justify-end m-1 xl:m-6 opacity-50">
 					{socials.map((social) => (
 						<LazySocialIcon key={social.name} social={social} />
 					))}
@@ -110,7 +110,7 @@ const Contact = () => {
 				<form
 					ref={formRef}
 					onSubmit={handleSubmit}
-					className="mt-12 flex flex-col gap-8 relative"
+					className="mt-8 flex flex-col gap-8 relative"
 				>
 					<label className="flex flex-col">
 						<span className="text-white font-medium mb-4">Name</span>
@@ -137,7 +137,7 @@ const Contact = () => {
 					<label className="flex flex-col">
 						<span className="text-white font-medium mb-4">Message</span>
 						<textarea
-							rows="7"
+							rows="5"
 							name="message"
 							value={form.message}
 							onChange={handleChange}
@@ -147,7 +147,7 @@ const Contact = () => {
 					</label>
 					<button
 						type="submit"
-						className="bg-[#3781e5] py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl hover:bg-[#4c8de2] mx-auto"
+						className="bg-[#3781e5] py-2 px-6 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl hover:bg-[#4c8de2] mx-auto"
 					>
 						{loading ? "Sending..." : "Send"}
 					</button>
@@ -165,7 +165,7 @@ const Contact = () => {
 								"_blank"
 							)
 						}
-						className="bg-green-600 py-3 px-8 outline-none w-fit text-white font-bold shadow-md rounded-xl hover:bg-green-500 transition-colors mx-auto"
+						className="bg-green-600 py-2 px-6 outline-none w-fit text-white font-bold shadow-md rounded-xl hover:bg-green-500 transition-colors mx-auto"
 					>
 						Upload a File
 					</button>

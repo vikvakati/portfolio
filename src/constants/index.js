@@ -155,8 +155,9 @@ const experiences = [
 const projects = [
 	{
 		name: "Spectral Radiance Calculator",
+		date: "July 2025",
 		description:
-			"Interactive web-based tool to compute and visualize spectral radiance using Planck’s law. Supports temperature in Celsius or Kelvin, custom waveband ranges, and both wavelength and wavenumber units. Features real-time plotting with Plotly, dynamic unit conversion, and band-integrated radiance calculation. Designed for scientific and engineering use, with responsive layout and intuitive controls.",
+			"Interactive web-based tool to compute spectral radiance using Planck’s law. Features real-time plotting, peak calculations, and band integration. Designed for scientific and engineering use, with responsive layout and intuitive controls.",
 		tags: [
 			{
 				name: "JavaScript",
@@ -168,12 +169,14 @@ const projects = [
 			},
 		],
 		image: Rad_Calc_demo,
-		source_code_link: "https://www.bodkindesign.com/reference-library/blackbody-spectral-radiance-calculator/",
+		source_code_link:
+			"https://www.bodkindesign.com/reference-library/blackbody-spectral-radiance-calculator/",
 	},
 	{
-		name: "Real Time Energy Monitoring System",
+		name: "Real Time Energy Monitoring",
+		date: "March 2024",
 		description:
-			"Real time energy monitoring system to optimize university campus power generation. Diverse data from legacy and modern systems was aggregated to monitor historical and real time power metrics on a user-friendly web interface. The system was implemented using a Raspberry Pi to be low power and low cost, while maintaining reliability.",
+			"Real time energy monitoring system to optimize university campus power generation. Implemented using a Raspberry Pi to aggregate data from legacy and modern systems for monitoring historical and real time power metrics on a user-friendly web interface. Designed for administrative use, with insightful plots and low cost.",
 		tags: [
 			{
 				name: "Python",
@@ -187,9 +190,10 @@ const projects = [
 		image: energy_monitor,
 	},
 	{
-		name: "Security Camera",
+		name: "Web Enabled Security Camera",
+		date: "February 2024",
 		description:
-			"Security camera using the ESP32-CAM microcontroller. The camera is capable of capturing images and video, and is equipped with motion detection and live streaming capabilities over Wi-Fi. The system is designed to be low power and low cost, while still providing high reliability and security.",
+			"Security camera using the ESP32-CAM microcontroller. The system is capable of motion detection and has live streaming capabilities over Wi-Fi. Designed to be low power and low cost, while still providing high reliability and security.",
 		tags: [
 			{
 				name: "C++",
@@ -202,32 +206,9 @@ const projects = [
 		],
 		image: security_cam,
 	},
-	/*{
-		name: "Automated Hopper Dispensing System",
-		description:
-			"Ladder logic program to automate the dispensing of materials from a hopper into boxes on a conveyor belt. The system was implemented using CLICK programming software in conjunction with a 4-channel PLC interfacing with a conveyor motor, photo sensor, and level switch.",
-		tags: [
-			{
-				name: "Ladder Logic",
-				color: "grey-text-gradient",
-			},
-		],
-		image: plc_hopper,
-	},
 	{
-		name: "Antenna Controller Design",
-		description:
-			"Digital lead controller for an antenna control system in Simulink, utilizing MATLAB's root locus analysis for system analysis, design, and optimization. Achieved a settling time reduction within 0.8% of design requirements through detailed analyses and fine-tuning.",
-		tags: [
-			{
-				name: "Simulink",
-				color: "orange-text-gradient",
-			},
-		],
-		image: antenna_controller,
-	},*/
-	{
-		name: "Optical Heart Rate Detection Algorithm",
+		name: "Optical Heart Rate Detection",
+		date: "April 2023",
 		description:
 			"Non-invasive heart rate detection algorithm utilizing optimal color channels and targeted regions for signal extraction. The algorithm employs signal processing techniques to analyze frequency domain changes related to the cardiac cycle, achieving a robust 95% accuracy through extensive testing and optimization.",
 		tags: [
@@ -239,7 +220,8 @@ const projects = [
 		image: hr_detection,
 	},
 	{
-		name: "Rural Farm Monitoring",
+		name: "Rural Farm Monitoring Network",
+		date: "September 2023",
 		description:
 			"Offline mesh network to monitor vital information on farms. Data is sent to a server node which displays all vital information in a web interface. The network is designed to be low power and low cost, while still providing high reliability and security.",
 		tags: [
@@ -255,36 +237,6 @@ const projects = [
 		image: farm,
 		source_code_link: "https://github.com/vikvakati/monitor-soil",
 	},
-	/*{
-		name: "Antikythera Simulator",
-		description:
-			"Application that displays the solar system along with planetary event dates from a database. Enables users to search/sort planetary events and view the solar system simulation from any date.",
-		tags: [
-			{
-				name: "Python",
-				color: "green-text-gradient",
-			},
-			{
-				name: "SQL",
-				color: "blue-text-gradient",
-			},
-		],
-		image: antikythera,
-		source_code_link: "https://github.com/vikvakati/ELEC3225AntikytheraProject",
-	},
-	{
-		name: "Image Restoration",
-		description:
-			"Application to remove motion blur from videos and images by estimating blur angle and length and then applying weiner deconvolution. The interface allows the user to select a video or image, and then the application automatically estimates the blur angle and length and displays the deblurred image.",
-		tags: [
-			{
-				name: "Matlab",
-				color: "orange-text-gradient",
-			},
-		],
-		image: deblur,
-		source_code_link: "https://github.com/",
-	},*/
 ];
 
 const socials = [
