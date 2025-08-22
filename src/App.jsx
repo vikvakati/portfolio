@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import {
 	About,
@@ -13,33 +14,50 @@ import {
 } from "./components";
 
 const App = () => {
-	console.log(
-		`%c
-		     ██    ██ ██    ██ 
-		      ██  ██   ██  ██  
-		       ████     ████   
-		        ██       ██    
-		👋 Hey there, explorer!`,
-		"color: #00ffcc; font-size: 16px; font-weight: bold;"
-	);
+	const [activeSection, setActiveSection] = useState(""); // Shared
+
+	// Log only once in dev, even with StrictMode double-mount
+	useEffect(() => {
+		if (!window.__EASTER_EGG_LOGGED__) {
+			window.__EASTER_EGG_LOGGED__ = true;
+			console.log(
+				`%c
+             ██    ██ ██    ██ 
+              ██  ██   ██  ██  
+               ████     ████   
+                ██       ██    
+        👋 Hey there, explorer!
+        🔎 Easter Egg Hunt:
+				1) Unlock the source code link!`,
+				"color: #00ffcc; font-size: 16px; font-weight: bold;"
+			);
+		}
+	}, []);
+
 	return (
 		<BrowserRouter>
 			<div className="bg-primary">
-				<Navbar />
+				{/* Navbar reports the current active title (e.g., "Resume") */}
+				<Navbar onActiveChange={setActiveSection} />
+
 				<div className="relative z-0">
 					<Hero />
 					<StarsCanvas />
 					<About />
 					<Tech />
 				</div>
+
 				<Experience />
 				<Works />
+
 				<div className="relative z-0">
 					{/* <Game /> */}
 					<Contact />
 					<StarsCanvas />
 				</div>
-				<Footer />
+
+				{/* Footer decides whether the source link is active */}
+				<Footer resumeActive={activeSection === "Resume"} />
 			</div>
 		</BrowserRouter>
 	);

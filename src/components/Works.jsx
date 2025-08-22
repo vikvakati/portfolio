@@ -168,7 +168,7 @@ const Works = () => {
 			>
 				<motion.div
 					ref={scrollRef}
-					className="flex gap-7 py-5 cursor-grab"
+					className="flex gap-7 py-5 cursor-grab active:cursor-grabbing"
 					style={{ x }}
 					drag="x"
 					dragConstraints={{ left: -Infinity, right: Infinity }}

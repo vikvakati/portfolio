@@ -4,18 +4,17 @@ import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close, resume } from "../assets";
 
-const Navbar = () => {
+const Navbar = ({ onActiveChange }) => {
 	const [active, setActive] = useState("");
 	const [toggle, setToggle] = useState(false);
 	const ignoreScroll = useRef(false);
 	const activeRef = useRef(active);
 
-	// Keep activeRef in sync
 	useEffect(() => {
 		activeRef.current = active;
-	}, [active]);
+		if (onActiveChange) onActiveChange(active); // 🔑 report up
+	}, [active, onActiveChange]);
 
-	// Update URL hash without jumping
 	const updateHash = (sectionTitle) => {
 		if (sectionTitle) {
 			const currentId = navLinks.find((n) => n.title === sectionTitle)?.id;
@@ -25,7 +24,6 @@ const Navbar = () => {
 		}
 	};
 
-	// Handle scroll to highlight current section
 	useEffect(() => {
 		const sections = navLinks
 			.map((n) => document.getElementById(n.id))
@@ -47,7 +45,7 @@ const Navbar = () => {
 					}
 
 					if (currentSection !== activeRef.current) {
-						setActive(currentSection);
+						setActive(currentSection); // 🔁 triggers onActiveChange via effect
 						updateHash(currentSection);
 					}
 					ticking = false;
@@ -58,13 +56,11 @@ const Navbar = () => {
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		handleScroll();
-
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
-	// Smooth scroll to section when nav clicked
 	const handleNavClick = (title) => {
-		setActive(title);
+		setActive(title); // 🔁 triggers onActiveChange via effect
 		ignoreScroll.current = true;
 
 		const targetId = navLinks.find((n) => n.title === title)?.id;
@@ -77,7 +73,6 @@ const Navbar = () => {
 		}, 500);
 	};
 
-	// Helper for Resume link to reduce repetition
 	const ResumeLink = ({ isMobile = false }) => (
 		<li
 			className={`${
@@ -87,23 +82,24 @@ const Navbar = () => {
 					? "font-poppins font-medium text-[16px]"
 					: "text-[18px] font-medium"
 			} cursor-pointer`}
-			onClick={() => handleNavClick("Resume")}
+			onClick={() => {
+				handleNavClick("Resume"); // set active
+				// open resume in new tab
+				window.open(resume, "_blank", "noopener,noreferrer");
+			}}
 		>
 			<div
 				className={`${
 					isMobile ? "px-[2px] py-[3px]" : "p-[2px]"
 				} rounded-lg blue-purple-gradient`}
 			>
-				<a
-					href={resume}
-					target="_blank"
-					rel="noopener noreferrer"
+				<span
 					className={`p-[2px] rounded-lg ${
 						isMobile ? "black-gradient" : "bg-primary"
 					}`}
 				>
 					Resume
-				</a>
+				</span>
 			</div>
 		</li>
 	);
@@ -147,13 +143,13 @@ const Navbar = () => {
 					</p>
 				</Link>
 
-				{/* Desktop Menu */}
+				{/* Desktop */}
 				<ul className="list-none hidden sm:flex flex-row gap-10">
 					{renderNavLinks()}
 					<ResumeLink />
 				</ul>
 
-				{/* Mobile Menu */}
+				{/* Mobile */}
 				<div className="sm:hidden flex flex-1 justify-end items-center">
 					<img
 						src={toggle ? close : menu}
