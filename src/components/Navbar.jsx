@@ -8,43 +8,51 @@ const Navbar = () => {
 	const [active, setActive] = useState("");
 	const [toggle, setToggle] = useState(false);
 	const ignoreScroll = useRef(false);
+	const activeRef = useRef(active);
 
-	// Update URL hash without causing a jump
+	// Keep activeRef in sync
+	useEffect(() => {
+		activeRef.current = active;
+	}, [active]);
+
+	// Update URL hash without jumping
 	const updateHash = (sectionTitle) => {
 		if (sectionTitle) {
 			const currentId = navLinks.find((n) => n.title === sectionTitle)?.id;
-			if (currentId) {
-				history.replaceState(null, "", `#${currentId}`);
-			}
+			if (currentId) history.replaceState(null, "", `#${currentId}`);
 		} else {
 			history.replaceState(null, "", window.location.pathname);
 		}
 	};
 
+	// Handle scroll to highlight current section
 	useEffect(() => {
 		const sections = navLinks
 			.map((n) => document.getElementById(n.id))
 			.filter(Boolean);
+		if (!sections.length) return;
 
-		if (sections.length === 0) return;
+		let ticking = false;
 
 		const handleScroll = () => {
 			if (ignoreScroll.current) return;
 
-			let currentSection = "";
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					let currentSection = "";
+					for (let i = 0; i < sections.length; i++) {
+						const rect = sections[i].getBoundingClientRect();
+						if (rect.top <= 100) currentSection = navLinks[i].title;
+						else break;
+					}
 
-			for (let i = 0; i < sections.length; i++) {
-				const rect = sections[i].getBoundingClientRect();
-				if (rect.top <= 100) {
-					currentSection = navLinks[i].title;
-				} else {
-					break;
-				}
-			}
-
-			if (currentSection !== active) {
-				setActive(currentSection);
-				updateHash(currentSection);
+					if (currentSection !== activeRef.current) {
+						setActive(currentSection);
+						updateHash(currentSection);
+					}
+					ticking = false;
+				});
+				ticking = true;
 			}
 		};
 
@@ -52,15 +60,53 @@ const Navbar = () => {
 		handleScroll();
 
 		return () => window.removeEventListener("scroll", handleScroll);
-	}, [active]);
+	}, []);
 
+	// Smooth scroll to section when nav clicked
 	const handleNavClick = (title) => {
 		setActive(title);
 		ignoreScroll.current = true;
+
+		const targetId = navLinks.find((n) => n.title === title)?.id;
+		if (targetId) {
+			document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
+		}
+
 		setTimeout(() => {
 			ignoreScroll.current = false;
-		}, 500); // re-enable scroll updates after smooth scroll
+		}, 500);
 	};
+
+	// Helper for Resume link to reduce repetition
+	const ResumeLink = ({ isMobile = false }) => (
+		<li
+			className={`${
+				active === "Resume" ? "text-white" : "text-secondary"
+			} hover:text-white ${
+				isMobile
+					? "font-poppins font-medium text-[16px]"
+					: "text-[18px] font-medium"
+			} cursor-pointer`}
+			onClick={() => handleNavClick("Resume")}
+		>
+			<div
+				className={`${
+					isMobile ? "px-[2px] py-[3px]" : "p-[2px]"
+				} rounded-lg blue-purple-gradient`}
+			>
+				<a
+					href={resume}
+					target="_blank"
+					rel="noopener noreferrer"
+					className={`p-[2px] rounded-lg ${
+						isMobile ? "black-gradient" : "bg-primary"
+					}`}
+				>
+					Resume
+				</a>
+			</div>
+		</li>
+	);
 
 	const renderNavLinks = (isMobile = false) =>
 		navLinks.map((link) => (
@@ -92,7 +138,7 @@ const Navbar = () => {
 					className="flex items-center gap-2"
 					onClick={() => {
 						handleNavClick("");
-						window.scrollTo(0, 0);
+						window.scrollTo({ top: 0, behavior: "smooth" });
 					}}
 				>
 					<img src={logo} alt="logo" className="w-14 h-14 object-contain" />
@@ -101,29 +147,13 @@ const Navbar = () => {
 					</p>
 				</Link>
 
-				{/* Desktop menu */}
+				{/* Desktop Menu */}
 				<ul className="list-none hidden sm:flex flex-row gap-10">
 					{renderNavLinks()}
-					<li
-						className={`${
-							active === "Resume" ? "text-white" : "text-secondary"
-						} hover:text-white text-[18px] font-medium cursor-pointer`}
-						onClick={() => handleNavClick("Resume")}
-					>
-						<div className="blue-purple-gradient p-[2px] rounded-lg">
-							<a
-								href={resume}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="p-[2px] rounded-lg bg-primary"
-							>
-								Resume
-							</a>
-						</div>
-					</li>
+					<ResumeLink />
 				</ul>
 
-				{/* Mobile menu toggle */}
+				{/* Mobile Menu */}
 				<div className="sm:hidden flex flex-1 justify-end items-center">
 					<img
 						src={toggle ? close : menu}
@@ -131,8 +161,6 @@ const Navbar = () => {
 						className="w-[28px] h-[28px] object-contain cursor-pointer"
 						onClick={() => setToggle((prev) => !prev)}
 					/>
-
-					{/* Mobile menu dropdown */}
 					<div
 						className={`${
 							!toggle ? "hidden" : "flex"
@@ -140,26 +168,7 @@ const Navbar = () => {
 					>
 						<ul className="list-none flex justify-end items-start flex-col gap-4">
 							{renderNavLinks(true)}
-							<li
-								className={`${
-									active === "Resume" ? "text-white" : "text-secondary"
-								} hover:text-white font-poppins font-medium cursor-pointer text-[16px]`}
-								onClick={() => {
-									setToggle(false);
-									handleNavClick("Resume");
-								}}
-							>
-								<div className="blue-purple-gradient px-[2px] py-[3px] rounded-lg">
-									<a
-										href={resume}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="p-[2px] rounded-lg black-gradient"
-									>
-										Resume
-									</a>
-								</div>
-							</li>
+							<ResumeLink isMobile />
 						</ul>
 					</div>
 				</div>

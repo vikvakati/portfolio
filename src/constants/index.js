@@ -104,7 +104,7 @@ const experiences = [
 		title: "Embedded Systems Engineer",
 		company_name: "Bodkin Design & Engineering",
 		icon: bodkin_design,
-		iconBg: "#081741",
+		iconBg: "#383E56",
 		date: "May 2025 - Present",
 		points: [
 			"Design software for image acquisition, visualization, and control.",
@@ -127,7 +127,7 @@ const experiences = [
 		title: "Electrical Systems Test Engineer",
 		company_name: "Delta Magnetics and Controls",
 		icon: delta_magnetics,
-		iconBg: "#081741",
+		iconBg: "#383E56",
 		date: "January 2021 - January 2023",
 		points: [
 			"Wired and assembled control panels following IEC standard schematics.",

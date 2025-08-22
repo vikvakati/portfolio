@@ -19,7 +19,7 @@ const LazyImage = ({ src, alt, className }) => {
 					observer.disconnect();
 				}
 			},
-			{ threshold: 0.1 }
+			{ rootMargin: "1000px" }
 		);
 		if (ref.current) observer.observe(ref.current);
 		return () => observer.disconnect();
@@ -27,20 +27,27 @@ const LazyImage = ({ src, alt, className }) => {
 
 	return (
 		<div ref={ref} className="w-full h-full">
-			{visible && (
-				<img
-					src={src}
-					alt={alt}
-					className={`${className} select-none pointer-events-none`}
-					loading="lazy"
-					draggable={false}
-				/>
-			)}
+			<img
+				src={visible ? src : ""}
+				alt={alt}
+				className={`${className} select-none pointer-events-none transition-opacity duration-500 ${
+					visible ? "opacity-100" : "opacity-0"
+				}`}
+				loading="lazy"
+				draggable={false}
+			/>
 		</div>
 	);
 };
 
-const ProjectCard = ({ name, date, description, tags, image, source_code_link }) => (
+const ProjectCard = ({
+	name,
+	date,
+	description,
+	tags,
+	image,
+	source_code_link,
+}) => (
 	<div className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex-shrink-0 flex flex-col">
 		<div className="relative w-full h-[230px]">
 			<LazyImage
@@ -49,7 +56,7 @@ const ProjectCard = ({ name, date, description, tags, image, source_code_link })
 				className="w-full h-full object-cover rounded-2xl"
 			/>
 
-			{/* Uncomment below if you want a source code link overlay like in the Tilt version */}
+			{/* Uncomment if you want a source code overlay */}
 			{/*
       <div className="absolute inset-0 flex justify-end m-3 card-img_hover opacity-75">
         <div
@@ -69,7 +76,7 @@ const ProjectCard = ({ name, date, description, tags, image, source_code_link })
 			<p className="mt-2 text-secondary text-[14px]">{description}</p>
 		</div>
 
-		{/* Tags pushed to the bottom */}
+		{/* Tags pushed to bottom */}
 		<div className="mt-auto pt-4 flex flex-wrap gap-2">
 			{tags.map((tag) => (
 				<p key={tag.name} className={`text-[14px] ${tag.color}`}>
@@ -80,13 +87,12 @@ const ProjectCard = ({ name, date, description, tags, image, source_code_link })
 	</div>
 );
 
-
 const Works = () => {
 	const scrollRef = useRef(null);
 	const x = useMotionValue(0);
 	const [cardWidth, setCardWidth] = useState(0);
 
-	// Measure a single card + gap
+	// Measure card + gap
 	useEffect(() => {
 		if (scrollRef.current) {
 			const card = scrollRef.current.querySelector(".flex-shrink-0");
@@ -94,6 +100,14 @@ const Works = () => {
 			if (card) setCardWidth(card.offsetWidth + gap);
 		}
 	}, []);
+
+	// Set initial offset to the "main" set (middle)
+	useEffect(() => {
+		if (cardWidth > 0) {
+			const offset = -(cardWidth * projects.length);
+			x.set(offset);
+		}
+	}, [cardWidth, x]);
 
 	// Infinite auto-scroll
 	useEffect(() => {
@@ -118,10 +132,8 @@ const Works = () => {
 		return () => cancelAnimationFrame(frame);
 	}, [x, cardWidth]);
 
-	// Only render previous, current, and next sets
+	// Render prev, main, next sets
 	const renderProjects = () => {
-		const totalWidth = cardWidth * projects.length || 1;
-
 		const prevSet = projects.map((p, i) => (
 			<ProjectCard key={`prev-${i}`} {...p} />
 		));
@@ -144,9 +156,7 @@ const Works = () => {
 				viewport={{ once: true, amount: 0.1 }}
 			>
 				<h2 className={styles.sectionHeadText}>Work</h2>
-				<p className={styles.sectionSubText}>
-					Endless innovation.
-				</p>
+				<p className={styles.sectionSubText}>Endless innovation.</p>
 			</motion.div>
 
 			<motion.div
