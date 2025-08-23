@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close, resume } from "../assets";
+import { menu, close, resume } from "../assets"; // ⬅️ removed logo import
 
 const Navbar = ({ onActiveChange }) => {
 	const [active, setActive] = useState("");
@@ -12,7 +12,7 @@ const Navbar = ({ onActiveChange }) => {
 
 	useEffect(() => {
 		activeRef.current = active;
-		if (onActiveChange) onActiveChange(active); // 🔑 report up
+		if (onActiveChange) onActiveChange(active);
 	}, [active, onActiveChange]);
 
 	const updateHash = (sectionTitle) => {
@@ -45,7 +45,7 @@ const Navbar = ({ onActiveChange }) => {
 					}
 
 					if (currentSection !== activeRef.current) {
-						setActive(currentSection); // 🔁 triggers onActiveChange via effect
+						setActive(currentSection);
 						updateHash(currentSection);
 					}
 					ticking = false;
@@ -60,7 +60,7 @@ const Navbar = ({ onActiveChange }) => {
 	}, []);
 
 	const handleNavClick = (title) => {
-		setActive(title); // 🔁 triggers onActiveChange via effect
+		setActive(title);
 		ignoreScroll.current = true;
 
 		const targetId = navLinks.find((n) => n.title === title)?.id;
@@ -83,8 +83,7 @@ const Navbar = ({ onActiveChange }) => {
 					: "text-[18px] font-medium"
 			} cursor-pointer`}
 			onClick={() => {
-				handleNavClick("Resume"); // set active
-				// open resume in new tab
+				handleNavClick("Resume");
 				window.open(resume, "_blank", "noopener,noreferrer");
 			}}
 		>
@@ -137,10 +136,26 @@ const Navbar = ({ onActiveChange }) => {
 						window.scrollTo({ top: 0, behavior: "smooth" });
 					}}
 				>
-					<img src={logo} alt="logo" className="w-14 h-14 object-contain" />
-					<p className="text-white text-[18px] font-bold cursor-pointer flex">
+					{/* Animated SVG Logo */}
+					<svg
+						width="56"
+						height="56"
+						viewBox="0 0 106 149"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						className="handwriting w-14 h-14"
+					>
+						<path
+							d="M97.4606 8.67126C95.4311 11.0899 94.9103 19.6759 95.8982 34.4292C97.9518 28.1319 99.3483 22.2858 100.088 16.891C100.827 11.4961 100.707 8.38727 99.726 7.5645C99.203 7.12569 98.4479 7.49461 97.4606 8.67126ZM65.3828 43.9131C64.9252 43.5291 64.4496 43.6313 63.9559 44.2196C61.2134 47.4881 62.4433 55.3152 67.6457 67.7009C68.5181 61.7493 68.7702 56.6696 68.4021 52.4619C68.0235 48.134 67.017 45.2844 65.3828 43.9131ZM7.16441 132.412C11.2173 135.813 17.1532 136.505 24.972 134.488C32.7909 132.471 39.6622 127.933 45.5862 120.873C51.5101 113.813 56.3735 105.362 60.1763 95.5202C51.0847 92.6814 42.0272 92.6561 33.0039 95.4444C23.9806 98.2326 16.5344 103.124 10.6653 110.118C6.49664 115.087 4.24734 119.493 3.91744 123.338C3.46733 127.193 4.54965 130.218 7.16441 132.412ZM78.5361 103.908C79.1349 104.522 79.2698 105.025 78.9407 105.417C78.6116 105.809 78.0875 105.704 77.3684 105.1C72.7272 101.206 67.5912 98.2331 61.9604 96.1818C57.9593 106.526 52.7773 115.489 46.4145 123.072C40.0518 130.655 32.7533 135.503 24.5189 137.617C16.2297 139.796 9.89522 139.048 5.51548 135.373C2.37777 132.74 1.08469 129.037 1.63625 124.264C2.18782 119.491 5.28844 113.739 10.9381 107.006C16.5878 100.273 24.1426 95.5836 33.6024 92.9389C43.0623 90.2942 52.2178 90.4017 61.069 93.2615C63.496 86.3865 65.382 79.5587 66.7271 72.7783C63.388 65.0752 61.329 58.5018 60.5498 53.058C59.8256 47.5489 60.8347 43.1601 63.5773 39.8917C63.9612 39.4341 64.4865 39.2064 65.1529 39.2087C65.8743 39.1456 66.431 39.2786 66.8232 39.6077C68.9151 41.3629 70.1533 45.1311 70.5379 50.9122C70.912 56.5731 70.436 63.2472 69.1097 70.9345C71.4412 76.1213 75.4403 84.0998 81.107 94.8701C86.7738 105.64 91.3747 114.959 94.9099 122.827C98.4345 130.575 100.397 136.732 100.796 141.301L100.926 141.744L101.255 141.352C102.692 136.32 103.024 128.689 102.251 118.46C101.477 108.231 100.018 95.3658 97.8745 79.8657C95.7205 64.2453 94.3449 52.6756 93.7476 45.1565C93.0533 46.9133 91.8812 49.4386 90.2311 52.7326C89.7923 53.2556 89.4095 53.3799 89.0826 53.1057C88.4289 52.5572 88.5473 51.4868 89.4377 49.8947C91.2628 46.5248 92.589 43.6831 93.4163 41.3696C92.1174 21.6768 93.7168 9.15022 98.2146 3.78995C99.8053 1.89425 101.026 1.30293 101.875 2.01599C103.379 3.27757 103.632 7.55591 102.635 14.851C101.572 22.0913 99.453 30.06 96.2768 38.7571C96.7689 45.0739 98.1874 58.5176 100.532 79.088C102.812 99.6036 104.167 115.445 104.599 126.613C104.966 137.726 104.052 144.59 101.858 147.204C101.748 147.335 101.458 147.482 100.988 147.644C100.517 147.806 100.152 147.778 99.8901 147.558C99.694 147.394 99.3769 145.847 98.9389 142.917C97.7571 137.024 95.4143 130.324 91.9108 122.817C88.462 115.244 84.1699 106.686 79.0343 97.1411C73.9536 87.5309 70.334 80.4278 68.1753 75.8316C66.8325 81.9455 65.0859 87.9434 62.9354 93.8251C67.5623 95.4797 71.7715 97.8977 75.5629 101.079C76.2166 101.628 76.8756 102.236 77.5398 102.905L78.5361 103.908Z"
+							stroke="#3781E5"
+							strokeWidth="2"
+							fill="none"
+						/>
+					</svg>
+
+					{/* <p className="text-white text-[18px] font-bold cursor-pointer flex">
 						Vik &nbsp;<span className="sm:block hidden">Vakati</span>
-					</p>
+					</p> */}
 				</Link>
 
 				{/* Desktop */}
@@ -169,6 +184,20 @@ const Navbar = ({ onActiveChange }) => {
 					</div>
 				</div>
 			</div>
+
+			{/* Animation Styles */}
+			<style>{`
+        .handwriting path {
+          stroke-dasharray: 1045;
+          stroke-dashoffset: 1045;
+          animation: draw 3s linear forwards;
+        }
+        @keyframes draw {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+      `}</style>
 		</nav>
 	);
 };

@@ -189,7 +189,7 @@ const projects = [
 		name: "Web Enabled Security Camera",
 		date: "February 2024",
 		description:
-			"Security camera using the ESP32-CAM microcontroller. The system is capable of motion detection and has live streaming capabilities over Wi-Fi. Designed to be low power and low cost, while still providing high reliability and security.",
+			"Security camera using the ESP32-CAM microcontroller. The system is capable of motion detection and has live streaming capabilities over Wi-Fi. Designed to be low cost with secure data and high reliability.",
 		tags: [
 			{
 				name: "C++",
@@ -219,7 +219,7 @@ const projects = [
 		name: "Real Time Farm Monitoring Network",
 		date: "September 2023",
 		description:
-			"Offline mesh network to monitor vital information on farms. Data is sent to a server node which displays all vital information in a web interface. The network is designed to be low power and low cost, while still providing high reliability and security.",
+			"Offline mesh network to monitor vital information on farms. Data is sent to a server node which displays all information in a web interface. The network is designed to be low power and low cost, while still providing reliable and secure data.",
 		tags: [
 			{
 				name: "C++",
