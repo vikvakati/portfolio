@@ -125,13 +125,36 @@ const Navbar = ({ onActiveChange }) => {
 
 	// Animate SVG paths dynamically
 	useEffect(() => {
-		const paths = document.querySelectorAll(".handwriting path");
-		paths.forEach((path, index) => {
-			const length = path.getTotalLength();
-			path.style.strokeDasharray = length;
-			path.style.strokeDashoffset = length;
-			path.style.animation = `draw 1.5s ease forwards ${index * 0.15}s`;
-		});
+		const svg = document.querySelector(".handwriting");
+		const paths = svg?.querySelectorAll("path") || [];
+
+		const animate = () => {
+			paths.forEach((path, index) => {
+				const length = path.getTotalLength();
+				path.style.strokeDasharray = length;
+				path.style.strokeDashoffset = length;
+
+				// reset animation
+				path.style.animation = "none";
+				// force reflow (flush styles)
+				void path.getBoundingClientRect();
+
+				// re-apply animation
+				path.style.animation = `draw 1.5s ease forwards ${index * 0.15}s`;
+			});
+		};
+
+		// run once on page load
+		animate();
+
+		// re-run on hover
+		if (svg) {
+			svg.addEventListener("mouseenter", animate);
+		}
+
+		return () => {
+			if (svg) svg.removeEventListener("mouseenter", animate);
+		};
 	}, []);
 
 	return (
