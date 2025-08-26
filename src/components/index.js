@@ -6,6 +6,7 @@ import Tech from "./Tech";
 import Experience from "./Experience";
 import Works from "./Works";
 // import Game from "./Game";
+import Tools from "./Tools";
 import Footer from "./Footer";
 
 export {
@@ -16,6 +17,7 @@ export {
 	Experience,
 	Works,
 	// Game,
+	Tools,
 	EarthCanvas,
 	BallCanvas,
 	StarsCanvas,

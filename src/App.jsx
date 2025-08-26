@@ -9,6 +9,7 @@ import {
 	Works,
 	StarsCanvas,
 	// Game,
+	Tools,
 	Footer,
 } from "./components";
 
@@ -36,7 +37,7 @@ const App = () => {
 	return (
 		<BrowserRouter>
 			<div className="bg-primary">
-				{/* Navbar reports the current active title (e.g., "Resume") */}
+				{/* Navbar reports the current active title */}
 				<Navbar onActiveChange={setActiveSection} />
 
 				<div className="relative z-0">
@@ -51,9 +52,9 @@ const App = () => {
 
 				<div className="relative z-0">
 					{/* <Game /> */}
-					{/* <Contact /> */}
 					<StarsCanvas />
 				</div>
+				<Tools />
 
 				{/* Footer decides whether the source link is active */}
 			</div>

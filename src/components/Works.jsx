@@ -149,45 +149,31 @@ const Works = () => {
 
 	return (
 		<>
-			<motion.div
-				variants={textVariant()}
-				initial="hidden"
-				whileInView="show"
-				viewport={{ once: true, amount: 0.1 }}
-			>
+			<motion.div variants={textVariant()}>
 				<h2 className={styles.sectionHeadText}>Work</h2>
 				<p className={styles.sectionSubText}>Endless innovation.</p>
 			</motion.div>
 
-			<motion.div
-				variants={fadeIn("up", "spring", 0, 0.75)}
-				initial="hidden"
-				whileInView="show"
-				viewport={{ once: true, amount: 0.1 }}
-				className="mt-20 relative overflow-hidden"
-			>
-				<motion.div
-					ref={scrollRef}
-					className="flex gap-7 py-5 cursor-grab active:cursor-grabbing"
-					style={{ x }}
-					drag="x"
-					dragConstraints={{ left: -Infinity, right: Infinity }}
-					dragElastic={0.1}
-					onDragEnd={() => {
-						if (!scrollRef.current || cardWidth === 0) return;
-						const totalWidth = cardWidth * projects.length;
+			<motion.div variants={fadeIn("up", "spring", 0, 0.75)}>
+				<div className="mt-10 relative overflow-hidden w-full">
+					<motion.div
+						ref={scrollRef}
+						className="flex gap-7 py-5 cursor-grab active:cursor-grabbing"
+						style={{ x }}
+						drag="x"
+						dragConstraints={{ left: -Infinity, right: Infinity }}
+						dragElastic={0.1}
+						onDragEnd={() => {
+							if (!scrollRef.current || cardWidth === 0) return;
+							const totalWidth = cardWidth * projects.length;
 
-						if (-x.get() >= totalWidth) x.set(x.get() + totalWidth);
-						if (x.get() >= 0) x.set(x.get() - totalWidth);
-					}}
-				>
-					{renderProjects()}
-				</motion.div>
-
-				<style>{`
-          ::-webkit-scrollbar { display: none; }
-          .scroll-container { -ms-overflow-style: none; scrollbar-width: none; }
-        `}</style>
+							if (-x.get() >= totalWidth) x.set(x.get() + totalWidth);
+							if (x.get() >= 0) x.set(x.get() - totalWidth);
+						}}
+					>
+						{renderProjects()}
+					</motion.div>
+				</div>
 			</motion.div>
 		</>
 	);
