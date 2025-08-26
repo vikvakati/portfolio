@@ -5,7 +5,6 @@ import About from "./About";
 import Tech from "./Tech";
 import Experience from "./Experience";
 import Works from "./Works";
-import Contact from "./Contact";
 import Game from "./Game";
 import Footer from "./Footer";
 
@@ -16,7 +15,6 @@ export {
 	Tech,
 	Experience,
 	Works,
-	Contact,
 	Game,
 	EarthCanvas,
 	BallCanvas,

@@ -2,6 +2,7 @@ import logo from "./logo.png";
 import github from "./github.png";
 import linkedin from "./linkedin.png";
 import gmail from "./gmail.png";
+import dropbox from "./dropbox.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -37,6 +38,7 @@ export {
 	github,
 	linkedin,
 	gmail,
+	dropbox,
 	menu,
 	close,
 	farm,

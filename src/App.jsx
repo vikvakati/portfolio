@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import {
 	About,
-	Contact,
 	Experience,
 	Hero,
 	Navbar,
@@ -52,13 +51,13 @@ const App = () => {
 
 				<div className="relative z-0">
 					{/* <Game /> */}
-					<Contact />
+					{/* <Contact /> */}
 					<StarsCanvas />
 				</div>
 
 				{/* Footer decides whether the source link is active */}
-				<Footer resumeActive={activeSection === "Resume"} />
 			</div>
+			<Footer resumeActive={activeSection === "Resume"} />
 		</BrowserRouter>
 	);
 };

@@ -20,6 +20,7 @@ import {
 	github,
 	linkedin,
 	gmail,
+	dropbox,
 	bodkin_design,
 	Rad_Calc_demo,
 	spectral,
@@ -253,6 +254,12 @@ const socials = [
 		alt: "gmail",
 		icon: gmail,
 		link: "mailto:vikvakati@gmail.com",
+	},
+	{
+		name: "Dropbox",
+		alt: "dropbox",
+		icon: dropbox,
+		link: "https://www.dropbox.com/request/7N80WimUb1gfvzObQCHl",
 	},
 ];
 export { technologies, experiences, projects, socials };
