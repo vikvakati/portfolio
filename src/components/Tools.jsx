@@ -19,16 +19,19 @@ const Tools = () => {
 
 	return (
 		<>
-			<motion.div variants={textVariant()} className="mb-10">
+			{/* Headings */}
+			<motion.div
+				variants={textVariant()}
+			>
 				<h2 className={styles.sectionHeadText}>Image Tools</h2>
 				<p className={styles.sectionSubText}>Tame your pixels.</p>
 			</motion.div>
 
 			<motion.div variants={slideIn("up", "tween", 0.2, 1)}>
-				<div className="flex flex-col items-center gap-10 w-full">
-					<div className="w-full max-w-5xl bg-tertiary p-8 rounded-2xl min-h-[500px] mx-auto">
-						{/* Tabs */}
-						<div className="flex space-x-6 border-b border-gray-700">
+				<div className="mt-10 flex flex-col items-center gap-10 w-full">
+					<div className="w-full max-w-5xl bg-tertiary p-8 rounded-2xl min-h-[500px] mx-auto flex flex-col">
+						{/* Horizontal Tabs */}
+						<div className="w-full flex justify-center sm:justify-start border-b border-gray-700 mb-6">
 							<button
 								className={`pb-2 px-4 transition-colors ${
 									activeTab === "compress"
@@ -57,20 +60,20 @@ const Tools = () => {
 								}`}
 								onClick={() => setActiveTab("plot")}
 							>
-								Digitize Plot
+								Digitize
 							</button>
 						</div>
 
 						{/* Tool Content */}
-						<div className="mt-8">
-                            {activeTab === "compress" && (
-                                <LazyTool importFunc={() => import("./tools/CompressImage")} />
-                            )}
+						<div className="flex-1">
+							{activeTab === "compress" && (
+								<LazyTool importFunc={() => import("./tools/CompressImage")} />
+							)}
 							{activeTab === "convert" && (
 								<LazyTool importFunc={() => import("./tools/ConvertImage")} />
 							)}
 							{activeTab === "plot" && (
-								<LazyTool importFunc={() => import("./tools/DigitizePlot")} />
+								<LazyTool importFunc={() => import("./tools/DigitizeImage")} />
 							)}
 						</div>
 					</div>
@@ -80,5 +83,4 @@ const Tools = () => {
 	);
 };
 
-// Add proper ID so navbar updates on scroll
 export default SectionWrapper(Tools, "tools");

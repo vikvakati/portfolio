@@ -42,18 +42,13 @@ const App = () => {
 
 				<div className="relative z-0">
 					<Hero />
-					<StarsCanvas />
 					<About />
 					<Tech />
+					<StarsCanvas />
 				</div>
 
 				<Experience />
 				<Works />
-
-				<div className="relative z-0">
-					{/* <Game /> */}
-					<StarsCanvas />
-				</div>
 				<Tools />
 
 				{/* Footer decides whether the source link is active */}
