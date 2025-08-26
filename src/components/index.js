@@ -5,7 +5,7 @@ import About from "./About";
 import Tech from "./Tech";
 import Experience from "./Experience";
 import Works from "./Works";
-import Game from "./Game";
+// import Game from "./Game";
 import Footer from "./Footer";
 
 export {
@@ -15,7 +15,7 @@ export {
 	Tech,
 	Experience,
 	Works,
-	Game,
+	// Game,
 	EarthCanvas,
 	BallCanvas,
 	StarsCanvas,

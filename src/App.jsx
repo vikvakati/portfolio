@@ -8,7 +8,7 @@ import {
 	Tech,
 	Works,
 	StarsCanvas,
-	Game,
+	// Game,
 	Footer,
 } from "./components";
 

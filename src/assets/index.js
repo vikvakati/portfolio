@@ -1,4 +1,3 @@
-import logo from "./logo.png";
 import github from "./github.png";
 import linkedin from "./linkedin.png";
 import gmail from "./gmail.png";
@@ -34,7 +33,6 @@ import delta_magnetics from "./company/delta_magnetics.png";
 import bodkin_design from "./company/bodkin_design.png";
 
 export {
-	logo,
 	github,
 	linkedin,
 	gmail,
