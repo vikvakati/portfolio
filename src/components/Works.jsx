@@ -76,7 +76,6 @@ const ProjectCard = ({
 			<p className="mt-2 text-secondary text-[14px]">{description}</p>
 		</div>
 
-		{/* Tags pushed to bottom */}
 		<div className="mt-auto pt-4 flex flex-wrap gap-2">
 			{tags.map((tag) => (
 				<p key={tag.name} className={`text-[14px] ${tag.color}`}>
@@ -92,16 +91,14 @@ const Works = () => {
 	const x = useMotionValue(0);
 	const [cardWidth, setCardWidth] = useState(0);
 
-	// Measure card + gap
 	useEffect(() => {
 		if (scrollRef.current) {
 			const card = scrollRef.current.querySelector(".flex-shrink-0");
-			const gap = 28; // gap-7 in px
+			const gap = 28;
 			if (card) setCardWidth(card.offsetWidth + gap);
 		}
 	}, []);
 
-	// Set initial offset to the "main" set (middle)
 	useEffect(() => {
 		if (cardWidth > 0) {
 			const offset = -(cardWidth * projects.length);
@@ -109,18 +106,16 @@ const Works = () => {
 		}
 	}, [cardWidth, x]);
 
-	// Infinite auto-scroll
 	useEffect(() => {
 		let frame;
-		const speed = 0.15;
+		const speed = 0.11;
 		const totalWidth = cardWidth * projects.length;
 
 		const animate = () => {
 			if (scrollRef.current && cardWidth > 0) {
 				let nextX = x.get() - speed;
 
-				// Loop forwards/backwards
-				if (-nextX >= totalWidth) nextX += totalWidth;
+				if (-nextX >= totalWidth * 2) nextX += totalWidth;
 				if (nextX >= 0) nextX -= totalWidth;
 
 				x.set(nextX);
@@ -132,7 +127,6 @@ const Works = () => {
 		return () => cancelAnimationFrame(frame);
 	}, [x, cardWidth]);
 
-	// Render prev, main, next sets
 	const renderProjects = () => {
 		const prevSet = projects.map((p, i) => (
 			<ProjectCard key={`prev-${i}`} {...p} />
@@ -143,7 +137,6 @@ const Works = () => {
 		const nextSet = projects.map((p, i) => (
 			<ProjectCard key={`next-${i}`} {...p} />
 		));
-
 		return [...prevSet, ...mainSet, ...nextSet];
 	};
 
@@ -167,7 +160,7 @@ const Works = () => {
 							if (!scrollRef.current || cardWidth === 0) return;
 							const totalWidth = cardWidth * projects.length;
 
-							if (-x.get() >= totalWidth) x.set(x.get() + totalWidth);
+							if (-x.get() >= totalWidth * 2) x.set(x.get() + totalWidth);
 							if (x.get() >= 0) x.set(x.get() - totalWidth);
 						}}
 					>

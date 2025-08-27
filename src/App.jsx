@@ -8,27 +8,27 @@ import {
 	Tech,
 	Works,
 	StarsCanvas,
-	// Game,
 	Tools,
 	Footer,
 } from "./components";
 
-const App = () => {
-	const [activeSection, setActiveSection] = useState(""); // Shared
-
-	// Log only once in dev, even with StrictMode double-mount
-	useEffect(() => {
-		if (!window.__EASTER_EGG_LOGGED__) {
-			window.__EASTER_EGG_LOGGED__ = true;
-			console.log(
-				`%c
+const EASTER_EGG_LOG = `%c
              ██    ██ ██    ██ 
               ██  ██   ██  ██  
                ████     ████   
                 ██       ██    
         👋 Hey there, explorer!
         🔎 Easter Egg Hunt:
-				1) Unlock the source code link!`,
+        \t\t1) Unlock the source code link!`;
+
+const App = () => {
+	const [activeSection, setActiveSection] = useState("");
+
+	useEffect(() => {
+		if (!window.__EASTER_EGG_LOGGED__) {
+			window.__EASTER_EGG_LOGGED__ = true;
+			console.log(
+				EASTER_EGG_LOG,
 				"color: #00ffcc; font-size: 16px; font-weight: bold;"
 			);
 		}
@@ -37,23 +37,18 @@ const App = () => {
 	return (
 		<BrowserRouter>
 			<div className="bg-primary">
-				{/* Navbar reports the current active title */}
 				<Navbar onActiveChange={setActiveSection} />
-
 				<div className="relative z-0">
 					<Hero />
 					<About />
 					<Tech />
 					<StarsCanvas />
 				</div>
-
 				<Experience />
 				<Works />
 				<Tools />
-
-				{/* Footer decides whether the source link is active */}
+				<Footer resumeActive={activeSection === "Resume"} />
 			</div>
-			<Footer resumeActive={activeSection === "Resume"} />
 		</BrowserRouter>
 	);
 };

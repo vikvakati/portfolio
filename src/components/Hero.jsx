@@ -2,7 +2,6 @@ import { useState, useRef, useEffect, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 
-// Lazy import of the EarthCanvas component
 const EarthCanvas = lazy(() =>
 	import("./canvas").then((m) => ({ default: m.EarthCanvas }))
 );

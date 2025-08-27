@@ -5,13 +5,11 @@ import { technologies } from "../constants";
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
 
-// Lazy load BallCanvas so it only loads when rendered
 const BallCanvas = lazy(() =>
 	import("./canvas").then((module) => ({ default: module.BallCanvas }))
 );
 
 const Tech = () => {
-	// toggle cursor style on click/drag
 	const [isGrabbing, setIsGrabbing] = useState(false);
 
 	const handleMouseDown = () => setIsGrabbing(true);
@@ -42,7 +40,7 @@ const Tech = () => {
 							>
 								<BallCanvas
 									icon={technology.icon}
-									imgProps={{ loading: "lazy" }} // pass down lazy loading prop to img
+									imgProps={{ loading: "lazy" }}
 								/>
 							</Suspense>
 							<p className="text-white-100 text-[14px] pl-1 tracking-wider text-center hidden group-hover:block">

@@ -19,7 +19,7 @@ const About = () => {
 				<div className="w-full blue-purple-gradient p-[1px] rounded-lg shadow-card">
 					<div
 						options={{ max: 45, scale: 1, speed: 450 }}
-						className="bg-tertiary rounded-lg py-8 px-8 min-h-[200px] flex flex-col md:flex-row items-center gap-10"
+						className="bg-tertiary rounded-lg p-8 min-h-[200px] flex flex-col md:flex-row items-center gap-10"
 					>
 						<img
 							src={portrait}

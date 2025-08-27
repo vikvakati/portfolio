@@ -123,7 +123,6 @@ const Navbar = ({ onActiveChange }) => {
 			</li>
 		));
 
-	// Animate SVG paths dynamically
 	useEffect(() => {
 		const svg = document.querySelector(".handwriting");
 		const paths = svg?.querySelectorAll("path") || [];
@@ -134,20 +133,14 @@ const Navbar = ({ onActiveChange }) => {
 				path.style.strokeDasharray = length;
 				path.style.strokeDashoffset = length;
 
-				// reset animation
 				path.style.animation = "none";
-				// force reflow (flush styles)
 				void path.getBoundingClientRect();
-
-				// re-apply animation
 				path.style.animation = `draw 1.5s ease forwards ${index * 0.15}s`;
 			});
 		};
 
-		// run once on page load
 		animate();
 
-		// re-run on hover
 		if (svg) {
 			svg.addEventListener("mouseenter", animate);
 		}
@@ -170,7 +163,6 @@ const Navbar = ({ onActiveChange }) => {
 						window.scrollTo({ top: 0, behavior: "smooth" });
 					}}
 				>
-					{/* Animated SVG Logo */}
 					<svg
 						viewBox="0 0 274 135"
 						fill="none"
@@ -299,13 +291,11 @@ const Navbar = ({ onActiveChange }) => {
 					</svg>
 				</Link>
 
-				{/* Desktop */}
 				<ul className="list-none hidden sm:flex flex-row gap-10">
 					{renderNavLinks()}
 					<ResumeLink />
 				</ul>
 
-				{/* Mobile */}
 				<div className="sm:hidden flex flex-1 justify-end items-center">
 					<img
 						src={toggle ? close : menu}
@@ -326,7 +316,6 @@ const Navbar = ({ onActiveChange }) => {
 				</div>
 			</div>
 
-			{/* CSS Animation */}
 			<style>{`
         @keyframes draw {
           to {
