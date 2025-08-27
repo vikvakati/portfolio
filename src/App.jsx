@@ -19,7 +19,7 @@ const EASTER_EGG_LOG = `%c
                 ██       ██    
         👋 Hey there, explorer!
         🔎 Easter Egg Hunt:
-        \t\t1) Unlock the source code link!`;
+        	 1) Unlock the source code link!`;
 
 const App = () => {
 	const [activeSection, setActiveSection] = useState("");
@@ -47,8 +47,8 @@ const App = () => {
 				<Experience />
 				<Works />
 				<Tools />
-				<Footer resumeActive={activeSection === "Resume"} />
 			</div>
+			<Footer resumeActive={activeSection === "Resume"} />
 		</BrowserRouter>
 	);
 };

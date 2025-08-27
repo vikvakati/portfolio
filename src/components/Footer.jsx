@@ -4,7 +4,7 @@ const Footer = ({ resumeActive }) => {
 	const SocialIcon = ({ social }) => (
 		<button
 			onClick={() => window.open(social.link, "_blank", "noopener,noreferrer")}
-			className="w-12 h-12 rounded-full flex justify-center items-center cursor-pointer hover:scale-105 transition-transform"
+			className="w-12 h-12 rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-transform"
 			title={social.name}
 			aria-label={social.name}
 		>
