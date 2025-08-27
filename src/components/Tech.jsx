@@ -3,7 +3,7 @@ import { useState, Suspense, lazy } from "react";
 import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 import { motion } from "framer-motion";
-import { slideIn, textVariant } from "../utils/motion";
+import { fadeIn, textVariant } from "../utils/motion";
 
 // Lazy load BallCanvas so it only loads when rendered
 const BallCanvas = lazy(() =>
@@ -24,7 +24,7 @@ const Tech = () => {
 				<p className={styles.sectionSubText}>Take them for a spin.</p>
 			</motion.div>
 
-			<motion.div variants={slideIn("up", "tween", 0.2, 1)}>
+			<motion.div variants={fadeIn("", "", 0.1, 1)}>
 				<div className="py-10 flex flex-row flex-wrap justify-center gap-10">
 					{technologies.map((technology, index) => (
 						<div

@@ -154,7 +154,7 @@ const Works = () => {
 				<p className={styles.sectionSubText}>Endless innovation.</p>
 			</motion.div>
 
-			<motion.div variants={fadeIn("up", "spring", 0, 0.75)}>
+			<motion.div variants={fadeIn("", "", 0.1, 1)}>
 				<div className="mt-10 relative overflow-hidden w-full">
 					<motion.div
 						ref={scrollRef}

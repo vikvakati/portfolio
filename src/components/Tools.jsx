@@ -2,7 +2,7 @@ import { styles } from "../styles";
 import { useState, Suspense, lazy } from "react";
 import { SectionWrapper } from "../hoc";
 import { motion } from "framer-motion";
-import { slideIn, textVariant } from "../utils/motion";
+import { fadeIn, textVariant } from "../utils/motion";
 
 // Lazy loader wrapper for tools
 const LazyTool = ({ importFunc }) => {
@@ -20,14 +20,12 @@ const Tools = () => {
 	return (
 		<>
 			{/* Headings */}
-			<motion.div
-				variants={textVariant()}
-			>
+			<motion.div variants={textVariant()}>
 				<h2 className={styles.sectionHeadText}>Image Tools</h2>
 				<p className={styles.sectionSubText}>Tame your pixels.</p>
 			</motion.div>
 
-			<motion.div variants={slideIn("up", "tween", 0.2, 1)}>
+			<motion.div variants={fadeIn("", "", 0.1, 1)}>
 				<div className="mt-10 flex flex-col items-center gap-10 w-full">
 					<div className="w-full max-w-5xl bg-tertiary p-8 rounded-2xl min-h-[500px] mx-auto flex flex-col">
 						{/* Horizontal Tabs */}
