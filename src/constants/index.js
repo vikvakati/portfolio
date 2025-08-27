@@ -154,7 +154,7 @@ const projects = [
 		name: "Spectral Radiance Calculator",
 		date: "July 2025",
 		description:
-			"Interactive web-based tool to compute spectral radiance using Planck’s law. Features real-time plotting, peak calculations, and band integration. Designed for scientific and engineering use, with responsive layout and intuitive controls.",
+			"Interactive web-based tool to compute spectral radiance using Planck’s law, designed for scientific use. Features real-time plotting, peak calculations, and band integration with a responsive layout and intuitive controls.",
 		tags: [
 			{
 				name: "JavaScript",
@@ -173,7 +173,7 @@ const projects = [
 		name: "Optimizing Power Generation",
 		date: "March 2024",
 		description:
-			"Real time energy monitoring system to optimize university campus power generation. Implemented using a Raspberry Pi to aggregate data from legacy and modern systems for monitoring historical and real time power metrics on a user-friendly web interface. Designed for administrative use, with insightful plots and low cost.",
+			"Real time energy monitoring system designed for administrative use to monitor power trends and optimize power generation. Implemented using a Raspberry Pi to aggregate data from legacy and modern systems.",
 		tags: [
 			{
 				name: "Python",
@@ -207,7 +207,7 @@ const projects = [
 		name: "Optical Heart Rate Detection",
 		date: "April 2023",
 		description:
-			"Non-invasive heart rate detection algorithm utilizing optimal color channels and targeted regions for signal extraction. The algorithm employs signal processing techniques to analyze frequency domain changes related to the cardiac cycle, achieving a robust 95% accuracy through extensive testing and optimization.",
+			"Non-invasive heart rate detection algorithm utilizing a standard 8-bit RGB webcam. The algorithm employs signal processing techniques to analyze frequency domain changes related to the cardiac cycle, achieving a robust 95% accuracy.",
 		tags: [
 			{
 				name: "Matlab",

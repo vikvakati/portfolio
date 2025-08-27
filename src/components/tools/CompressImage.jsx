@@ -23,7 +23,6 @@ const CompressImage = () => {
 				const compressed = await imageCompression(originalFile, options);
 				setCompressedFile(compressed);
 
-				// Clean up previous URL
 				if (url) URL.revokeObjectURL(url);
 				url = URL.createObjectURL(compressed);
 				setPreviewUrl(url);
@@ -48,7 +47,7 @@ const CompressImage = () => {
 	const handleDrop = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
-		if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+		if (e.dataTransfer.files?.[0]) {
 			setOriginalFile(e.dataTransfer.files[0]);
 		}
 	};
@@ -70,9 +69,8 @@ const CompressImage = () => {
 
 	return (
 		<div className="flex flex-col items-center mt-2 w-full max-w-5xl">
-			<div className="flex flex-col md:flex-row gap-7 w-full">
-				{/* Image + Slider */}
-				<div className="flex flex-col w-full">
+			<div className="flex flex-col md:flex-row gap-7 w-full min-h-[500px]">
+				<div className="flex flex-1 flex-col items-center justify-center">
 					{previewUrl ? (
 						<div className="relative w-full rounded-2xl overflow-hidden flex items-center justify-center bg-gray-900">
 							<img
@@ -97,8 +95,10 @@ const CompressImage = () => {
 							onDragOver={handleDragOver}
 							onClick={() => fileInputRef.current.click()}
 						>
-							<p className="text-secondary text-center m-0">
-								Drag & drop an image here (JPG, PNG, GIF), or click to select
+							<p className="text-secondary text-center">
+								Drag & drop an image here, or click to select
+								<br />
+								(JPG, PNG, GIF)
 							</p>
 							<input
 								type="file"
@@ -129,10 +129,9 @@ const CompressImage = () => {
 					)}
 				</div>
 
-				{/* Compression Info + Download Button */}
 				{compressedFile && (
-					<div className="flex flex-col items-center justify-center w-auto md:w-[220px] mt-4 md:mt-0">
-						<div className="flex flex-col space-y-1 mb-6 text-center text-white text-sm">
+					<div className="flex flex-col items-center justify-center w-full md:w-[220px] text-white text-sm">
+						<div className="space-y-1 mb-6 text-center">
 							<p>Original: {(originalFile.size / 1024).toFixed(2)} KB</p>
 							<p>Compressed: {(compressedFile.size / 1024).toFixed(2)} KB</p>
 						</div>
