@@ -35,12 +35,10 @@ const About = () => {
 							data exchange and dynamic user experiences.
 							<br />
 							<br />
-							<strong>
-								Passionate about technology, curious by nature, and always
-								building
-							</strong>
+							<strong>Greatest innovations in history?</strong>
 							<br />
-							whether it's electronics in my workshop or memories outdoors.
+							The wheel, mechanical watches, microcontrollers... and whatever I
+							build next.
 						</p>
 					</div>
 				</div>
