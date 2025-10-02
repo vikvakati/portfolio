@@ -29,9 +29,9 @@ const About = () => {
 						/>
 
 						<p className="flex-1">
-							Embedded systems engineer with a M.S. in Computer Engineering
-							based in Boston, MA. I am Detail-oriented and adaptable, with a
-							commitment to advancing the Internet of Things through seamless
+							Embedded systems engineer with a M.S. in Computer Engineering,
+							based in Boston, MA. I am detail-oriented and adaptable, with a
+							commitment to advancing the "Internet of Things" through seamless
 							data exchange and dynamic user experiences.
 							<br />
 							<br />

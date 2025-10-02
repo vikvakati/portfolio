@@ -105,10 +105,10 @@ const experiences = [
 		title: "Embedded Systems Engineer",
 		company_name: "Bodkin Design & Engineering",
 		icon: bodkin_design,
-		iconBg: "#383E56",
+		iconBg: "#353e42",
 		date: "May 2025 - Present",
 		points: [
-			"Design software for image acquisition, visualization, and control.",
+			"Design software for spectral image acquisition, visualization, and system control.",
 			"Integrate optical components with detectors and electronics.",
 			"Investigate areas of new research and development.",
 		],
@@ -117,7 +117,7 @@ const experiences = [
 		title: "Master of Science",
 		company_name: "Wentworth Institute of Technology",
 		icon: wit_seal,
-		iconBg: "#383E56",
+		iconBg: "#353e42",
 		date: "Jan 2023 - April 2024",
 		points: [
 			"M.S. Computer Engineering.",
@@ -128,7 +128,7 @@ const experiences = [
 		title: "Electrical Systems Test Engineer",
 		company_name: "Delta Magnetics and Controls",
 		icon: delta_magnetics,
-		iconBg: "#383E56",
+		iconBg: "#353e42",
 		date: "January 2021 - January 2023",
 		points: [
 			"Wired and assembled control panels following IEC standard schematics.",
@@ -140,7 +140,7 @@ const experiences = [
 		title: "Bachelor of Science",
 		company_name: "Wentworth Institute of Technology",
 		icon: wit_seal,
-		iconBg: "#383E56",
+		iconBg: "#353e42",
 		date: "September 2018 - August 2022",
 		points: [
 			"B.S. Computer Engineering.",
@@ -154,7 +154,7 @@ const projects = [
 		name: "Spectral Radiance Calculator",
 		date: "July 2025",
 		description:
-			"Interactive web-based tool to compute spectral radiance using Planck’s law, designed for scientific use. Features real-time plotting, peak calculations, and band integration with a responsive layout and intuitive controls.",
+			"Interactive web-based tool to compute spectral radiance using Planck's law. Designed for scientific use, featuring real-time plotting, peak calculations, and band integration with a responsive layout and intuitive controls.",
 		tags: [
 			{
 				name: "JavaScript",
