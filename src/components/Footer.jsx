@@ -36,11 +36,11 @@ const Footer = ({ resumeActive }) => {
 					rel="noopener noreferrer"
 					className="hover:text-white text-secondary transition-colors mt-1"
 				>
-					Vikranth Vakati © 2025
+					Vikranth Vakati © 2026
 				</a>
 			) : (
 				<span className="text-secondary select-none cursor-not-allowed opacity-70 mt-1">
-					Vikranth Vakati © 2025
+					Vikranth Vakati © 2026
 				</span>
 			)}
 		</footer>

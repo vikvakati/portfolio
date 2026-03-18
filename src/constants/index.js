@@ -108,7 +108,7 @@ const experiences = [
 		iconBg: "#353e42",
 		date: "May 2025 - Present",
 		points: [
-			"Design software for spectral image acquisition, visualization, and system control.",
+			"Develop software for spectral image acquisition, visualization, and system control.",
 			"Integrate optical components with detectors and electronics.",
 			"Investigate areas of new research and development.",
 		],
@@ -132,8 +132,8 @@ const experiences = [
 		date: "January 2021 - January 2023",
 		points: [
 			"Wired and assembled control panels following IEC standard schematics.",
-			"Conducted visual, point-to-point, and operational testing on systems to ensure functionality.",
 			"Deployed over 1000 control panel systems, adhering to quality and functionality requirements.",
+			"Conducted visual, point-to-point, and operational testing on systems to ensure functionality.",
 		],
 	},
 	{
@@ -144,7 +144,7 @@ const experiences = [
 		date: "September 2018 - August 2022",
 		points: [
 			"B.S. Computer Engineering.",
-			"Minors in Electrical Engineering and Math.",
+			"Minors in Electrical Engineering and Applied Math.",
 		],
 	},
 ];
