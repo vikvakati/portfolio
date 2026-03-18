@@ -37,8 +37,8 @@ const About = () => {
 							<br />
 							<strong>Greatest innovations in history?</strong>
 							<br />
-							The wheel, mechanical watches, microcontrollers, ...and whatever I
-							build next.
+							The wheel, mechanical watches, microcontrollers
+							...and whatever I build next.
 						</p>
 					</div>
 				</div>
