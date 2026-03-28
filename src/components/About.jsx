@@ -3,6 +3,7 @@ import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 import { portrait } from "../assets";
+import { MapPin } from "lucide-react";
 
 const About = () => {
 	return (
@@ -21,24 +22,31 @@ const About = () => {
 						options={{ max: 45, scale: 1, speed: 450 }}
 						className="bg-tertiary rounded-lg p-8 min-h-[200px] flex flex-col md:flex-row items-center gap-10"
 					>
-						<img
-							src={portrait}
-							alt="Portrait"
-							loading="lazy"
-							className="w-64 h-64 rounded-full object-cover shadow-lg"
-						/>
+						<div className="flex flex-col items-center">
+							<img
+								src={portrait}
+								alt="Portrait"
+								loading="lazy"
+								className="w-64 h-64 rounded-full object-cover shadow-lg"
+							/>
+
+							<div className="flex items-center gap-1 mt-3 text-secondary text-sm">
+								<MapPin size={17} />
+								<span>Boston, MA</span>
+							</div>
+						</div>
 
 						<p className="flex-1">
-							Systems engineer with a M.S. in Computer Engineering, based in
-							Boston, MA. I am detail-oriented and adaptable, with a commitment
-							to advancing the "Internet of Things" through seamless data
-							exchange and dynamic user experiences.
+							Systems engineer with software and electrical engineering
+							experience. Passionate about advancing the "Internet of Things"
+							through seamless data exchange, with a focus on embedded systems
+							and spectral imaging.
 							<br />
 							<br />
 							<strong>Greatest innovations in history?</strong>
 							<br />
-							The wheel, mechanical watches, microcontrollers
-							...and whatever I build next.
+							The wheel, mechanical watches, microcontrollers, ...and whatever I
+							build next.
 						</p>
 					</div>
 				</div>

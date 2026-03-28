@@ -15,14 +15,14 @@ import {
 	delta_magnetics,
 	farm,
 	hr_detection,
-	security_cam,
+	brdf,
 	energy_monitor,
 	github,
 	linkedin,
 	gmail,
 	dropbox,
 	bodkin_design,
-	Rad_Calc_demo,
+	radiance_calculator,
 	spectral,
 } from "../assets";
 
@@ -102,15 +102,17 @@ const technologies = [
 
 const experiences = [
 	{
-		title: "Embedded Systems Engineer",
+		title: "Systems Engineer",
 		company_name: "Bodkin Design & Engineering",
+		description:
+			"Electro-optical imaging solutions design for industrial and research communities.",
 		icon: bodkin_design,
 		iconBg: "#353e42",
 		date: "May 2025 - Present",
 		points: [
-			"Develop software for spectral image acquisition, visualization, and system control.",
-			"Integrate optical components with detectors and electronics.",
-			"Investigate areas of new research and development.",
+			"Led development of software for system control and image analysis.",
+			"Integrated software and hardware components using wired and wireless communication protocols.",
+			"Enhanced system performance by evaluating and implementing emerging technologies.",
 		],
 	},
 	{
@@ -127,13 +129,15 @@ const experiences = [
 	{
 		title: "Electrical Systems Test Engineer",
 		company_name: "Delta Magnetics and Controls",
+		description:
+			"Custom control panel design and fabrication for process automation.",
 		icon: delta_magnetics,
 		iconBg: "#353e42",
 		date: "January 2021 - January 2023",
 		points: [
 			"Wired and assembled control panels following IEC standard schematics.",
-			"Deployed over 1000 control panel systems, adhering to quality and functionality requirements.",
 			"Conducted visual, point-to-point, and operational testing on systems to ensure functionality.",
+			"Deployed over 1000 control panel systems, adhering to quality and functionality requirements.",
 		],
 	},
 	{
@@ -151,21 +155,46 @@ const experiences = [
 
 const projects = [
 	{
+		name: "Spacecraft Materials Testing",
+		date: "April 2026",
+		description:
+			"Automated system to measure BRDF and characterize material degradation over time in a simulated space environment. Synchronizes motor positioning and image acquisition to generate reflectance profiles and track surface changes over time.",
+		tags: [
+			{
+				name: "Image Processing",
+				color: "text-white",
+			},
+			{
+				name: "Python",
+				color: "text-secondary",
+			},
+			{
+				name: "I2C",
+				color: "text-secondary",
+			},
+		],
+		image: brdf,
+	},
+	{
 		name: "Spectral Radiance Calculator",
 		date: "July 2025",
 		description:
 			"Interactive web-based tool to compute spectral radiance using Planck's law. Designed for scientific use, featuring real-time plotting, peak calculations, and band integration with a responsive layout and intuitive controls.",
 		tags: [
 			{
+				name: "Modeling",
+				color: "text-white",
+			},
+			{
 				name: "JavaScript",
-				color: "yellow-text-gradient",
+				color: "text-secondary",
 			},
 			{
 				name: "HTML/CSS",
-				color: "blue-text-gradient",
+				color: "text-secondary",
 			},
 		],
-		image: Rad_Calc_demo,
+		image: radiance_calculator,
 		source_code_link:
 			"https://www.bodkindesign.com/reference-library/blackbody-spectral-radiance-calculator/",
 	},
@@ -176,42 +205,33 @@ const projects = [
 			"Real time energy monitoring system designed for administrative use to monitor power trends and optimize power generation. Implemented using a Raspberry Pi to aggregate data from legacy and modern systems.",
 		tags: [
 			{
+				name: "Data Processing",
+				color: "text-white",
+			},
+			{
 				name: "Python",
-				color: "green-text-gradient",
+				color: "text-secondary",
 			},
 			{
 				name: "JavaScript",
-				color: "yellow-text-gradient",
+				color: "text-secondary",
 			},
 		],
 		image: energy_monitor,
 	},
 	{
-		name: "Web Enabled Security Camera",
-		date: "February 2024",
-		description:
-			"Security camera using the ESP32-CAM microcontroller. The system is capable of motion detection and has live streaming capabilities over Wi-Fi. Designed to be low cost with secure data and high reliability.",
-		tags: [
-			{
-				name: "C++",
-				color: "blue-text-gradient",
-			},
-			{
-				name: "ESP32-CAM",
-				color: "pink-text-gradient",
-			},
-		],
-		image: security_cam,
-	},
-	{
 		name: "Optical Heart Rate Detection",
 		date: "April 2023",
 		description:
-			"Non-invasive heart rate detection algorithm utilizing a standard 8-bit RGB webcam. The algorithm employs signal processing techniques to analyze frequency domain changes related to the cardiac cycle, achieving a robust 95% accuracy.",
+			"Non-invasive heart rate detection algorithm utilizing a standard 8-bit RGB webcam. The algorithm tracks color variations under stable lighting conditions and isolates cardiac changes in the frequency domain, achieving a robust 95% accuracy.",
 		tags: [
 			{
-				name: "Matlab",
-				color: "orange-text-gradient",
+				name: "Image Processing",
+				color: "text-white",
+			},
+			{
+				name: "MATLAB",
+				color: "text-secondary",
 			},
 		],
 		image: hr_detection,
@@ -220,15 +240,19 @@ const projects = [
 		name: "Real Time Farm Monitoring Network",
 		date: "September 2023",
 		description:
-			"Offline mesh network to monitor vital information on farms. Data is sent to a server node which displays all information in a web interface. The network is designed to be low power and low cost, while still providing reliable and secure data.",
+			"Offline mesh network to monitor soil conditions on rural farms. Data is sent to a server node which displays all information in a web interface. The network is designed to be low power and low cost, while still providing reliable and secure data.",
 		tags: [
 			{
-				name: "C++",
-				color: "blue-text-gradient",
+				name: "Mesh Networking",
+				color: "text-white",
 			},
 			{
-				name: "ESP32",
-				color: "pink-text-gradient",
+				name: "C++",
+				color: "text-secondary",
+			},
+			{
+				name: "Wi-Fi",
+				color: "text-secondary",
 			},
 		],
 		image: farm,

@@ -24,7 +24,7 @@ const LazyIcon = ({ src, alt }) => {
 					observer.disconnect();
 				}
 			},
-			{ threshold: 0.1 }
+			{ threshold: 0.1 },
 		);
 		if (ref.current) observer.observe(ref.current);
 		return () => observer.disconnect();
@@ -55,10 +55,15 @@ const ExperienceCard = ({ experience }) => (
 		<div>
 			<h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
 			<p
-				className="text-secondary text-[16px] font-semibold"
+				className="text-white text-[16px] font-semibold"
 				style={{ margin: 0 }}
 			>
 				{experience.company_name}
+			</p>
+
+			<p className="text-secondary text-[16px] italic"
+				style={{ margin: 0 }}>
+				{experience.description}
 			</p>
 		</div>
 		<ul className="mt-5 list-disc ml-5 space-y-2">

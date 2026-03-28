@@ -7,9 +7,9 @@ import close from "./close.svg";
 
 import farm from "./farm.png";
 import hr_detection from "./hr_detection.png";
-import security_cam from "./security_cam.png";
+import brdf from "./BRDF.png";
 import energy_monitor from "./energy_monitor.png";
-import Rad_Calc_demo from "./Rad_Calc_demo.png";
+import radiance_calculator from "./radiance_calculator.png";
 
 import portrait from "./portrait.png";
 import resume from "./Vikranth_Vakati_Resume.pdf";
@@ -41,9 +41,9 @@ export {
 	close,
 	farm,
 	hr_detection,
-	security_cam,
+	brdf,
 	energy_monitor,
-	Rad_Calc_demo,
+	radiance_calculator,
 	portrait,
 	resume,
 	matlab,
