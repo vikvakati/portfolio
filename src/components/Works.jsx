@@ -32,7 +32,7 @@ const LazyImage = ({ src, alt, className }) => {
 				alt={alt}
 				className={`${className} select-none pointer-events-none transition-opacity duration-500 ${
 					visible ? "opacity-100" : "opacity-0"
-				}`}
+					}`}
 				loading="lazy"
 				draggable={false}
 			/>
@@ -53,6 +53,7 @@ const ProjectCard = ({
 			<LazyImage
 				src={image}
 				alt={name}
+				decoding="async"
 				className="w-full h-full object-cover rounded-2xl"
 			/>
 

@@ -110,9 +110,9 @@ const experiences = [
 		iconBg: "#353e42",
 		date: "May 2025 - Present",
 		points: [
-			"Led development of software for system control and image analysis.",
-			"Integrated software and hardware components using wired and wireless communication protocols.",
-			"Enhanced system performance by evaluating and implementing emerging technologies.",
+			"Lead development of software for system control and image analysis.",
+			"Integrate software and hardware components using wired and wireless communication protocols.",
+			"Enhance system performance by evaluating and implementing emerging technologies.",
 		],
 	},
 	{
@@ -136,8 +136,8 @@ const experiences = [
 		date: "January 2021 - January 2023",
 		points: [
 			"Wired and assembled control panels following IEC standard schematics.",
-			"Conducted visual, point-to-point, and operational testing on systems to ensure functionality.",
-			"Deployed over 1000 control panel systems, adhering to quality and functionality requirements.",
+			"Conducted visual and point-to-point testing to verify system functionality.",
+			"Deployed over 1000 control panel systems adhering to operational requirements.",
 		],
 	},
 	{
