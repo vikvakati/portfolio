@@ -127,7 +127,7 @@ const experiences = [
 		],
 	},
 	{
-		title: "Electrical Systems Test Engineer",
+		title: "Electrical Test Engineer",
 		company_name: "Delta Magnetics and Controls",
 		description:
 			"Custom control panel design and fabrication for process automation.",
@@ -135,7 +135,7 @@ const experiences = [
 		iconBg: "#353e42",
 		date: "January 2021 - January 2023",
 		points: [
-			"Wired and assembled control panels following IEC standard schematics.",
+			"Wired and assembled control panels following industry standard IEC schematics.",
 			"Conducted visual and point-to-point testing to verify system functionality.",
 			"Deployed over 1000 control panel systems adhering to operational requirements.",
 		],
@@ -179,7 +179,7 @@ const projects = [
 		name: "Spectral Radiance Calculator",
 		date: "July 2025",
 		description:
-			"Interactive web-based tool to compute spectral radiance using Planck's law. Designed for scientific use, featuring real-time plotting, peak calculations, and band integration with a responsive layout and intuitive controls.",
+			"Web-based tool to compute spectral radiance using Planck's law. Designed for scientific use, featuring real-time plotting, peak calculations, and band integration with a responsive layout and intuitive controls.",
 		tags: [
 			{
 				name: "Modeling",
@@ -202,10 +202,10 @@ const projects = [
 		name: "Optimizing Power Generation",
 		date: "March 2024",
 		description:
-			"Real time energy monitoring system designed for administrative use to monitor power trends and optimize power generation. Implemented using a Raspberry Pi to aggregate data from legacy and modern systems.",
+			"Real time energy monitoring system designed for administrative use to monitor power trends and optimize power generation. Implemented using a Raspberry Pi to aggregate data from modern and legacy systems.",
 		tags: [
 			{
-				name: "Data Processing",
+				name: "Data Management",
 				color: "text-white",
 			},
 			{
@@ -213,7 +213,7 @@ const projects = [
 				color: "text-secondary",
 			},
 			{
-				name: "JavaScript",
+				name: "SQL",
 				color: "text-secondary",
 			},
 		],
@@ -240,7 +240,7 @@ const projects = [
 		name: "Real Time Farm Monitoring Network",
 		date: "September 2023",
 		description:
-			"Offline mesh network to monitor soil conditions on rural farms. Data is sent to a server node which displays all information in a web interface. The network is designed to be low power and low cost, while still providing reliable and secure data.",
+			"Mesh network to monitor soil conditions on rural farms. Sensor data is sent wirelessly to a server node which displays all information in a GUI. The network is designed to operate reliably in areas lacking power and communication infrastructure.",
 		tags: [
 			{
 				name: "Mesh Networking",
