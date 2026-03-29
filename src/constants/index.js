@@ -161,7 +161,7 @@ const projects = [
 			"Automated system to measure BRDF and characterize material degradation over time in a simulated space environment. Synchronizes motor positioning and image acquisition to generate reflectance profiles and track surface changes over time.",
 		tags: [
 			{
-				name: "Image Processing",
+				name: "Embedded Software",
 				color: "text-white",
 			},
 			{
@@ -240,10 +240,10 @@ const projects = [
 		name: "Modular Soil Monitoring Network",
 		date: "September 2023",
 		description:
-			"Mesh network to monitor soil conditions on rural farms. Sensor data is sent wirelessly to a server node which displays all information in a GUI. The network is designed to operate reliably in areas lacking power and communication infrastructure.",
+			"Wireless sensor network to monitor soil conditions on rural farms. Sensor data is sent wirelessly to a server node which displays all information in a GUI. The network is designed to operate reliably in areas lacking power and communication infrastructure.",
 		tags: [
 			{
-				name: "Mesh Networking",
+				name: "Embedded Software",
 				color: "text-white",
 			},
 			{

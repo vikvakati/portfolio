@@ -37,10 +37,10 @@ const About = () => {
 						</div>
 
 						<p className="flex-1">
-							Systems engineer with software and electrical engineering
-							experience. Passionate about advancing the "Internet of Things"
-							through seamless data exchange, with a focus on embedded systems
-							and spectral imaging.
+							Systems engineer with experience in software and electrical
+							engineering, focused on embedded systems and spectral imaging.
+							Proven track record of developing systems with seamless data
+							exchange and dynamic control.
 							<br />
 							<br />
 							<strong>Greatest innovations in history?</strong>
