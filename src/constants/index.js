@@ -122,7 +122,7 @@ const experiences = [
 		iconBg: "#353e42",
 		date: "Jan 2023 - April 2024",
 		points: [
-			"M.S. Computer Engineering.",
+			"M.S. in Computer Engineering.",
 			"Concentration in Internet of Things.",
 		],
 	},
@@ -147,7 +147,7 @@ const experiences = [
 		iconBg: "#353e42",
 		date: "September 2018 - August 2022",
 		points: [
-			"B.S. Computer Engineering.",
+			"B.S. in Computer Engineering.",
 			"Minors in Electrical Engineering and Applied Math.",
 		],
 	},
