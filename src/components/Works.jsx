@@ -7,38 +7,16 @@ import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
-const LazyImage = ({ src, alt, className }) => {
-	const ref = useRef(null);
-	const [visible, setVisible] = useState(false);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (entry.isIntersecting) {
-					setVisible(true);
-					observer.disconnect();
-				}
-			},
-			{ rootMargin: "1000px" }
-		);
-		if (ref.current) observer.observe(ref.current);
-		return () => observer.disconnect();
-	}, []);
-
-	return (
-		<div ref={ref} className="w-full h-full">
-			<img
-				src={visible ? src : ""}
-				alt={alt}
-				className={`${className} select-none pointer-events-none transition-opacity duration-500 ${
-					visible ? "opacity-100" : "opacity-0"
-					}`}
-				loading="lazy"
-				draggable={false}
-			/>
-		</div>
-	);
-};
+const LazyImage = ({ src, alt, className }) => (
+	<img
+		src={src}
+		alt={alt}
+		className={`${className} select-none pointer-events-none`}
+		loading="lazy"
+		decoding="async"
+		draggable={false}
+	/>
+);
 
 const ProjectCard = ({
 	name,
@@ -92,6 +70,9 @@ const Works = () => {
 	const x = useMotionValue(0);
 	const [cardWidth, setCardWidth] = useState(0);
 
+	const isPaused = useRef(false);
+	const isDragging = useRef(false);
+
 	useEffect(() => {
 		if (scrollRef.current) {
 			const card = scrollRef.current.querySelector(".flex-shrink-0");
@@ -109,17 +90,22 @@ const Works = () => {
 
 	useEffect(() => {
 		let frame;
-		const speed = 0.11;
+		const speed = 0.12;
 		const totalWidth = cardWidth * projects.length;
 
 		const animate = () => {
 			if (scrollRef.current && cardWidth > 0) {
-				let nextX = x.get() - speed;
+				// Pause on hover / drag
+				if (!isPaused.current && !isDragging.current) {
+					let nextX = x.get() - speed;
 
-				if (-nextX >= totalWidth * 2) nextX += totalWidth;
-				if (nextX >= 0) nextX -= totalWidth;
+					// ✅ Early wrap → fixes "wait until off screen" issue
+					if (-nextX >= totalWidth) nextX += totalWidth;
+					if (nextX >= 0) nextX -= totalWidth;
 
-				x.set(nextX);
+					x.set(nextX);
+				}
+
 				frame = requestAnimationFrame(animate);
 			}
 		};
@@ -129,16 +115,13 @@ const Works = () => {
 	}, [x, cardWidth]);
 
 	const renderProjects = () => {
-		const prevSet = projects.map((p, i) => (
-			<ProjectCard key={`prev-${i}`} {...p} />
-		));
 		const mainSet = projects.map((p, i) => (
 			<ProjectCard key={`main-${i}`} {...p} />
 		));
 		const nextSet = projects.map((p, i) => (
 			<ProjectCard key={`next-${i}`} {...p} />
 		));
-		return [...prevSet, ...mainSet, ...nextSet];
+		return [...mainSet, ...nextSet];
 	};
 
 	return (
@@ -157,12 +140,20 @@ const Works = () => {
 						drag="x"
 						dragConstraints={{ left: -Infinity, right: Infinity }}
 						dragElastic={0.1}
+						onMouseEnter={() => (isPaused.current = true)}
+						onMouseLeave={() => (isPaused.current = false)}
+						onDragStart={() => (isDragging.current = true)}
 						onDragEnd={() => {
+							isDragging.current = false;
+
 							if (!scrollRef.current || cardWidth === 0) return;
 							const totalWidth = cardWidth * projects.length;
 
-							if (-x.get() >= totalWidth * 2) x.set(x.get() + totalWidth);
-							if (x.get() >= 0) x.set(x.get() - totalWidth);
+							let current = x.get();
+							if (-current >= totalWidth) current += totalWidth;
+							if (current >= 0) current -= totalWidth;
+
+							x.set(current);
 						}}
 					>
 						{renderProjects()}
