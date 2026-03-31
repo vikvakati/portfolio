@@ -47,15 +47,7 @@ export const navLinks = [
 
 const technologies = [
 	{
-		name: "Python",
-		icon: python,
-	},
-	{
-		name: "C/C++",
-		icon: cpp,
-	},
-	{
-		name: "Embedded Systems",
+		name: "Embedded Software",
 		icon: embedded,
 	},
 	{
@@ -71,14 +63,6 @@ const technologies = [
 		icon: image_processing,
 	},
 	{
-		name: "JavaScript",
-		icon: javascript,
-	},
-	{
-		name: "Web Development",
-		icon: html_css,
-	},
-	{
 		name: "Electrical Wiring",
 		icon: wiring,
 	},
@@ -87,16 +71,32 @@ const technologies = [
 		icon: it,
 	},
 	{
+		name: "Windows/Linux",
+		icon: windows_linux,
+	},
+	{
+		name: "Python",
+		icon: python,
+	},
+	{
+		name: "C/C++",
+		icon: cpp,
+	},
+	{
+		name: "JavaScript",
+		icon: javascript,
+	},
+	{
 		name: "MATLAB",
 		icon: matlab,
 	},
 	{
-		name: "git",
-		icon: git,
+		name: "Web Development",
+		icon: html_css,
 	},
 	{
-		name: "Windows/Linux",
-		icon: windows_linux,
+		name: "git",
+		icon: git,
 	},
 ];
 

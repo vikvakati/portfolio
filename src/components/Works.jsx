@@ -1,11 +1,11 @@
-import { motion, useMotionValue } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useMemo } from "react";
+import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import { github } from "../assets";
 
 const LazyImage = ({ src, alt, className }) => (
 	<img
@@ -13,30 +13,23 @@ const LazyImage = ({ src, alt, className }) => (
 		alt={alt}
 		className={`${className} select-none pointer-events-none`}
 		loading="lazy"
-		decoding="async"
 		draggable={false}
 	/>
 );
 
-const ProjectCard = ({
-	name,
-	date,
-	description,
-	tags,
-	image,
-	source_code_link,
-}) => (
-	<div className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex-shrink-0 flex flex-col">
-		<div className="relative w-full h-[230px]">
-			<LazyImage
-				src={image}
-				alt={name}
-				decoding="async"
-				className="w-full h-full object-cover rounded-2xl"
-			/>
+// Memoized card (prevents re-renders)
+const ProjectCard = React.memo(
+	({ name, date, description, tags, image, source_code_link }) => (
+		<div className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex-shrink-0 flex flex-col">
+			<div className="relative w-full h-[230px]">
+				<LazyImage
+					src={image}
+					alt={name}
+					className="w-full h-full object-cover rounded-2xl"
+				/>
 
-			{/* Uncomment if you want a source code overlay */}
-			{/*
+				{/* Optional: Source code overlay */}
+				{/**
       <div className="absolute inset-0 flex justify-end m-3 card-img_hover opacity-75">
         <div
           onClick={() => window.open(source_code_link, "_blank")}
@@ -47,82 +40,55 @@ const ProjectCard = ({
         </div>
       </div>
       */}
-		</div>
+			</div>
 
-		<div className="mt-5">
-			<h3 className="text-white font-bold text-[24px] h-[4.5rem]">{name}</h3>
-			<p className="mt-1 text-secondary text-[14px] italic">{date}</p>
-			<p className="mt-2 text-secondary text-[14px]">{description}</p>
-		</div>
+			<div className="mt-5">
+				<h3 className="text-white font-bold text-[24px] h-[4.5rem]">{name}</h3>
+				<p className="mt-1 text-secondary text-[14px] italic">{date}</p>
+				<p className="mt-2 text-secondary text-[14px]">{description}</p>
+			</div>
 
-		<div className="mt-auto pt-4 flex flex-wrap gap-2">
-			{tags.map((tag) => (
-				<p key={tag.name} className={`text-[14px] ${tag.color}`}>
-					{tag.name}&emsp;
-				</p>
-			))}
+			<div className="mt-auto pt-4 flex flex-wrap gap-2">
+				{tags.map((tag) => (
+					<p key={tag.name} className={`text-[14px] ${tag.color}`}>
+						{tag.name}&emsp;
+					</p>
+				))}
+			</div>
 		</div>
-	</div>
+	),
 );
 
 const Works = () => {
-	const scrollRef = useRef(null);
-	const x = useMotionValue(0);
-	const [cardWidth, setCardWidth] = useState(0);
+	const innerRef = useRef(null);
 
-	const isPaused = useRef(false);
-	const isDragging = useRef(false);
-
-	useEffect(() => {
-		if (scrollRef.current) {
-			const card = scrollRef.current.querySelector(".flex-shrink-0");
-			const gap = 28;
-			if (card) setCardWidth(card.offsetWidth + gap);
-		}
+	// Duplicate once
+	const projectList = useMemo(() => {
+		return [...projects, ...projects].map((p, i) => (
+			<ProjectCard key={i} {...p} />
+		));
 	}, []);
 
+	// Pause when offscreen
 	useEffect(() => {
-		if (cardWidth > 0) {
-			const offset = -(cardWidth * projects.length);
-			x.set(offset);
-		}
-	}, [cardWidth, x]);
+		const el = innerRef.current;
+		if (!el) return;
 
-	useEffect(() => {
-		let frame;
-		const speed = 0.12;
-		const totalWidth = cardWidth * projects.length;
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				el.style.animationPlayState = entry.isIntersecting
+					? "running"
+					: "paused";
+			},
+			{ threshold: 0.1 },
+		);
 
-		const animate = () => {
-			if (scrollRef.current && cardWidth > 0) {
-				// Pause on hover / drag
-				if (!isPaused.current && !isDragging.current) {
-					let nextX = x.get() - speed;
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, []);
 
-					// ✅ Early wrap → fixes "wait until off screen" issue
-					if (-nextX >= totalWidth) nextX += totalWidth;
-					if (nextX >= 0) nextX -= totalWidth;
-
-					x.set(nextX);
-				}
-
-				frame = requestAnimationFrame(animate);
-			}
-		};
-
-		animate();
-		return () => cancelAnimationFrame(frame);
-	}, [x, cardWidth]);
-
-	const renderProjects = () => {
-		const mainSet = projects.map((p, i) => (
-			<ProjectCard key={`main-${i}`} {...p} />
-		));
-		const nextSet = projects.map((p, i) => (
-			<ProjectCard key={`next-${i}`} {...p} />
-		));
-		return [...mainSet, ...nextSet];
-	};
+	const pause = (el) => el && (el.style.animationPlayState = "paused");
+	const resume = (el) => el && (el.style.animationPlayState = "running");
 
 	return (
 		<>
@@ -133,33 +99,44 @@ const Works = () => {
 
 			<motion.div variants={fadeIn("", "", 0.1, 1)}>
 				<div className="mt-10 relative overflow-hidden w-full">
+					{/*
+            - OUTER motion.div handles drag (transform: translateX from Framer)
+            - INNER div handles CSS animation
+          */}
+
 					<motion.div
-						ref={scrollRef}
-						className="flex gap-7 py-5 cursor-grab active:cursor-grabbing"
-						style={{ x }}
+						className="cursor-grab active:cursor-grabbing"
 						drag="x"
+						dragElastic={0}
+						dragMomentum={false}
 						dragConstraints={{ left: -Infinity, right: Infinity }}
-						dragElastic={0.1}
-						onMouseEnter={() => (isPaused.current = true)}
-						onMouseLeave={() => (isPaused.current = false)}
-						onDragStart={() => (isDragging.current = true)}
-						onDragEnd={() => {
-							isDragging.current = false;
-
-							if (!scrollRef.current || cardWidth === 0) return;
-							const totalWidth = cardWidth * projects.length;
-
-							let current = x.get();
-							if (-current >= totalWidth) current += totalWidth;
-							if (current >= 0) current -= totalWidth;
-
-							x.set(current);
-						}}
+						onDragStart={() => pause(innerRef.current)}
+						onDragEnd={() => setTimeout(() => resume(innerRef.current), 50)}
 					>
-						{renderProjects()}
+						<div
+							ref={innerRef}
+							className="flex gap-7 py-5 will-change-transform"
+							style={{
+								width: "max-content",
+								animation: "scrollLoop 80s linear infinite",
+							}}
+							onMouseEnter={(e) => pause(e.currentTarget)}
+							onMouseLeave={(e) => resume(e.currentTarget)}
+						>
+							{projectList}
+						</div>
 					</motion.div>
 				</div>
 			</motion.div>
+
+			<style>
+				{`
+          @keyframes scrollLoop {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+          }
+        `}
+			</style>
 		</>
 	);
 };
