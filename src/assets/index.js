@@ -10,6 +10,7 @@ import hr_detection from "./hr_detection.png";
 import brdf from "./BRDF.png";
 import energy_monitor from "./energy_monitor.png";
 import radiance_calculator from "./radiance_calculator.png";
+import color_space_analysis from "./color_space_analysis.png"
 
 import portrait from "./portrait.png";
 import resume from "./Vikranth_Vakati_Resume.pdf";
@@ -44,6 +45,7 @@ export {
 	brdf,
 	energy_monitor,
 	radiance_calculator,
+	color_space_analysis,
 	portrait,
 	resume,
 	matlab,

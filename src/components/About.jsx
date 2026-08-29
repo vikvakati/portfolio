@@ -40,10 +40,10 @@ const About = () => {
 							Systems engineer with experience in software and electrical
 							engineering, focused on embedded systems and spectral imaging.
 							Proven track record of developing systems with seamless data
-							exchange and dynamic control.
+							exchange and dynamic robotics control.
 							<br />
 							<br />
-							<strong>Greatest innovations in history?</strong>
+							<strong>My favorite inventions?</strong>
 							<br />
 							The wheel, mechanical watches, microcontrollers, ...and whatever I
 							build next.

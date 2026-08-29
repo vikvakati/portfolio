@@ -17,6 +17,7 @@ import {
 	hr_detection,
 	brdf,
 	energy_monitor,
+	color_space_analysis,
 	github,
 	linkedin,
 	gmail,
@@ -110,9 +111,9 @@ const experiences = [
 		iconBg: "#353e42",
 		date: "May 2025 - Present",
 		points: [
-			"Lead development of software for system control and image analysis.",
-			"Integrate software and hardware components using wired and wireless communication.",
-			"Enhance system performance by evaluating and implementing emerging technologies.",
+			"Led development of software for system control and image analysis.",
+			"Collaborated in a cross-functional team to integrate software with hardware components.",
+			"Enhanced system performance by evaluating and implementing emerging technologies.",
 		],
 	},
 	{
@@ -156,9 +157,9 @@ const experiences = [
 const projects = [
 	{
 		name: "Spacecraft Materials Testing",
-		date: "April 2026",
+		date: "April 2027",
 		description:
-			"Automated system to measure BRDF and characterize material degradation over time in a simulated space environment. Synchronizes motor positioning and image acquisition to generate reflectance profiles and track surface changes over time.",
+			"Automated imaging system to measure BRDF and characterize material degradation over time in a simulated space environment. Synchronizes motor positioning and image acquisition to generate reflectance profiles and track surface changes over time.",
 		tags: [
 			{
 				name: "Embedded Software",
@@ -176,6 +177,27 @@ const projects = [
 		image: brdf,
 	},
 	{
+		name: "Color Space Analysis Tool",
+		date: "April 2026",
+		description:
+			"Application to analyze and optimize image segmentation algorithms. Provides color-space conversion, per-channel thresholding, histogram equalization, and morphological filtering, allowing segmentation parameters to be tuned for reliable feature detection.",
+		tags: [
+			{
+				name: "Image Processing",
+				color: "text-white",
+			},
+			{
+				name: "UI",
+				color: "text-white",
+			},
+			{
+				name: "Python",
+				color: "text-secondary",
+			},
+		],
+		image: color_space_analysis,
+	},
+	{
 		name: "Spectral Radiance Calculator",
 		date: "July 2025",
 		description:
@@ -183,6 +205,10 @@ const projects = [
 		tags: [
 			{
 				name: "Modeling",
+				color: "text-white",
+			},
+			{
+				name: "UI",
 				color: "text-white",
 			},
 			{
@@ -206,6 +232,10 @@ const projects = [
 		tags: [
 			{
 				name: "Data Management",
+				color: "text-white",
+			},
+			{
+				name: "UI",
 				color: "text-white",
 			},
 			{
@@ -244,6 +274,10 @@ const projects = [
 		tags: [
 			{
 				name: "Embedded Software",
+				color: "text-white",
+			},
+			{
+				name: "UI",
 				color: "text-white",
 			},
 			{
