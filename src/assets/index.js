@@ -5,12 +5,13 @@ import dropbox from "./dropbox.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
-import farm from "./farm.png";
-import hr_detection from "./hr_detection.png";
 import brdf from "./BRDF.png";
-import energy_monitor from "./energy_monitor.png";
-import radiance_calculator from "./radiance_calculator.png";
+import cable_inspection from "./cable_inspection.png"
 import color_space_analysis from "./color_space_analysis.png"
+import radiance_calculator from "./radiance_calculator.png";
+import energy_monitor from "./energy_monitor.png";
+import hr_detection from "./hr_detection.png";
+import farm from "./farm.png";
 
 import portrait from "./portrait.png";
 import resume from "./Vikranth_Vakati_Resume.pdf";
@@ -40,12 +41,13 @@ export {
 	dropbox,
 	menu,
 	close,
-	farm,
-	hr_detection,
 	brdf,
-	energy_monitor,
-	radiance_calculator,
+	cable_inspection,
 	color_space_analysis,
+	radiance_calculator,
+	energy_monitor,
+	hr_detection,
+	farm,
 	portrait,
 	resume,
 	matlab,

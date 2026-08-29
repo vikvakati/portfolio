@@ -13,11 +13,12 @@ import {
 	embedded,
 	wit_seal,
 	delta_magnetics,
-	farm,
-	hr_detection,
 	brdf,
-	energy_monitor,
+	cable_inspection,
 	color_space_analysis,
+	energy_monitor,
+	hr_detection,
+	farm,
 	github,
 	linkedin,
 	gmail,
@@ -175,6 +176,23 @@ const projects = [
 			},
 		],
 		image: brdf,
+	},
+	{
+		name: "Autonomous Cable Inspection",
+		date: "January 2027",
+		description:
+			"Aerial imaging system to inspect steel guy wires and monitor corrosion over time. The drone maintains consistent and precise alignment along cables using computer vision and onboard sensors to enable repeatable imaging.",
+		tags: [
+			{
+				name: "Embedded Software",
+				color: "text-white",
+			},
+			{
+				name: "Python",
+				color: "text-secondary",
+			},
+		],
+		image: cable_inspection,
 	},
 	{
 		name: "Color Space Analysis Tool",
