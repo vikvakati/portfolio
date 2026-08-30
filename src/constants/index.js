@@ -163,7 +163,7 @@ const projects = [
 			"Automated imaging system to measure BRDF and characterize material degradation over time in a simulated space environment. Synchronizes motor positioning and image acquisition to generate reflectance profiles and track surface changes over time.",
 		tags: [
 			{
-				name: "Embedded Software",
+				name: "Image Processing",
 				color: "text-white",
 			},
 			{
