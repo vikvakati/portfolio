@@ -39,33 +39,48 @@ const LazyImage = React.memo(({ src, alt, className }) => (
 // Project Card
 // -------------------------------------------------
 
-const ProjectCard = React.memo(({ name, date, description, tags, image }) => (
-	<div className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex-shrink-0 flex flex-col">
-		<div className="relative w-full h-[230px]">
-			<LazyImage
-				src={image}
-				alt={name}
-				className="w-full h-full object-cover rounded-2xl"
-			/>
+const ProjectCard = React.memo(
+	({ name, date, description, tags, image, source_code_link }) => (
+		<div className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex-shrink-0 flex flex-col">
+			<div className="relative w-full h-[230px]">
+				<LazyImage
+					src={image}
+					alt={name}
+					className="w-full h-full object-cover rounded-2xl"
+				/>
+			</div>
+
+			<div className="mt-5">
+				<h3 className="text-white font-bold text-[24px] h-[4.5rem]">{name}</h3>
+
+				<div className="mt-1 flex items-center justify-between">
+					<p className="text-secondary text-[14px] italic">{date}</p>
+
+					{source_code_link && (
+						<a
+							href={source_code_link}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-blue-400 hover:text-blue-300 transition-colors text-[14px]"
+						>
+							Explore more...
+						</a>
+					)}
+				</div>
+
+				<p className="mt-2 text-secondary text-[14px]">{description}</p>
+			</div>
+
+			<div className="mt-auto pt-4 flex flex-wrap gap-2">
+				{tags.map((tag) => (
+					<p key={tag.name} className={`text-[14px] ${tag.color}`}>
+						{tag.name}&emsp;
+					</p>
+				))}
+			</div>
 		</div>
-
-		<div className="mt-5">
-			<h3 className="text-white font-bold text-[24px] h-[4.5rem]">{name}</h3>
-
-			<p className="mt-1 text-secondary text-[14px] italic">{date}</p>
-
-			<p className="mt-2 text-secondary text-[14px]">{description}</p>
-		</div>
-
-		<div className="mt-auto pt-4 flex flex-wrap gap-2">
-			{tags.map((tag) => (
-				<p key={tag.name} className={`text-[14px] ${tag.color}`}>
-					{tag.name}&emsp;
-				</p>
-			))}
-		</div>
-	</div>
-));
+	),
+);
 
 // -------------------------------------------------
 // Works
