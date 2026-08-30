@@ -184,7 +184,7 @@ const projects = [
 			"Aerial imaging system to inspect steel guy wires and monitor corrosion over time. The drone maintains consistent and precise alignment along cables using computer vision and onboard sensors to enable repeatable imaging.",
 		tags: [
 			{
-				name: "Embedded Software",
+				name: "Computer Vision",
 				color: "text-white",
 			},
 			{
