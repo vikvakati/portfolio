@@ -3,7 +3,6 @@ import { BrowserRouter } from "react-router-dom";
 import {
 	About,
 	Experience,
-	Hero,
 	Navbar,
 	Tech,
 	Works,
@@ -39,7 +38,6 @@ const App = () => {
 			<div className="bg-primary">
 				<Navbar onActiveChange={setActiveSection} />
 				<div className="relative z-0">
-					<Hero />
 					<About />
 					<Tech />
 					<StarsCanvas />

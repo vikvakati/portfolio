@@ -9,7 +9,9 @@ const About = () => {
 	return (
 		<>
 			<motion.div variants={textVariant()}>
-				<h2 className={styles.sectionHeadText}>Overview</h2>
+				<h1 className={`${styles.heroHeadText} text-white`}>
+					Hi, I'm <span className="text-[#3781e5]">Vik</span>
+				</h1>
 				<p className={styles.sectionSubText}>A little bit about myself.</p>
 			</motion.div>
 
@@ -37,10 +39,10 @@ const About = () => {
 						</div>
 
 						<p className="flex-1">
-							Systems engineer focused on embedded systems and spectral
-							imaging with experience in software and electrical engineering.
-							Proven track record of developing systems with seamless data
-							exchange and dynamic robotics control.
+							Systems engineer focused on embedded systems and spectral imaging
+							with experience in software and electrical engineering. Proven
+							track record of developing systems with seamless data exchange and
+							dynamic robotics control.
 							<br />
 							<br />
 							<strong>My favorite inventions?</strong>
