@@ -1,140 +1,424 @@
-import React, { useRef, useEffect, useMemo } from "react";
-import { motion } from "framer-motion";
+import React, {
+	useRef,
+	useEffect,
+	useMemo,
+	useState,
+	useCallback,
+} from "react";
+
+import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
-import { github } from "../assets";
 
-const LazyImage = ({ src, alt, className }) => (
+// -------------------------------------------------
+// SETTINGS
+// -------------------------------------------------
+
+// Pixels per second
+const SCROLL_SPEED = 35;
+
+// -------------------------------------------------
+// Lazy Image
+// -------------------------------------------------
+
+const LazyImage = React.memo(({ src, alt, className }) => (
 	<img
 		src={src}
 		alt={alt}
 		className={`${className} select-none pointer-events-none`}
 		loading="lazy"
+		decoding="async"
 		draggable={false}
 	/>
-);
+));
 
-// Memoized card (prevents re-renders)
-const ProjectCard = React.memo(
-	({ name, date, description, tags, image, source_code_link }) => (
-		<div className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex-shrink-0 flex flex-col">
-			<div className="relative w-full h-[230px]">
-				<LazyImage
-					src={image}
-					alt={name}
-					className="w-full h-full object-cover rounded-2xl"
-				/>
+// -------------------------------------------------
+// Project Card
+// -------------------------------------------------
 
-				{/* Optional: Source code overlay */}
-				{/**
-      <div className="absolute inset-0 flex justify-end m-3 card-img_hover opacity-75">
-        <div
-          onClick={() => window.open(source_code_link, "_blank")}
-          title="Source Code"
-          className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-        >
-          <img src={github} alt="github" className="w-5 h-5" loading="lazy" />
-        </div>
-      </div>
-      */}
-			</div>
-
-			<div className="mt-5">
-				<h3 className="text-white font-bold text-[24px] h-[4.5rem]">{name}</h3>
-				<p className="mt-1 text-secondary text-[14px] italic">{date}</p>
-				<p className="mt-2 text-secondary text-[14px]">{description}</p>
-			</div>
-
-			<div className="mt-auto pt-4 flex flex-wrap gap-2">
-				{tags.map((tag) => (
-					<p key={tag.name} className={`text-[14px] ${tag.color}`}>
-						{tag.name}&emsp;
-					</p>
-				))}
-			</div>
+const ProjectCard = React.memo(({ name, date, description, tags, image }) => (
+	<div className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full flex-shrink-0 flex flex-col">
+		<div className="relative w-full h-[230px]">
+			<LazyImage
+				src={image}
+				alt={name}
+				className="w-full h-full object-cover rounded-2xl"
+			/>
 		</div>
-	),
-);
+
+		<div className="mt-5">
+			<h3 className="text-white font-bold text-[24px] h-[4.5rem]">{name}</h3>
+
+			<p className="mt-1 text-secondary text-[14px] italic">{date}</p>
+
+			<p className="mt-2 text-secondary text-[14px]">{description}</p>
+		</div>
+
+		<div className="mt-auto pt-4 flex flex-wrap gap-2">
+			{tags.map((tag) => (
+				<p key={tag.name} className={`text-[14px] ${tag.color}`}>
+					{tag.name}&emsp;
+				</p>
+			))}
+		</div>
+	</div>
+));
+
+// -------------------------------------------------
+// Works
+// -------------------------------------------------
 
 const Works = () => {
-	const innerRef = useRef(null);
+	// -------------------------------------------------
+	// Refs
+	// -------------------------------------------------
 
-	// Duplicate once
+	const containerRef = useRef(null);
+	const trackRef = useRef(null);
+
+	const halfWidthRef = useRef(0);
+
+	// -------------------------------------------------
+	// Motion value
+	// -------------------------------------------------
+
+	/*
+	 * THIS is the only thing controlling horizontal
+	 * position.
+	 */
+	const x = useMotionValue(0);
+
+	// -------------------------------------------------
+	// State
+	// -------------------------------------------------
+
+	const [isHovered, setIsHovered] = useState(false);
+	const [isDragging, setIsDragging] = useState(false);
+	const [isVisible, setIsVisible] = useState(false);
+
+	// -------------------------------------------------
+	// Drag tracking
+	// -------------------------------------------------
+
+	const pointerStartX = useRef(0);
+	const dragStartX = useRef(0);
+
+	// -------------------------------------------------
+	// Duplicate projects
+	// -------------------------------------------------
+
 	const projectList = useMemo(() => {
 		return [...projects, ...projects].map((p, i) => (
-			<ProjectCard key={i} {...p} />
+			<ProjectCard key={`${p.name}-${i}`} {...p} />
 		));
 	}, []);
 
-	// Pause when offscreen
+	// -------------------------------------------------
+	// Measure track
+	// -------------------------------------------------
+
+	const updateWidth = useCallback(() => {
+		const track = trackRef.current;
+
+		if (!track) return;
+
+		/*
+		 * Since projects are duplicated:
+		 *
+		 * total width / 2
+		 *
+		 * is the distance of one complete set.
+		 */
+		halfWidthRef.current = track.scrollWidth / 2;
+	}, []);
+
 	useEffect(() => {
-		const el = innerRef.current;
-		if (!el) return;
+		updateWidth();
+
+		const resizeObserver = new ResizeObserver(updateWidth);
+
+		if (trackRef.current) {
+			resizeObserver.observe(trackRef.current);
+		}
+
+		window.addEventListener("resize", updateWidth);
+
+		return () => {
+			resizeObserver.disconnect();
+
+			window.removeEventListener("resize", updateWidth);
+		};
+	}, [updateWidth]);
+
+	// -------------------------------------------------
+	// Visibility
+	// -------------------------------------------------
+
+	useEffect(() => {
+		const element = containerRef.current;
+
+		if (!element) return;
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
-				el.style.animationPlayState = entry.isIntersecting
-					? "running"
-					: "paused";
+				setIsVisible(entry.isIntersecting);
 			},
-			{ threshold: 0.1 },
+			{
+				threshold: 0.1,
+			},
 		);
 
-		observer.observe(el);
-		return () => observer.disconnect();
+		observer.observe(element);
+
+		return () => {
+			observer.disconnect();
+		};
 	}, []);
 
-	const pause = (el) => el && (el.style.animationPlayState = "paused");
-	const resume = (el) => el && (el.style.animationPlayState = "running");
+	// -------------------------------------------------
+	// Infinite wrapping
+	// -------------------------------------------------
+
+	const wrapX = useCallback((value) => {
+		const width = halfWidthRef.current;
+
+		if (!width) {
+			return value;
+		}
+
+		/*
+		 * Moving left past one complete set.
+		 */
+		if (value <= -width) {
+			return value + width;
+		}
+
+		/*
+		 * Moving right past the starting point.
+		 */
+		if (value >= 0) {
+			return value - width;
+		}
+
+		return value;
+	}, []);
+
+	// -------------------------------------------------
+	// Automatic scrolling
+	// -------------------------------------------------
+
+	useAnimationFrame((_, delta) => {
+		/*
+		 * STOP automatic scrolling when:
+		 *
+		 * 1. Mouse is over carousel
+		 * 2. User is dragging
+		 * 3. Carousel isn't visible
+		 */
+		if (isHovered || isDragging || !isVisible) {
+			return;
+		}
+
+		const currentX = x.get();
+
+		/*
+		 * Convert pixels/second into movement
+		 * for this frame.
+		 */
+		const movement = (SCROLL_SPEED * delta) / 1000;
+
+		const nextX = currentX - movement;
+
+		/*
+		 * Update the SAME motion value used
+		 * by the rendered transform.
+		 */
+		x.set(wrapX(nextX));
+	});
+
+	// -------------------------------------------------
+	// Mouse enter
+	// -------------------------------------------------
+
+	const handleMouseEnter = () => {
+		setIsHovered(true);
+	};
+
+	// -------------------------------------------------
+	// Mouse leave
+	// -------------------------------------------------
+
+	const handleMouseLeave = () => {
+		setIsHovered(false);
+	};
+
+	// -------------------------------------------------
+	// Pointer down
+	// -------------------------------------------------
+
+	const handlePointerDown = (event) => {
+		/*
+		 * Only respond to primary mouse button.
+		 */
+		if (event.pointerType === "mouse" && event.button !== 0) {
+			return;
+		}
+
+		setIsDragging(true);
+
+		pointerStartX.current = event.clientX;
+
+		dragStartX.current = x.get();
+
+		/*
+		 * Capture the pointer so dragging continues
+		 * even if the cursor leaves the element.
+		 */
+		event.currentTarget.setPointerCapture(event.pointerId);
+	};
+
+	// -------------------------------------------------
+	// Pointer move
+	// -------------------------------------------------
+
+	const handlePointerMove = (event) => {
+		if (!isDragging) {
+			return;
+		}
+
+		const deltaX = event.clientX - pointerStartX.current;
+
+		const nextX = dragStartX.current + deltaX;
+
+		/*
+		 * Apply wrapping while dragging.
+		 */
+		x.set(wrapX(nextX));
+	};
+
+	// -------------------------------------------------
+	// Pointer up
+	// -------------------------------------------------
+
+	const handlePointerUp = (event) => {
+		if (!isDragging) {
+			return;
+		}
+
+		setIsDragging(false);
+
+		try {
+			event.currentTarget.releasePointerCapture(event.pointerId);
+		} catch {
+			// Pointer capture may already be released.
+		}
+	};
+
+	// -------------------------------------------------
+	// Pointer cancel
+	// -------------------------------------------------
+
+	const handlePointerCancel = () => {
+		setIsDragging(false);
+	};
+
+	// -------------------------------------------------
+	// Render
+	// -------------------------------------------------
 
 	return (
 		<>
+			{/* ------------------------------------------- */}
+			{/* Section Header */}
+			{/* ------------------------------------------- */}
+
 			<motion.div variants={textVariant()}>
 				<h2 className={styles.sectionHeadText}>Work</h2>
+
 				<p className={styles.sectionSubText}>Endless innovation.</p>
 			</motion.div>
 
-			<motion.div variants={fadeIn("", "", 0.1, 1)}>
-				<div className="mt-10 relative overflow-hidden w-full">
-					{/*
-            - OUTER motion.div handles drag (transform: translateX from Framer)
-            - INNER div handles CSS animation
-          */}
+			{/* ------------------------------------------- */}
+			{/* Carousel */}
+			{/* ------------------------------------------- */}
 
+			<motion.div variants={fadeIn("", "", 0.1, 1)}>
+				<div
+					ref={containerRef}
+					className="mt-10 relative overflow-hidden w-full"
+				>
 					<motion.div
-						className="cursor-grab active:cursor-grabbing"
-						drag="x"
-						dragElastic={0}
-						dragMomentum={false}
-						dragConstraints={{ left: -Infinity, right: Infinity }}
-						onDragStart={() => pause(innerRef.current)}
-						onDragEnd={() => setTimeout(() => resume(innerRef.current), 50)}
+						ref={trackRef}
+						className={`
+              flex
+              gap-7
+              py-5
+              select-none
+              ${isDragging ? "cursor-grabbing" : "cursor-grab"}
+            `}
+						style={{
+							x,
+							width: "max-content",
+							willChange: "transform",
+							transform: "translateZ(0)",
+							backfaceVisibility: "hidden",
+						}}
+						/*
+						 * Hover pauses ONLY the automatic
+						 * scrolling.
+						 *
+						 * Dragging still works.
+						 */
+						onMouseEnter={handleMouseEnter}
+						onMouseLeave={handleMouseLeave}
+						/*
+						 * Manual pointer dragging.
+						 */
+						onPointerDown={handlePointerDown}
+						onPointerMove={handlePointerMove}
+						onPointerUp={handlePointerUp}
+						onPointerCancel={handlePointerCancel}
 					>
-						<div
-							ref={innerRef}
-							className="flex gap-7 py-5 will-change-transform"
-							style={{
-								width: "max-content",
-								animation: "scrollLoop 80s linear infinite",
-							}}
-							onMouseEnter={(e) => pause(e.currentTarget)}
-							onMouseLeave={(e) => resume(e.currentTarget)}
-						>
-							{projectList}
-						</div>
+						{projectList}
 					</motion.div>
 				</div>
 			</motion.div>
 
+			{/* ------------------------------------------- */}
+			{/* Performance CSS */}
+			{/* ------------------------------------------- */}
+
 			<style>
 				{`
-          @keyframes scrollLoop {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
+
+          .work-track {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
           }
+
+
+          /*
+           * Don't let the browser interpret horizontal
+           * dragging as page scrolling.
+           *
+           * Vertical page scrolling is still allowed.
+           */
+          .work-track {
+            touch-action: pan-y;
+          }
+
+
+          /*
+           * Isolate cards from unnecessary layout
+           * calculations.
+           */
+          .work-track > * {
+            contain: layout paint;
+          }
+
         `}
 			</style>
 		</>
