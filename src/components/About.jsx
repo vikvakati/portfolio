@@ -37,8 +37,8 @@ const About = () => {
 						</div>
 
 						<p className="flex-1">
-							Systems engineer with experience in software and electrical
-							engineering, focused on embedded systems and spectral imaging.
+							Systems engineer focused on embedded systems and spectral
+							imaging with experience in software and electrical engineering.
 							Proven track record of developing systems with seamless data
 							exchange and dynamic robotics control.
 							<br />

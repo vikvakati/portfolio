@@ -15,7 +15,7 @@ import {
 	delta_magnetics,
 	brdf,
 	cable_inspection,
-	color_space_analysis,
+	image_segmentation,
 	energy_monitor,
 	hr_detection,
 	farm,
@@ -195,7 +195,7 @@ const projects = [
 		image: cable_inspection,
 	},
 	{
-		name: "Color Space Analysis Tool",
+		name: "Image Segmentation Tool",
 		date: "April 2026",
 		description:
 			"Application to analyze and optimize image segmentation algorithms. Provides color-space conversion, per-channel thresholding, histogram equalization, and morphological filtering, allowing segmentation parameters to be tuned for reliable feature detection.",
@@ -213,7 +213,7 @@ const projects = [
 				color: "text-secondary",
 			},
 		],
-		image: color_space_analysis,
+		image: image_segmentation,
 	},
 	{
 		name: "Spectral Radiance Calculator",

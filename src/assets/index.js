@@ -7,7 +7,7 @@ import close from "./close.svg";
 
 import brdf from "./BRDF.png";
 import cable_inspection from "./cable_inspection.png"
-import color_space_analysis from "./color_space_analysis.png"
+import image_segmentation from "./image_segmentation.png"
 import radiance_calculator from "./radiance_calculator.png";
 import energy_monitor from "./energy_monitor.png";
 import hr_detection from "./hr_detection.png";
@@ -43,7 +43,7 @@ export {
 	close,
 	brdf,
 	cable_inspection,
-	color_space_analysis,
+	image_segmentation,
 	radiance_calculator,
 	energy_monitor,
 	hr_detection,
