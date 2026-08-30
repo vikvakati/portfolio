@@ -191,6 +191,10 @@ const projects = [
 				name: "Python",
 				color: "text-secondary",
 			},
+			{
+				name: "MAVLink",
+				color: "text-secondary",
+			},
 		],
 		image: cable_inspection,
 	},
