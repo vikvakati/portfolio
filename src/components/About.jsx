@@ -8,11 +8,17 @@ import { MapPin } from "lucide-react";
 const About = () => {
 	return (
 		<>
-			<motion.div variants={textVariant()}>
-				<h1 className={`${styles.heroHeadText} text-white`}>
-					Hi, I'm <span className="text-[#3781e5]">Vik</span>
-				</h1>
-				<p className={styles.sectionSubText}>A little bit about myself.</p>
+			<motion.div
+				variants={textVariant()}
+				className={`${styles.paddingX} max-w-7xl mx-auto pt-[40px]`}
+			>
+				<div>
+					<h1 className={`${styles.heroHeadText} text-white`}>
+						Hi, I'm <span className="text-[#3781e5]">Vik</span>
+					</h1>
+
+					<p className={styles.sectionSubText}>A little bit about myself.</p>
+				</div>
 			</motion.div>
 
 			<motion.div
