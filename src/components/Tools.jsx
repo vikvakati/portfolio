@@ -8,6 +8,7 @@ import { Suspense, lazy } from "react";
 // Predefined lazy components
 const CompressImageLazy = lazy(() => import("./tools/CompressImage"));
 const DigitizeImageLazy = lazy(() => import("./tools/DigitizeImage"));
+const ColorSpaceToolLazy = lazy(() => import("./tools/ColorSpaceTool"));
 
 const LazyToolWrapper = ({ children }) => (
 	<Suspense fallback={<div className="text-white">Loading...</div>}>
@@ -27,7 +28,11 @@ const Tools = () => {
 
 			<motion.div variants={fadeIn("", "", 0.1, 1)}>
 				<div className="mt-10 flex flex-col items-center gap-10 w-full">
-					<div className="w-full max-w-5xl bg-tertiary p-8 rounded-2xl min-h-[520px] mx-auto flex flex-col">
+					<div
+						className={`w-full ${
+							activeTab === "color" ? "max-w-7xl" : "max-w-5xl"
+						} bg-tertiary p-8 rounded-2xl min-h-[520px] mx-auto flex flex-col`}
+					>
 						{/* Tabs */}
 						<div className="w-full flex justify-center sm:justify-start border-b border-gray-700 mb-6">
 							<button
@@ -50,6 +55,16 @@ const Tools = () => {
 							>
 								Digitize
 							</button>
+							<button
+								className={`pb-2 px-4 transition-colors ${
+									activeTab === "color"
+										? "text-white border-b-2 border-blue-500"
+										: "text-secondary hover:text-white"
+								}`}
+								onClick={() => setActiveTab("color")}
+							>
+								Segment
+							</button>
 						</div>
 
 						{/* Tool Content */}
@@ -62,6 +77,11 @@ const Tools = () => {
 							{activeTab === "plot" && (
 								<LazyToolWrapper>
 									<DigitizeImageLazy />
+								</LazyToolWrapper>
+							)}
+							{activeTab === "color" && (
+								<LazyToolWrapper>
+									<ColorSpaceToolLazy />
 								</LazyToolWrapper>
 							)}
 						</div>
