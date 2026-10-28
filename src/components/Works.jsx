@@ -94,7 +94,7 @@ const ProjectCard = React.memo(
 				</p>
 			</div>
 
-			<div className="mt-auto pt-3 sm:pt-4 flex flex-wrap gap-x-2 gap-y-1">
+			<div className="mt-auto pt-4 sm:pt-4 flex flex-wrap gap-5">
 				{tags.map((tag) => (
 					<p key={tag.name} className={`text-xs sm:text-sm ${tag.color}`}>
 						{tag.name}
