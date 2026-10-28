@@ -160,10 +160,10 @@ const projects = [
 		name: "Spacecraft Materials Testing",
 		date: "April 2027",
 		description:
-			"Automated imaging system to measure BRDF and characterize material degradation over time in a simulated space environment. Synchronizes motor positioning and image acquisition to generate reflectance profiles and track surface changes over time.",
+			"In-situ imaging system to measure BRDF and characterize material degradation over time in a simulated space environment. Utilizes multithreading for motor control and image acquisition to generate reflectance profiles and track surface changes over time.",
 		tags: [
 			{
-				name: "Image Processing",
+				name: "Embedded Software",
 				color: "text-white",
 			},
 			{
@@ -181,10 +181,10 @@ const projects = [
 		name: "Autonomous Cable Inspection",
 		date: "January 2027",
 		description:
-			"Aerial imaging system to inspect steel guy wires and monitor corrosion over time. The drone maintains consistent and precise alignment along cables using computer vision and onboard sensors to enable repeatable imaging.",
+			"Aerial imaging system to inspect steel support cables and monitor corrosion over time. The drone maintains consistent and precise alignment along cables using a real-time vision model and sensor fusion to enable repeatable imaging.",
 		tags: [
 			{
-				name: "Computer Vision",
+				name: "Robotics",
 				color: "text-white",
 			},
 			{
@@ -195,6 +195,10 @@ const projects = [
 				name: "MAVLink",
 				color: "text-secondary",
 			},
+			{
+				name: "YOLO26",
+				color: "text-secondary",
+			},
 		],
 		image: cable_inspection,
 	},
@@ -202,18 +206,18 @@ const projects = [
 		name: "Image Segmentation Tool",
 		date: "April 2026",
 		description:
-			"Application to analyze and optimize image segmentation algorithms. Provides color-space conversion, per-channel thresholding, histogram equalization, and morphological filtering, allowing segmentation parameters to be tuned for reliable feature detection.",
+			"Application to rapidly prototype classical image segmentation algorithms. Provides color-space conversion, per-channel thresholding, histogram equalization, and morphological filtering, allowing parameters to be tuned for reliable segmentation.",
 		tags: [
 			{
 				name: "Image Processing",
 				color: "text-white",
 			},
 			{
-				name: "UI",
-				color: "text-white",
+				name: "Python",
+				color: "text-secondary",
 			},
 			{
-				name: "Python",
+				name: "OpenCV",
 				color: "text-secondary",
 			},
 		],
@@ -223,14 +227,14 @@ const projects = [
 		name: "Spectral Radiance Calculator",
 		date: "July 2025",
 		description:
-			"Web tool to compute spectral radiance using Planck's law. Designed for scientific use, featuring real-time plotting, peak calculations, and band integration with a responsive layout and intuitive controls.",
+			"Web tool to compute spectral radiance using Planck's law. Designed for scientific use, featuring real-time plotting, peak calculations, and band integration with a mobile-responsive layout and intuitive controls.",
 		tags: [
 			{
 				name: "Modeling",
 				color: "text-white",
 			},
 			{
-				name: "UI",
+				name: "UI/UX",
 				color: "text-white",
 			},
 			{
@@ -238,7 +242,7 @@ const projects = [
 				color: "text-secondary",
 			},
 			{
-				name: "HTML/CSS",
+				name: "HTML",
 				color: "text-secondary",
 			},
 		],
@@ -254,10 +258,6 @@ const projects = [
 		tags: [
 			{
 				name: "Data Management",
-				color: "text-white",
-			},
-			{
-				name: "UI",
 				color: "text-white",
 			},
 			{
@@ -296,10 +296,6 @@ const projects = [
 		tags: [
 			{
 				name: "Embedded Software",
-				color: "text-white",
-			},
-			{
-				name: "UI",
 				color: "text-white",
 			},
 			{
